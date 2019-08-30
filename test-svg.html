@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<script src="//d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script>
+
+var width = 2000,
+    height = 2000,
+    outerRadius = Math.min(width, height) * .5 - 200,
+    innerRadius = outerRadius * .995;
+
+var n = 1500,
+    data0 = d3.range(n).map(Math.random),
+    data1 = d3.range(n).map(Math.random),
+    data;
+
+
+var arc = d3.arc()
+    .outerRadius(function(d){ return d.outer;}) // データごとに外側半径を変える。
+    .innerRadius(function(d) {return d.inner;})
+    .startAngle(function(d,i){ return d.start;})// データのインデックス+1の角度からスタート
+    .endAngle(function(d,i){ return d.end; }); // 360度からデータのインデックス+1を引いた角度で終わる。
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var center = svg.append("g")
+    .attr("transform", "translate(" + (width/2) + "," + (height/2) + ")");
+
+var res = center.selectAll("path")
+    .data(getData(data0))
+  .enter().append("g")
+    .attr("class", "arc")
+  .append("path")
+    .attr("fill", function(d, i){return "rgba(" + (i) +",100,100,1)";})
+    .attr("d", arc);
+/*
+for (var i = 0; i < 100; i++){
+svg.selectAll(".arc" + i)
+    .data(arcs(data0, n, i*11))
+  .enter().append("g")
+    .attr("class", "arc")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+  .append("path")
+    .attr("fill", function(d, i){return "rgba(" + (i * 10) +",100,100,1)";})
+    .attr("d", arc);
+}
+
+  var zoom = d3.zoom()
+    .scaleExtent([1, 40])
+    .on("zoom", zoomed);
+
+  svg.call(zoom);
+
+  function zoomed() {
+    res.attr("transform", d3.event.transform);
+  }
+
+function arcs(data0, n, j) {
+  var arcs0 = pie(data0),
+      i = -1,
+      arc;
+  while (++i < n) {
+    arc = arcs0[i];
+    arc.innerRadius = innerRadius - j;
+    arc.outerRadius = outerRadius - j;
+  }
+  return arcs0;
+}
+*/
+function getData(data0){    
+    var l = data0.length;
+    var dataout = {};
+    var p = Math.PI * 2;
+    var sum  = function(arr) {
+        return arr.reduce(function(prev, current, i, arr) {
+            return prev+current;
+        });
+    }
+    var rate = p / sum(data0);
+    var dataout = [];
+    for(var loop = 0; loop < 200; loop++){
+    var s = 0;
+    dataout.push({outer: outerRadius - loop*8, inner: innerRadius - loop*8, start: 0, end:(data0[0]*rate)});
+    for(var i = 1; i < l; i++){
+        var size = data0[i] * rate;
+        var arc = {outer: outerRadius - loop*8, inner: innerRadius - loop*8, start: s + size* 0.1, end:s + size}
+        dataout.push(arc);
+        s += size;
+    }}
+    return(dataout);
+}
+
+</script>
