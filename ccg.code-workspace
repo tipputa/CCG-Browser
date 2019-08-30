@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "D:\\0_VisualStudio\\Circular-genome-visualizer"
 		}
 	],
 	"settings": {
@@ -26,6 +29,7 @@
 				"htm",
 				"html",
 			]
-		}
+		},
+		"liveServer.settings.multiRootWorkspaceName": "CCG-Browser"
 	}
 }

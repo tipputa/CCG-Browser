@@ -60,46 +60,6 @@
                 });
             drawData();
         });
-        console.log(importedJs);
-        let tJson = {
-            orhtolog_info: [],
-            consensus_genome_size: 0,
-            each_genome_info: [{
-                    genome_name: "genome_name1",
-                    acc: "ACC",
-                    genome_size: 0,
-                    original_order: 0,
-                    distance_from_consensus: 0,
-                    genes: [{
-                        locusTag: "",
-                        start_position: 1,
-                        end_position: 100,
-                        strand: 1,
-                        /* strand => 1: normal, -1: compliment */
-                        angle: 0,
-                        consensusId: 1,
-                        seq: "",
-                        translated: ""
-                    }]
-                },
-                {
-                    genome_name: "genome_name2",
-                    acc: "ACC",
-                    original_order: 0,
-                    distance_from_consensus: 0,
-                    genes: [{
-                        locusTag: "",
-                        start_position: 1,
-                        end_position: 100,
-                        strand: 1,
-                        /* strand => 1: normal, -1: compliment */
-                        consensusId: 1,
-                        seq: "",
-                        translated: ""
-                    }]
-                }
-            ]
-        };
 
 
         function setSortable(id) {
@@ -131,8 +91,10 @@
                     evt.newIndex
                     genomeOrder = sortable.toArray();
                     console.log(genomeOrder);
-                    console.log(genomeOrder.indexOf(tJson.each_genome_info[0].genome_name));
-
+                    importedJs.each_genome_info.forEach(function(e){
+                        e.order = genomeOrder.indexOf(e.genome_name)
+                    });
+                    drawData();
                 },
 
             });
@@ -151,7 +113,7 @@
             arr.forEach(function (e) {
                 res.push({
                     "name": e.genome_name,
-                    "content": "<div class=\"row\">" + getColNames(e.genome_name) + getColNames(e.acc) + getColNames(e.original_order) + "</div>"
+                    "content": "<div class=\"row\">" + getColNames(e.genome_name) + getColNames(e.acc) + getColNames(e.distance_from_consensus) + "</div>"
                 });
             });
             return res;
@@ -163,11 +125,11 @@
 
 
         let width = d3.select("#canvas-container").node().getBoundingClientRect().width,
-            height = 500,
+            height = 1200,
             outerRadius = Math.min(width, height) * .5 - 100,
             innerRadius = outerRadius * .995;
 
-        let maxR = outerRadius + 10;
+        let maxR = outerRadius + 20;
 
         let is_zoom = true;
 
@@ -220,42 +182,40 @@
             console.log(col);
         });
         */
-
+        let ringMargin = 3;
         function drawData() {
             drawKaryotype();
-            let l = data0.length;
+            let numGenomes = importedJs.each_genome_info.length;
+            let ringSize = ((outerRadius - Math.max(200, (numGenomes * ringMargin + 50))) / numGenomes);
             let p = Math.PI * 2;
             let sum = function (arr) {
                 return arr.reduce(function (prev, current, i, arr) {
                     return prev + current;
                 });
             }
-            let rate = p / sum(data0);
+            let rate = p / importedJs.consensus_genome_size
             let dataout = [];
-            for (let loop = 0; loop < 3; loop++) {
-                let s = 0;
-                let size = data0[0] * rate
-                draw(outerRadius, 0, size);
-                for (let i = 1; i < l; i++) {
-                    size = data0[i] * rate;
-                    draw(outerRadius - loop * 3, s + size * 0.5, s + size);
-                    s += size;
+            for (let loop = 0; loop < numGenomes; loop++) {
+                for (let i = 0; i < importedJs.each_genome_info[loop].genes.length; i++) {
+                    let start = importedJs.each_genome_info[loop].genes[i].start_rotated * rate;
+                    let end = importedJs.each_genome_info[loop].genes[i].end_rotated * rate;
+                    draw(outerRadius - ringSize/2 - importedJs.each_genome_info[loop].order * (ringSize + ringMargin), start, end, ringSize, importedJs.each_genome_info[loop].genes[i].angle);
                 }
             }
         }
 
-        function draw(r, start, stop, lineWidth = 1.5) {
-            let val = colArray[convertRad2Deg(start)];
+        function draw(r, start, stop, lineWidth, angle) {
+            let val = colArray[angle];
             ctx.beginPath();
             ctx.arc(width / 2, height / 2, r, start - Math.PI / 2, stop - Math.PI / 2);
-            ctx.lineWidth = 1.5;
+            ctx.lineWidth = lineWidth;
             ctx.strokeStyle = val;
             ctx.stroke();
         }
 
         function drawKaryotype() {
             for (let i = 0; i < 360; i++) {
-                draw(maxR, convertDeg2Rad(i), convertDeg2Rad(i + 1), 5);
+                draw(maxR, convertDeg2Rad(i), convertDeg2Rad(i + 1), 5, i);
             }
         }
 
