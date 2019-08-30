@@ -229,7 +229,7 @@
         }
 
         function draw(r, start, stop, lineWidth, angle) {
-            let val = colArray[angle];
+            let val = angle < 0 ? "rgba(255,255,255)" : colArray[angle];
             ctx.beginPath();
             ctx.arc(width / 2, height / 2, r, start - Math.PI / 2, stop - Math.PI / 2);
             ctx.lineWidth = lineWidth;
