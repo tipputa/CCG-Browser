@@ -18,35 +18,37 @@
 </head>
 
 <body>
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">CCG browser</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Demo 01 (5 strains) <span class="sr-only"></span></a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">CCG browser</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Demo 01 (5 strains) <span class="sr-only"></span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <main>
         <div class="container p-5" style="max-width:90%;">
-    <h1>Demo 01; H. Pyroli 5 strains</h1>
+            <h1>Demo 01; H. Pyroli 5 strains</h1>
             <div id="canvas-container">
             </div>
             <ul class="list-group mt-5">
-            <div><p>The figure can be zoomed by mouse scrool.</p>
-            <p>The ring order can be also reordered by sorting a following table (drag & drop)</p><div>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col">File name</div>
-                        <div class="col">Accession</div>
-                        <div class="col">Difference from consensus</div>
-                    </div>
-                </li>
+                <div>
+                    <p>The figure can be zoomed by mouse scrool.</p>
+                    <p>The ring order can be also reordered by sorting a following table (drag & drop)</p>
+                    <div>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col">File name</div>
+                                <div class="col">Accession</div>
+                                <div class="col">Difference from consensus</div>
+                            </div>
+                        </li>
             </ul>
             <ul id="list01" class="list-group"></ul>
         </div>
@@ -62,12 +64,14 @@
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script>
         let fileName = "testRestext.json";
-        console.log(fileName);
+        let numGenomes = 0;
+
         let importedJs = {};
         setSortable("list01");
 
         d3.json(fileName).then(function (root) {
             importedJs = root;
+            numGenomes = importedJs.each_genome_info.length;
             let genomeOrder = getGenomeList(importedJs.each_genome_info);
             d3.select('#list01').selectAll("li")
                 .data(genomeOrder).enter().append("li").attr("class", "list-group-item").attr("data-id", function (d) {
@@ -75,7 +79,7 @@
                 }).html(function (d) {
                     return d.content;
                 });
-            drawData();
+            drawDataIni();
         });
 
 
@@ -108,7 +112,7 @@
                     evt.newIndex
                     genomeOrder = sortable.toArray();
                     console.log(genomeOrder);
-                    importedJs.each_genome_info.forEach(function(e){
+                    importedJs.each_genome_info.forEach(function (e) {
                         e.order = genomeOrder.indexOf(e.genome_name)
                     });
                     refresh();
@@ -146,14 +150,13 @@
             outerRadius = Math.min(width, height) * .5 - 100,
             innerRadius = outerRadius * .995;
 
+        let deg90 = Math.PI / 2;
+        let halfX = width / 2;
+        let halfY = height / 2;
+
         let maxR = outerRadius + 20;
 
         let is_zoom = true;
-
-        let n = 1500,
-            data0 = d3.range(n).map(Math.random),
-            data1 = d3.range(n).map(Math.random),
-            data;
 
         let canvas = d3.select("#canvas-container")
             .append("canvas")
@@ -191,9 +194,10 @@
             ctx.restore();
         }
 
-        function refresh(){
+        function refresh() {
             ctx.save();
             ctx.clearRect(0, 0, width, height);
+            drawDataIni();
             drawData();
             ctx.restore();
         }
@@ -207,23 +211,43 @@
         });
         */
         let ringMargin = 3;
-        function drawData() {
-            drawKaryotype();
-            let numGenomes = importedJs.each_genome_info.length;
-            let ringSize = ((outerRadius - Math.max(200, (numGenomes * ringMargin + 50))) / numGenomes);
+        let ringSize = 10;
+
+        function drawDataIni() {
+            ringSize = ((outerRadius - Math.max(20, ((numGenomes - 1) * ringMargin + 50))) / numGenomes);
+            if (ringSize < 0) {
+                ringMargin = 1;
+                ringSize = ((outerRadius - Math.max(20, ((numGenomes - 1) * ringMargin + 50))) / numGenomes);
+            }
+            if (ringSize < 0) {
+                ringMargin = 0;
+                ringSize = ((outerRadius - Math.max(20, ((numGenomes - 1) * ringMargin + 50))) / numGenomes);
+            }
+
+            maxR = outerRadius + 5 + ringSize / 2;
             let p = Math.PI * 2;
+
             let sum = function (arr) {
                 return arr.reduce(function (prev, current, i, arr) {
                     return prev + current;
                 });
             }
             let rate = p / importedJs.consensus_genome_size
-            let dataout = [];
             for (let loop = 0; loop < numGenomes; loop++) {
                 for (let i = 0; i < importedJs.each_genome_info[loop].genes.length; i++) {
-                    let start = importedJs.each_genome_info[loop].genes[i].start_rotated * rate;
-                    let end = importedJs.each_genome_info[loop].genes[i].end_rotated * rate;
-                    draw(outerRadius - ringSize/2 - importedJs.each_genome_info[loop].order * (ringSize + ringMargin), start, end, ringSize, importedJs.each_genome_info[loop].genes[i].angle);
+                    importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"] = importedJs.each_genome_info[loop].genes[i].start_rotated * rate;
+                    importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"] = importedJs.each_genome_info[loop].genes[i].end_rotated * rate;
+                    importedJs.each_genome_info[loop].genes[i]["r"] = outerRadius - importedJs.each_genome_info[loop].order * (ringSize + ringMargin)
+                }
+            }
+            drawData();
+        }
+
+        function drawData() {
+            drawKaryotype();
+            for (let loop = 0; loop < numGenomes; loop++) {
+                for (let i = 0; i < importedJs.each_genome_info[loop].genes.length; i++) {
+                    draw(importedJs.each_genome_info[loop].genes[i]["r"], importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"], importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"], ringSize, importedJs.each_genome_info[loop].genes[i].angle);
                 }
             }
         }
@@ -231,7 +255,7 @@
         function draw(r, start, stop, lineWidth, angle) {
             let val = angle < 0 ? "rgba(255,255,255)" : colArray[angle];
             ctx.beginPath();
-            ctx.arc(width / 2, height / 2, r, start - Math.PI / 2, stop - Math.PI / 2);
+            ctx.arc(halfX, halfY, r, start - deg90, stop - deg90);
             ctx.lineWidth = lineWidth;
             ctx.strokeStyle = val;
             ctx.stroke();
