@@ -63,7 +63,7 @@
 
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script>
-        let fileName = "text.json";
+        let fileName = "result.json";
         let numGenomes = 0;
 
         let importedJs = {};
@@ -210,7 +210,7 @@
             console.log(col);
         });
         */
-        let ringMargin = 3;
+        let ringMargin = 2;
         let ringSize = 10;
         function drawDataIni() {
             ringSize = ((outerRadius - Math.max(20, ((numGenomes-1) * ringMargin + 50))) / numGenomes);
