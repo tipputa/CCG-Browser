@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CCG browser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        #ccg-container {
+            border: #030303 2px solid;
+            padding: 0;
+            height: 700px;
+        }
+
+        #genome-browser-container {
+            border: #030303 2px solid;
+            padding: 0;
+            height: 700px;
+        }
+
+        .canvas-container {
+            position: relative;
+        }
+
+        .canvas-container canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .canvas-container .linear-genome-tooltip {
+            position: absolute;
+            text-align: center;
+            width: auto;
+            height: auto;
+            padding: 5px;
+            font: 15px;
+            background-color: black;
+            color: white;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+            visibility: hidden;
+            z-index: 100;
+        }
+
+        .canvas-container .lg_genome_name {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">CCG browser</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Demo 01 (5 strains) <span class="sr-only"></span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container p-5">
+            <h1>Demo 01; H. Pylori 5 strains</h1>
+            <button class="btn is_zoomable" onclick=isZoomable_click()>Zoomable</button>
+            <div class="row">
+                <div id="ccg-container" class="canvas-container col-8">
+                </div>
+                <div class="col-4">
+                    <p>The figure can be zoomed by mouse scrool.</p>
+                    <p>The ring order can be also reordered by sorting a following table (drag & drop)</p>
+                    <div>
+                        <div id="list-container" class="overflow-auto">
+                            <h2>Genome list</h2>
+                            <ul id="list01" class="list-group"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-5">
+            <h2 class="mt-5"> Genome zoomed browser</h2>
+            <button class="but btn-dark is_colorCode" onclick="changeColorCode_click()">Consensus Color</button> 
+            <div class="row mt-1">
+                <div id="genome-browser-container" class="canvas-container col-12">
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <script src="//d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <!-- canvas2svg -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas2svg@1.0.16/canvas2svg.min.js"></script>
+
+    <!-- canvg  svg -> canvas -->
+    <!-- Required to convert named colors to RGB -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.4/rgbcolor.min.js"></script>
+    <!-- Main canvg code -->
+    <script src="https://cdn.jsdelivr.net/npm/canvg/dist/browser/canvg.min.js"></script>
+
+    <script src="../js/util.js"></script>
+    <script src="../js/ccg-core.js"></script>
+
+    <script src="../js/genome_browser.js"></script>
+
+    <script>
+        processStart("result_test5sp.json", "list01");
+    </script>
+</body>
+
+</html>

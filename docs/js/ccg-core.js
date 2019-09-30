@@ -44,6 +44,7 @@ canvas_zoomRange.on("mousemove", function () {
         let angle = getAngleFromMousePosition(xy);
         zoom_start = angle - zoom_size;
         zoom_end = angle + zoom_size;
+        isArcZoomRangeActive = true;
         showArc(zoom_start, zoom_end);
     }
 });
@@ -141,7 +142,7 @@ function getGenomeList(arr) {
             "name": e.acc,
             "content": "<div class=\"card\"><div class=\"card-header\" id=\"" + e.acc + "\"> \
                 <h3 class=\"mb-0\"> \
-                <button class=\"btn btn-link collapsed\" data-toggle=\"collapse\" data-target=\"#id_" + e.acc + "\" aria-expanded=\"false\" aria-controls=\"id_" + e.acc + "\">" + e.genome_name +
+                <button class=\"btn btn-link collapsed\" data-toggle=\"collapse\" data-target=\"#id_" + e.acc + "\" aria-expanded=\"false\" aria-controls=\"id_" + e.acc + "\">" + e.strain +
                 "</button></h5></div> \
         <div id=\"id_" + e.acc + "\" class=\"collapse\" aria-labelledby=\"" + e.acc + "\" data-parent=\"#accordion\"> \
         <div class=\"card-body\"> <p>Accession: " + e.acc + "</p><p>Genome size: " + e.genome_size + "</p><p>Deviation from consensus: " + e.distance_from_consensus + "</div> </div> </div>"
@@ -167,23 +168,6 @@ function getColNames(txt) {
 }
 
 
-// https://www.peko-step.com/html/hsl.html
-let colArray = []
-for (let i = 1; i < 361; i++) {
-    if (i <= 60) {
-        colArray.push("rgb(255," + (i / 60 * 255) + ",0)");
-    } else if (i <= 120) {
-        colArray.push("rgb(" + (255 - (i - 60) / 60 * 255) + ", 255, 0)");
-    } else if (i <= 180) {
-        colArray.push("rgb(0, 255, " + ((i - 120) / 60 * 255) + ")");
-    } else if (i <= 240) {
-        colArray.push("rgb(0, " + (255 - (i - 180) / 60 * 255) + ", 255)");
-    } else if (i <= 300) {
-        colArray.push("rgb(" + ((i - 240) / 60 * 255) + ", 0, 255)");
-    } else if (i <= 360) {
-        colArray.push("rgb(255, 0, " + (255 - (i - 300) / 60 * 255) + ")");
-    }
-}
 
 function ccgZoom() {
     if (!is_ccg_zoomable) return;
@@ -202,6 +186,8 @@ function refresh() {
     drawDataIni();
     ctx.restore();
     if (is_zoom_lock) {
+        isArcZoomRangeActive = true;
+        showArc(zoom_start, zoom_end);
         drawLinearGenomeBrowser();
     }
 }
@@ -236,11 +222,11 @@ function drawDataIni() {
     }
     let rate = p / importedJs.consensus_genome_size
     for (let loop = 0; loop < numGenomes; loop++) {
-        for (let i = 0; i < importedJs.each_genome_info[loop].genes.length; i++) {
-            importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"] = importedJs.each_genome_info[loop].genes[i].start_rotated * rate;
-            importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"] = importedJs.each_genome_info[loop].genes[i].end_rotated * rate;
-            importedJs.each_genome_info[loop].genes[i]["r"] = outerRadius - importedJs.each_genome_info[loop].order * (ringSize + ringMargin)
-        }
+        importedJs.each_genome_info[loop]["r"] = outerRadius - importedJs.each_genome_info[loop].order * (ringSize + ringMargin)
+        //for (let i = 0; i < importedJs.each_genome_info[loop].genes.length; i++) {
+        //importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"] = convertDeg2Rad(importedJs.each_genome_info[loop].genes[i]["start_rotated_angle"])
+        //importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"] = convertDeg2Rad(importedJs.each_genome_info[loop].genes[i]["end_rotated_angle"]);
+        //}
     }
     drawData();
 }
@@ -249,26 +235,51 @@ function drawData() {
     drawKaryotype();
     for (let loop = 0; loop < numGenomes; loop++) {
         for (let i = 0; i < importedJs.each_genome_info[loop].genes.length; i++) {
-            drawCCG(importedJs.each_genome_info[loop].genes[i]["r"], importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"], importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"], ringSize, importedJs.each_genome_info[loop].genes[i].angle);
+            drawCCG(importedJs.each_genome_info[loop]["r"], importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"], importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"], ringSize, importedJs.each_genome_info[loop].genes[i].angle, importedJs.each_genome_info[loop].genes[i].feature);
         }
     }
 }
 
 function showZoomRange() {}
 
-function showArc(start, end) {
-    ctx_zoomRange.clearRect(0, 0, ccgWidth, height);
-    ctx_zoomRange.beginPath();
-    ctx_zoomRange.moveTo(halfX, halfY);
-    ctx_zoomRange.arc(halfX, halfY, maxR + 10, start, end);
-    ctx_zoomRange.fillStyle = "rgba(50,50,50,0.5)";
-    ctx_zoomRange.strokeStyle = "rgba(50,50,50, 0.7)";
-    ctx_zoomRange.lineWidth = 5;
-    ctx_zoomRange.closePath();
-    ctx_zoomRange.fill();
-    ctx_zoomRange.stroke();
-    ctx_zoomRange.restore();
+let isArcZoomRangeActive = true;
 
+function clearArc() {
+    ctx_zoomRange.clearRect(0, 0, ccgWidth, height);
+}
+
+function showArc(start, end) {
+    clearArc();
+    if (isArcZoomRangeActive) {
+        ctx_zoomRange.beginPath();
+        ctx_zoomRange.moveTo(halfX, halfY);
+        ctx_zoomRange.arc(halfX, halfY, maxR + 10, start, end);
+        ctx_zoomRange.fillStyle = "rgba(50,50,50,0.5)";
+        ctx_zoomRange.strokeStyle = "rgba(50,50,50, 0.7)";
+        ctx_zoomRange.lineWidth = 5;
+        ctx_zoomRange.closePath();
+        ctx_zoomRange.fill();
+        ctx_zoomRange.stroke();
+        ctx_zoomRange.restore();
+    } else {
+        showAlignedGenomeRange();
+    }
+}
+
+function showAlignedGenomeRange() {
+    for (let loop = 0; loop < numGenomes; loop++) {
+        let r = importedJs.each_genome_info[loop]["r"];
+        start = zoom_start - lg_aligned_consensus_diff[loop] / importedJs.consensus_genome_size * 2 * Math.PI;
+        end = zoom_end - lg_aligned_consensus_diff[loop] / importedJs.consensus_genome_size * 2 * Math.PI;
+        ctx_zoomRange.beginPath();
+        ctx_zoomRange.arc(halfX, halfY, r + ringSize / 2, start, end);
+        ctx_zoomRange.lineTo(halfX + (r - ringSize / 2) * Math.cos(end), halfY + (r - ringSize / 2) * Math.sin(end));
+        ctx_zoomRange.arc(halfX, halfY, r - ringSize / 2, end, start, true);
+        ctx_zoomRange.lineTo(halfX + (r + ringSize / 2) * Math.cos(start), halfY + (r + ringSize / 2) * Math.sin(start));
+        ctx_zoomRange.lineWidth = 3;
+        ctx_zoomRange.stroke();
+        ctx_zoomRange.fill();
+    }
 }
 
 function getAngleFromMousePosition(xy) {
@@ -283,12 +294,18 @@ function getAngleFromMousePosition(xy) {
     }
 }
 
-function drawCCG(r, start, stop, lineWidth, angle) {
-    let val = angle < 0 ? "rgba(150,150,150)" : colArray[angle];
+function drawCCG(r, start, stop, lineWidth, angle, feature) {
+    let val = angle < 0 ? "rgba(200,200,200)" : AngleColer[angle];
+    if (angle < 0) {
+        if (feature != "CDS") {
+            val = "rgba(100,100,100)"
+        }
+    }
     ctx.beginPath();
     ctx.arc(halfX, halfY, r, start - deg90, stop - deg90);
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = val;
+    ctx.fill();
     ctx.stroke();
 }
 
@@ -315,5 +332,17 @@ function isZoomable_click() {
     } else {
         d3.select(".is_zoomable").html("Zoomable");
         is_ccg_zoomable = true;
+    }
+}
+
+function changeColorCode_click() {
+    if (isGeneSeparationColor) {
+        d3.select(".is_colorCode").html("Consensus Color");
+        isGeneSeparationColor = false;
+        redrawLinearGenomeBrowser();
+    } else {
+        d3.select(".is_colorCode").html("Gene Color");
+        isGeneSeparationColor = true;
+        redrawLinearGenomeBrowser();
     }
 }
