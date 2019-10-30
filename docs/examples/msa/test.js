@@ -31,7 +31,7 @@ function drawATree(newick) {
         })
         // .size([treeHeight, treeWidth])
         .svg(treeSelect)
-        .node_circle_size(0.1);
+        .node_circle_size(4);
     //.align_tips(true);
     console.log(treeHeight);
     tree(d3.layout.newick_parser(newick));
