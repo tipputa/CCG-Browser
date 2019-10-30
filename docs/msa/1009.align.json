@@ -1,0 +1,2114 @@
+{
+    "sequences": [
+        {
+            "name": "AAK06137.1",
+            "seq": "--------------MKRDKRLEIIKEIVTNNKISTQEELQSLLLERGVEVTQATLSRDIRKLNIIKKRD-KGESFYSFLTSG----NSKINSD------LQLYFYNFVISAKSVGALVVIRTKLG--EADVLANALDD--ERDSRT-DILGTIAGADTLLVICASEKAANILTAEIKYILLG--------------",
+            "order": 0,
+            "acc": "GCA_000006865.1_ASM686v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "ABJ62312.1",
+            "seq": "-------------MISKQERQKLILDIIQDNIIASQEELLAQLIKHGVETTQTTVSRDIRAMNIIRQKSDSGQLRYQQL-ND----TTKNVQNLVTTNAVDEAIKEYASFVTHVEFLTIIKTTDG--SGNSVAGIIDD--AN--LP-EVITTLAGFNTIYVTSKNETDAAKLADHWAELIG---------------",
+            "order": 1,
+            "acc": "GCA_000014445.1_ASM1444v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "ABJ65436.1",
+            "seq": "---------------MKRDRQAVIKQMISRDKIGTQEEIKQRLEAEGITVTQATLSRDLREIGLLKLRDEEGKLYYSLS---------EHVLP---S--LDPTVKDYVKSVSRAQFMLVLHTELG--EADVLANIIDS--DE--NP-EILGTVAGADTLLVICKDAVVAERLESEFH-------------------",
+            "order": 2,
+            "acc": "GCA_000014485.1_ASM1448v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "ABJ66370.1",
+            "seq": "--------------MKKKDRLELIRKIVQENKITTQKELVRLLQAEGLKATQATVSRDINEIGITKVPTEDGSYIYGLS-------TAPRRVG---R--SSVACRRLLRIDRQHAFMNIL-VQPG--TSRLIKKILLD--EY--KH-LIFSLIADDDTLFLVAQSELAAIELHGQIVKWVEE--------------",
+            "order": 3,
+            "acc": "GCA_000014485.1_ASM1448v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "ABJ73778.1",
+            "seq": "--------------MKRDKRLEIIKEIVTNNKISTQEELQSLLLERGVEVTQATLSRDIRKLNIIKKRD-KGESFYSFLTSG----NSKINSD------LQLYFYNFVISAKSVGALVVIRTKLG--EADVLANALDD--ERDSRT-DILGTIAGADTLLVICASEKAANILTAEIKYILLG--------------",
+            "order": 4,
+            "acc": "GCA_000014545.1_ASM1454v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "AEB30029.1",
+            "seq": "--------------MKKSNRQLAIKQIITNHDIATQEELLHYLKQEGVEATQATISRDIKEMHLVKTTSSNGNVKYTIF-QN----NRMSNEE---K--LQSTLGDVVIRLTQVQFTNVLMTIPG--NAHVVAALLDA--ID--FP-EMVGTVGGNDTCLIISKDEEEAKKMHEYLKRWIEA--------------",
+            "order": 5,
+            "acc": "GCA_000195575.1_ASM19557v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "AEB30625.1",
+            "seq": "--------------MKRKDRLFTIKKLILNHNIATQQELMDHLQKENIQTTQATLSRDIKELNLIKVTQLDRTTKYTFF-HDAF--HEKSLYY---R--LEKSLHNYAVSTLCVHFFVILFVSPT--HPKIIASLMDE--LK--IP-AIAGTIASFDTCLIVLNTEQEAQLLCACLSDIILEQSTDDLEKKLAPLF",
+            "order": 6,
+            "acc": "GCA_000195575.1_ASM19557v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "GCA_000203855.3_01225",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 7,
+            "acc": "GCA_000203855.3",
+            "group": "other"
+        },
+        {
+            "name": "BAK21102.1",
+            "seq": "--------------MKKIDRQQFIKQLIHQKEIETQDELIAYLYQAGIKATQATISRDIREMNIVKIPNGEKHMKYMILSPE----ASQDQEE---K--FKESIRDFVNSIEQIKFMVVIHTELG--NAHVVTNLLDQ--AA--YQ-EVAGTVAGEDTIIVLLHNEKEANYFTQKIKRLMN---------------",
+            "order": 8,
+            "acc": "GCA_000270185.1_ASM27018v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "BAK95819.1",
+            "seq": "--------------MNRTQRQAIIKKIVTENEVSTQNELLSLLEKEKALTTQATISRDIRELNITKVEDNSGKSYYRILNNSVLGTKKKSEEE---R--LSDIIMETGVSLTQIEFTNLLTVLPG--NGNAIGVLIDKVRVE--VNSKIVGCIAGDDTILILSKNEEDARMVNEYFQQYLFHVS------------",
+            "order": 9,
+            "acc": "GCA_000283615.1_ASM28361v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "BAK95820.1",
+            "seq": "--------------MHKNERQSLIKQIISQNTIRTQEELLQRLQKKDITIAQATISRDIRDLKIIKTIDEKGKPKFVLYDTSSL--QKQGETE---K--LISIFNDIVTKIEHVQFLTIVHTLPD--NASLLASMIDE--IH--LP-EVKCSLAGFDTVVLIVSDETRAIEMENYFNSIWQKQTREQIGN------",
+            "order": 10,
+            "acc": "GCA_000283615.1_ASM28361v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "GCA_000388095.2_01858",
+            "seq": "--------------MNKSERQAALTRIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKSQDATGTLRYTIF-RG----SSESQLE---R--LGRSIREVGLSITRVHFMNVIKTLPS--NGNLLAAIIDD--IG--FE-QVVGTIAGHDTIVVISPDEKQAKWFEAAYRQAFNS--------------",
+            "order": 11,
+            "acc": "GCA_000388095.2",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_000400585.1_01904",
+            "seq": "--------------MNKSERQAALTRIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKSQDATGTLRYTIF-RG----SSESQLE---R--LGRSIREVGLSITRVHFMNVIKTLPS--NGNLLAAIIDD--IG--FE-QVVGTIAGHDTIVVISPDEKQAKWFEAAYRQAFNS--------------",
+            "order": 12,
+            "acc": "GCA_000400585.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_000432055.1_01298",
+            "seq": "--------------MKKELRQAKIEQLITKQIISNQDDLLKALKKAGISATQATISRDIREMQIVKQQDGDGHLRYVVF-KE----QNQAEWL---R--LYKAIYDFVIEITQVEFVNVVKTMPR--NANVLAAIIDD--LK--PE-CVAGTIAGYDTLVVISPSADAALEFKKMAIEHINHDAIGIAPEDD----",
+            "order": 13,
+            "acc": "GCA_000432055.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000466785.3_02340",
+            "seq": "--------------MNYKQRRQLIQQLVEENHIATQEELLELLKQHGVVATQATVSRDIHSLNIAKVSSSDGQSYYAQV--A----AAKEDDD---R--LYRAIANRVVSYTTVEFVNVVKTTPDSSYATILGGMFDE--LS--MP-EVVGTIAGNDTLLIISPDAQGAQKIGQLLADNQGH--------------",
+            "order": 14,
+            "acc": "GCA_000466785.3",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_000466845.1_01448",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFEKLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 15,
+            "acc": "GCA_000466845.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000466865.2_01587",
+            "seq": "--------------MNKSERQAALAWIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 16,
+            "acc": "GCA_000466865.2",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_000466905.2_01456",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 17,
+            "acc": "GCA_000466905.2",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_000472265.1_01787",
+            "seq": "--------------MNYKQRRQLIQQLVEENHIATQEELLELLKQHGVVATQATVSRDIHSLNIAKVSSSDGQSYYAQV--A----AAKEDDD---R--LYRAIANRVVSYTTVEFVNVVKTTPDSSYATILGGMFDE--LS--MP-EVVGTIAGNDTLLIISPDAQGAQKIGQLLADNQGH--------------",
+            "order": 18,
+            "acc": "GCA_000472265.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000498955.2_02147",
+            "seq": "--------------MKKTDRQAAIEQLINQYPIATQEDLMARLKADGIAATQATISRDIREMQIVKSPDENGHARYTIF-KE----NGKNEQD---R--LYESLHDVVTGVDRVEFMNIIHTLPS--NGNLLAAIIDD--LH--LP-EVSGTLAGHDTIFVVSPSVAVAESFHDMVLSHVRTEDEL----------",
+            "order": 19,
+            "acc": "GCA_000498955.2",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000504525.1_00758",
+            "seq": "--------------MKKEARQNAILKIIAENEITTQDDLMKALANEDIVATQATISRDMRELKIVKGQNAAGKSYYTHF-KE----EKNTSSK---R--LNQVIKDVVLEVDCVEFTNVIHTLPR--NANVLAALLDE--LR--PL-NLLGTIAGYDTLVTYSKSVADAKELNNFFKECLH---------------",
+            "order": 20,
+            "acc": "GCA_000504525.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000507045.1_02997",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 21,
+            "acc": "GCA_000507045.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000565485.1_01237",
+            "seq": "--------------MKKTDRQAAIEQLINQYPIATQEDLMARLKADGIAATQATISRDIREMQIVKSPDENGHARYTIF-KE----NGKNEQD---R--LYESLHDVVTGVDRVEFMNIIHTLPS--NGNLLAAIIDD--LH--LP-EVSGTLAGHDTIFVVSPSVAVAESFHDMVLSHVRTEDEL----------",
+            "order": 22,
+            "acc": "GCA_000565485.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000604145.1_01386",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 23,
+            "acc": "GCA_000604145.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_000648755.1_02990",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 24,
+            "acc": "GCA_000648755.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_000685785.1_01861",
+            "seq": "--------------MKKEMRQGKIEQLINQQVISNQEELMQALQAIGISATQATISRDIREMQIVKQQDGNGKLRYVIF-KA----NNQSEQD---K--LYKAISDAVTAITTVEFMNVIHTTPR--NANVLAAILDD--LS--LP-EVAGTLAGFDTVVVISPSREAAAQLYALFMEHVDPDNLL----------",
+            "order": 25,
+            "acc": "GCA_000685785.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000699985.1_02428",
+            "seq": "--------------MNKSERQAALAWIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 26,
+            "acc": "GCA_000699985.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000708635.1_00753",
+            "seq": "--------------MKKELRQKKILNLISKKNIATQLELIDALAEIGIKTTQATLSRDIKELHLVKKTDITGEVAYRVL-NA----EEQVEYN---SGPVRDIFKESVNGITQVQFINIIQTDPN--DGSRVAAVIDD--AE--ID-GVKGTLAGYDTLVIFSADAEAAEALHQKLKSFLE---------------",
+            "order": 27,
+            "acc": "GCA_000708635.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000708635.1_00842",
+            "seq": "--------------MRKNDRHELIKQIINENEIDRQEDIVLHLQEQGVEVTQATVSRDIRELKLIKSPTKKGGVRYSLP-KG----DTSQIEQ---R--LFTLLSSALISIKVQEKFVFIDLKPG--NGASISATLKQ--VH--YG-FVFAAVSDDNGVLVICTDDEHAVRLKDRITQSIAYI-------------",
+            "order": 28,
+            "acc": "GCA_000708635.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000712555.1_01969",
+            "seq": "--------------MDRKARRKYIEQVVNDRKIETQEELLKLLTEAGFETTQATISRDIHALNIVKANDGDGHTHYVQL-HV----TPEHNFE---R--LYQGIHDNVRTIETVQFMNVIKTALNSSYATILAGMFDE--LD--IP-EVVGTLAGNDTLIIISKDNDDAKMVYDLIIQHMHS--------------",
+            "order": 29,
+            "acc": "GCA_000712555.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_000712565.2_00295",
+            "seq": "--------------MDRKARRKYIEQVVNDRKIETQEELLKLLTEAGFETTQATISRDIHALNIVKANDGDGHTHYVQL-HV----TPEHNFE---R--LYQGIHDNVRTIETVQFMNVIKTALNSSYATILAGMFDE--LD--IP-EVVGTLAGNDTLIIISKDNDDAKMVYDLIIQHMHS--------------",
+            "order": 30,
+            "acc": "GCA_000712565.2",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_000722535.2_00427",
+            "seq": "--------------MDRKARRKYIEQVVNDRKIETQEELLKLLTEAGFETTQATISRDIHALNIVKANDGDGHTHYVQL-HV----TPEHNFE---R--LYQGIHDNVRTIETVQFMNVIKTALNSSYATILAGMFDE--LD--IP-EVVGTLAGNDTLIIISKDNDDAKMVYDLIIQHMHS--------------",
+            "order": 31,
+            "acc": "GCA_000722535.2",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_000731855.1_01260",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 32,
+            "acc": "GCA_000731855.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_000735255.1_00442",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 33,
+            "acc": "GCA_000735255.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000743075.1_01194",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKADGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESKLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 34,
+            "acc": "GCA_000743075.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000743895.1_00026",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 35,
+            "acc": "GCA_000743895.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000758145.1_00553",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KA----ANKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LK--LP-EVSGTLAGHDTIFIVSPNTTVAKQLHESFASHIASED------------",
+            "order": 36,
+            "acc": "GCA_000758145.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000758185.1_00315",
+            "seq": "--------------MDRKARRKYIEQVVNDRKIETQEELLKLLTEAGFETTQATISRDIHALNIVKANDGDGHTHYVQL-HV----TPEHNFE---R--LYQGIHDNVRTIETVQFMNVIKTALNSSYATILAGMFDE--LD--IP-EVVGTLAGNDTLIIISKDNDDAKMVYDLIIQHMHS--------------",
+            "order": 37,
+            "acc": "GCA_000758185.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_000764285.1_02202",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 38,
+            "acc": "GCA_000764285.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000766905.1_02341",
+            "seq": "--------------MDRKERRQLIQELVTQQRINTQHDLLAMLAEHGIDATQATISRDIHALNIVKVSDQHGHTYYSIL-HT----HA-DEYQ---R--LFDGISHNVEKVTNVQFINVIQTILNSNYATVLAGLFDN--AQ--LP-EVVGTLAGNDTLLTISKNNEDAQAINRLIKEHMTED-------------",
+            "order": 39,
+            "acc": "GCA_000766905.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000784375.1_00095",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 40,
+            "acc": "GCA_000784375.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000784395.1_00685",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 41,
+            "acc": "GCA_000784395.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000784405.1_00904",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 42,
+            "acc": "GCA_000784405.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000785105.1_00296",
+            "seq": "--------------MKKESRQAKIEQIINQFTITTQEELMSKLKDTGISVTQATLSRDIREMQIVKQPDSSGNARYMIF-KS----GNQNELE---R--LNRMINNSVTDVKQIEFVNVIHTQPS--YANPLSAVIDD--LR--LD-NVTGTLAGYDTIVTFCPSKQAATEVHDFFMKHVNPDLMVSVSEE-----",
+            "order": 43,
+            "acc": "GCA_000785105.1",
+            "group": "high_salt"
+        },
+        {
+            "name": "GCA_000801045.1_01836",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 44,
+            "acc": "GCA_000801045.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000807975.1_01050",
+            "seq": "--------------MKKSIRQERIERLINQYPIGTQEELMEHLEDVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KV----GNRSEEE---H--LRETINEVVIGLTQVDFVNVLKTLPS--NGNLLAAIFDD--LN--LP-EIVGTLAGHDTILIISANADVAKQLHDKIAAEMNPEIIH----------",
+            "order": 45,
+            "acc": "GCA_000807975.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000813025.1_01347",
+            "seq": "--------------MKKELRQAKIEQLITKQIISNQDDLLKALKKTGISATQATISRDIREMQIVKQQDGDGHLRYVVF-KE----QNQAEWL---R--LYKAIYDFVIEITQVEFVNVVKTMPR--NANVLAAIIDD--LK--PE-CVAGTIAGYDTLVVISPSADAALEFKKMAIEHINHDAIGIAPEDD----",
+            "order": 46,
+            "acc": "GCA_000813025.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000814185.1_00980",
+            "seq": "--------------MNKNERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKAQDATGTLRYTIF-RG----SAESQLE---R--LGRSIREVGLSITRVQFMNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEEQAKWFEEAYRHAFER--------------",
+            "order": 47,
+            "acc": "GCA_000814185.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_000814485.1_00182",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 48,
+            "acc": "GCA_000814485.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000814725.1_02575",
+            "seq": "--------------MKKSIRQERIERLINQYPIGTQEELMEHLEDVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KV----GNRSEEE---H--LRETINEVVIGLTQVDFVNVLKTLPS--NGNLLAAIFDD--LN--LP-EIVGTLAGHDTILIISANADVAKQLHDKIAAEMNPEIIH----------",
+            "order": 49,
+            "acc": "GCA_000814725.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000827145.1_02581",
+            "seq": "--------------MNKSERQAALTRIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKSQDATGTLRYTIF-RG----SSESQLE---R--LGRSIREVGLSITRVHFMNVIKTLPS--NGNLLAAIIDD--IG--FE-QVVGTIAGHDTIVVISPDEKQAKWFEAAYRQAFNS--------------",
+            "order": 50,
+            "acc": "GCA_000827145.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_000830535.1_02939",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 51,
+            "acc": "GCA_000830535.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000833395.1_02204",
+            "seq": "--------------MKKSIRQERIERLINQYPIGTQEELMEHLEDVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KV----GNRSEEE---H--LRETINEVVIGLTQVDFVNVLKTLPS--NGNLLAAIFDD--LN--LP-EIVGTLAGHDTILIISANADVAKQLHDKIAAEMNPEIIH----------",
+            "order": 52,
+            "acc": "GCA_000833395.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000833405.1_02138",
+            "seq": "MVVVMQEYTRGVVLVKKSIRQERIERLINQYPIGTQEELMEHLEDVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KV----GNRSEEE---H--LRETINEVVIGLTQVDFVNVLKTLPS--NGNLLAAIFDD--LN--LP-EIVGTLAGHDTILIISANADVAKQLHDKIAAEMNPEIIH----------",
+            "order": 53,
+            "acc": "GCA_000833405.1",
+            "group": "liquor;beer"
+        },
+        {
+            "name": "GCA_000833415.1_02381",
+            "seq": "--------------MKKSIRQERIERLINQYPIGTQEELMEHLEDVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KV----GNRSEEE---H--LRETINEVVIGLTQVDFVNVLKTLPS--NGNLLAAIFDD--LN--LP-EIVGTLAGHDTILIISANADVAKQLHDKIAAEMNPEIIH----------",
+            "order": 54,
+            "acc": "GCA_000833415.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000875905.1_01556",
+            "seq": "--------------MKKSIRQERIERLINQYPIGTQEELMEHLEDVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KV----GNRSEEE---H--LRETINEVVIGLTQVDFVNVLKTLPS--NGNLLAAIFDD--LN--LP-EIVGTLAGHDTILIISANADVAKQLHDKIAAEMNPEIIH----------",
+            "order": 55,
+            "acc": "GCA_000875905.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000931425.1_01190",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 56,
+            "acc": "GCA_000931425.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000932035.1_00386",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 57,
+            "acc": "GCA_000932035.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000934805.1_02274",
+            "seq": "--------------MNYKERRQLIYELIQTNKIETQEQLLLLLQAHGANATQATISRDIRALHISKVPDDDGRSYYVKA-PS----AAVNRER---Q--LKDAIRERVATVTAVQFTVVIQTSMKLTYAPILAGLIDD--ID--ND-DVVGTIAGTDTLLVILKDAEAAASFADWAQAIVKERKIY----------",
+            "order": 58,
+            "acc": "GCA_000934805.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_000956195.1_02790",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 59,
+            "acc": "GCA_000956195.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_000962875.1_01647",
+            "seq": "--------------MKKSERQKIITDLISNQLVAKQDDLMGLLKQRGVIATQATISRDMREMHIVKSADDQGVQRYMIF-HS----STEDPTS---L--LFHTFKQTALQIDQIQFVNIIKTASN--DGNRLAAVFDD--TK--MP-EIVGTLAGFDTIVVFSPNEELALQLNQRLSKYLPDAEK-----------",
+            "order": 60,
+            "acc": "GCA_000962875.1",
+            "group": "liquor;beer"
+        },
+        {
+            "name": "GCA_000965255.1_01359",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMEHLQEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNIIRTLPS--NGNLLAVIFDD--LN--LP-EIAGTLAGHDTIFIISPSAEVAEKLHDQIAAEMNPEIAH----------",
+            "order": 61,
+            "acc": "GCA_000965255.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_000966475.1_01153",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSLNTTVAKQLYESFASHISNED------------",
+            "order": 62,
+            "acc": "GCA_000966475.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_001005625.1_00922",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 63,
+            "acc": "GCA_001005625.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001005695.1_01522",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 64,
+            "acc": "GCA_001005695.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001005805.1_00824",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 65,
+            "acc": "GCA_001005805.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001008745.1_00272",
+            "seq": "--------------MKKELRQAKIEQLITKQIISNQDDLLKALKKAGISATQATISRDIREMQIVKQQDGDGHLRYVVF-KE----QNQAEWL---R--LYKAIYDFVIEITQVEFVNVVKTMPR--NANVLAAIIDD--LK--PE-CVAGTIAGYDTLVVISPSADAALEFKKMAIEHINHDAIGIAPEDD----",
+            "order": 66,
+            "acc": "GCA_001008745.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001008755.1_01282",
+            "seq": "--------------MKKELRQAKIEQLITKQIISNQDDLLKALKKAGISATQATISRDIREMQIVKQQDGDGHLRYVVF-KE----QNQAEWL---R--LYKAIYDFVIEITQVEFVNVVKTMPR--NANVLAAIIDD--LK--PE-CVAGTIAGYDTMVVISPSADAALEFKKMAIEHINHDAIGIAPEDD----",
+            "order": 67,
+            "acc": "GCA_001008755.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001008765.1_01247",
+            "seq": "--------------MKKELRQAKIEQLITKQIISNQDDLLKALKKTGISATQATISRDIREMQIVKQQDGDGHLRYVVF-KE----QNQAEWI---R--LYKAIYDFVIEITQVEFVNVVKTMPR--NANVLAAIIDD--LK--PE-CVAGTIAGYDTLVVISPSADAALEFKKMAIEHINHDAIGIAPEDD----",
+            "order": 68,
+            "acc": "GCA_001008765.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001010995.1_02128",
+            "seq": "--------------MKKSIRQERIERLINQYPIGTQEELMEHLEDVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KV----GNRSEEE---H--LRETINEVVIGLTQVDFVNVLKTLPS--NGNLLAAIFDD--LN--LP-EIVGTLAGHDTILIISANADVAKQLHDKIAAEMNPEIIH----------",
+            "order": 69,
+            "acc": "GCA_001010995.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001011095.1_00261",
+            "seq": "--------------MNRIARRELMEQLFADNKITTQEQLQQLLRAEGVEVTQATISRDMRILNIVKVSDQNGNTYYKQM-KV----EGEKNYE---R--LFQEINDNVLGIQRINFINLIRTTVNSSYANILAAKLDD--LE--LA-EIAGTLAGNDTVVVFSKNEEDAEIVYKMIYEHMDDDLK-----------",
+            "order": 70,
+            "acc": "GCA_001011095.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001013375.1_01312",
+            "seq": "--------------MNKNERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKAQDATGTLRYTIF-RG----SAESQLE---R--LGRSIREVGLSITRVQFMNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 71,
+            "acc": "GCA_001013375.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001027985.1_01284",
+            "seq": "--------------MDRKARRKYIEQLVSERKIETQDELLKLLNDAGIETTQATISRDIHMLNIVKASDGTGHTYYVQL-QK----DPAHNYD---R--LYLGIHNNVQTVETVQFLNVVKTEPNSSYATILAGMFDE--LD--VP-EVIGTLAGNDTLILISKTPEDAQAVNKLITDHLA---------------",
+            "order": 72,
+            "acc": "GCA_001027985.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001039045.1_00948",
+            "seq": "--------------MKKSERQAVIERLIMEYPIATQEELMAKLKAEDITATQATISRDIREMQIVKTPDDHGQTRYVIF-KE----TNKNEQE---R--LFESLHDVVISIDRVEFMNIIHTLPS--NGNLLAAIIDD--LH--LP-EVSGTLAGHDTIFIISPNATVAKQLHDLFISHVADDNDVAD--------",
+            "order": 73,
+            "acc": "GCA_001039045.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001043995.1_00397",
+            "seq": "--------------MNKSERQAALAWIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 74,
+            "acc": "GCA_001043995.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001044015.1_01686",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 75,
+            "acc": "GCA_001044015.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001044025.1_00682",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 76,
+            "acc": "GCA_001044025.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001044075.1_00585",
+            "seq": "--------------MNKSERQAALARIINQKPITTQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 77,
+            "acc": "GCA_001044075.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_001044085.1_02322",
+            "seq": "--------------MNKSERQAALAWIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 78,
+            "acc": "GCA_001044085.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001044095.1_01377",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 79,
+            "acc": "GCA_001044095.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001044405.1_00432",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 80,
+            "acc": "GCA_001044405.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001044415.1_01939",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 81,
+            "acc": "GCA_001044415.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001050435.1_02281",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMEHLEEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LKETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--LP-EIAGTLAGHDTIFIISPNAQVAEKLHDEIAAEMNPEIIH----------",
+            "order": 82,
+            "acc": "GCA_001050435.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001188985.1_03025",
+            "seq": "--------------MKKSERQAVIAQLITEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KA----NNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYDSFASHVSNED------------",
+            "order": 83,
+            "acc": "GCA_001188985.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001190005.1_00792",
+            "seq": "--------------MNYKERRQLIYELIQTNKIETQEQLLLLLQAHGANATQATISRDIHALHISKVPDDDGRSYYVKA-PS----AAVNRER---Q--LKDAIRERVATVTAVQFTVVIQTSMKLTYAPILAGLIDD--ID--ND-DVVGTIAGTDTLLVILKDAEAAASFADWAQAIVKERKIY----------",
+            "order": 84,
+            "acc": "GCA_001190005.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001191565.1_01651",
+            "seq": "--------------MNKSERQAALTRIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKSQDATGTLRYTIF-RG----SSESQLE---R--LGRSIREVGLSITRVHFMNVIKTLPS--NGNLLAAIIDD--IG--FE-QVVGTIAGHDTIVVISPDEKQAKWFEAAYRQAFNS--------------",
+            "order": 85,
+            "acc": "GCA_001191565.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001244395.1_01873",
+            "seq": "--------------MNKSERQAALTRIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKSQDATGTLRYTIF-RG----SSESQLE---R--LGRSIREVGLSITRVHFMNVIKTLPS--NGNLLAAIIDD--IG--FE-QVVGTIAGHDTIVVISPDEKQAKWFEAAYRQAFNS--------------",
+            "order": 86,
+            "acc": "GCA_001244395.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001278015.1_01172",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 87,
+            "acc": "GCA_001278015.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001294765.1_01189",
+            "seq": "--------------MKKDVRREKILDLINEKPISTQLELLQALADAGIKTTQATLSRDIKEMHLVKQADITGALTYRVM-DS----KEQIEPD---NSPIREIFQESVTKITQVQFINIVKTEPN--HGNRVAAVIDD--AD--IE-EIRGTLAGFDTLVIFSADVDEATVLNQKLNELMQTN-------------",
+            "order": 88,
+            "acc": "GCA_001294765.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_001296095.1_00435",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 89,
+            "acc": "GCA_001296095.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001297025.1_01249",
+            "seq": "--------------MNYKQRRQLIQQLVEENHIATQEELLELLKQHGVVATQATVSRDIHSLNIAKVSSSDGQSYYAQV--A----AAKEDDD---R--LYRAIANRVVSYTTVEFVNVVKTTPDSSYATILGGMFDE--LS--MP-EVVGTIAGNDTLLIISPDAQGAQKIGQLLADNQGH--------------",
+            "order": 90,
+            "acc": "GCA_001297025.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001302645.1_03030",
+            "seq": "--------------MKKSERQAVIEQLISKYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 91,
+            "acc": "GCA_001302645.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001307325.1_00304",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 92,
+            "acc": "GCA_001307325.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001308305.1_02392",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 93,
+            "acc": "GCA_001308305.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001331925.1_02352",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 94,
+            "acc": "GCA_001331925.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001433735.1_02195",
+            "seq": "--------------MNKSERQAALTRIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKSQDATGTLRYTIF-RG----SSESQLE---R--LGRSIREVGLSITRVHFMNVIKTLPS--NGNLLAAIIDD--IG--FE-QVVGTIAGHDTIVVISPDEKQAKWFEAAYRQAFNS--------------",
+            "order": 95,
+            "acc": "GCA_001433735.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_001433745.1_02818",
+            "seq": "--------------MNKNERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKAQDATGTLRYTIF-RG----SAESQLE---R--LGRSIREVGLSITRVQFMNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 96,
+            "acc": "GCA_001433745.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_001433755.1_01966",
+            "seq": "--------------MKKSERQAVIAQLITEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KA----NNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYDSFASHVSNED------------",
+            "order": 97,
+            "acc": "GCA_001433755.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001433765.1_02201",
+            "seq": "-----------MTILKKVDRQAKIEEIIKEHTIATQEALLAALEAEGIPATQATISRDIREMQVVKERDQDGTLRYTIY-HN----GEKTVAE---R--LDESIAEVVVAVKLVEFVNVIHTAPG--NGNSLAAIIDD--LA--FP-QVAGTLAGHDTILIISPDRDSAQYVHDYFAERMVVE-------------",
+            "order": 98,
+            "acc": "GCA_001433765.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001433815.1_00628",
+            "seq": "--------------MKKEDRQQKIEHLIKKNKITNQEGLLQALEDAGIHATQATVSRDIREMKIIKQTKPDGSSYYVLL-KQ----DYSDPKQ---R--IKETISDIVTDVTNVQFVNIVKTTPR--NANVLAALIDD--DE--LS-GIVGTLAGYDTVVLFSPDNESAQKVTRYFVENISK--------------",
+            "order": 99,
+            "acc": "GCA_001433815.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001433855.1_00145",
+            "seq": "--------------MKKSIRQERIERLINQYPIGTQEELMEHLEDVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KV----GNRSEEE---H--LRETINEVVIGLTQVDFVNVLKTLPS--NGNLLAAIFDD--LN--LP-EIVGTLAGHDTILIISANADVAKQLHDKIAAEMNPEIIH----------",
+            "order": 100,
+            "acc": "GCA_001433855.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001433875.1_00452",
+            "seq": "--------------MNYKERRQLIYELIQTNKIETQEQLLLLLQAHGANATQATISRDIRALHISKVPDDDGRSYYVKA-PS----AAVNRER---Q--LKDAIRERVATVTAVQFTVVIQTSMKLTYAPILAGLIDD--ID--ND-DVVGTIAGTDTLLVILKDAEAAASFADWAQAIVKERKIY----------",
+            "order": 101,
+            "acc": "GCA_001433875.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001433995.1_00118",
+            "seq": "--------------MKKSLRQSRIEQLINQYPIGTQEDLMRHLEEIGIKATQATISRDIREMQVVKAQDGNGNLRYTIF-KP----GNKSEEE---H--LHETINEVVIGLTRVQFMNVIKTLPS--NGNLLAAILDD--LN--MP-EVVGTLAGHDTIIVVSPNEKVAQQLNEEIAQNMNPDIVH----------",
+            "order": 102,
+            "acc": "GCA_001433995.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001433995.1_00446",
+            "seq": "--------------MKKEVRQSKIEQLINQYSIATQEELMARLKSAGIVATQATISRDIREMQIVKQQDATGASHYMVY-KA----GNQNERQ---R--LYRSISETVTNYQRVRFITIVHTLPS--YANMLAAIIDD--LD--LD-AVAGTLAGHDTIVLISPSEPDAESVLAVFARYANPDLSEE---------",
+            "order": 103,
+            "acc": "GCA_001433995.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001433995.1_01160",
+            "seq": "--------------MSKEKRQEKIEQLLNHYKITTQDELRERLQEAGIKATQATVSRDIKDMQIVKQQDVDGNLYYVIY-KA----GNQNEIK---H--LYRAISETVTKLERVSFINIVHTLPS--YANMLAAIIDD--LE--LS-EISGTLAGHDTIVMFCPDEAAAKRLYATFHEHLSDDILTD---------",
+            "order": 104,
+            "acc": "GCA_001433995.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001434055.1_00466",
+            "seq": "--------------MKKSMRQSRIEQLINQYPIGTQEELMEHLEEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---R--LRETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--LP-EVAGTLAGHDTIFIISPSAEVAVKLHDMIADEMNPDIVH----------",
+            "order": 105,
+            "acc": "GCA_001434055.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434065.1_00052",
+            "seq": "-------------MMKKVDRQTRIEQIINQQVITTQEELLATLRDDGIDATQATISRDIREMQIVKARDVNGELRYTVF-HD----DERTQEQ---R--LNDKLREVALTITQVQVMNVIKTVPS--NGNLLAALIDD--LG--YE-DVVGTLAGHDTIVVISPDEAHAADLNQRFSAHLAGTNRN----------",
+            "order": 106,
+            "acc": "GCA_001434065.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_001434115.1_01053",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMERLQAVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--MP-EIAGTLAGHDTIFIISPSADVAEKLHDQIAAEMNPEIAH----------",
+            "order": 107,
+            "acc": "GCA_001434115.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001434135.1_02332",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMEKLKLSGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNELE---R--MYRMINGTVTDIRQIQFVNVIHTQPS--YANPLAAVVDD--LH--LD-DVAGTLAGYDTIVLFSPSVASAKSINDLFTKHSNPDLLVSSIQD-----",
+            "order": 108,
+            "acc": "GCA_001434135.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001434145.1_00383",
+            "seq": "-------MKGMHFIMKKEARQSKIEQIINQYTITTQDELMEKLKVAGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNEIE---R--MYRMINGTMTDIRQIQFVNVIHTQPS--YANPLAAVIDD--LH--ME-NVSGTLAGYDTIVTFSPSVNAAREINDLFTKHANPDLLVSSIKDGESE-",
+            "order": 109,
+            "acc": "GCA_001434145.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001434175.1_00471",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 110,
+            "acc": "GCA_001434175.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001434225.1_00164",
+            "seq": "--------------MKKEIRQATIEQLISQTEISNQEELMQALLKKGIKATQATISRDIRELRIVKEQGISGKLHYVIF-KD----DPVSEKE---Q--LYMNITEMVIEATQVQFLNVVKTLPH--SANVLTAIIDD--LE--LP-EVVGTMAGYDTIIIISQNEQAASVLNQMFLKHMQQSE------------",
+            "order": 111,
+            "acc": "GCA_001434225.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_001434225.1_01211",
+            "seq": "--------------MNREKRRKLIELLIVQHEVSTQDELLNLLKENGIESTQATISRDIRELNIVKRSDDQGKIYYTQE-RM----DRRKEIE---K--LYQFIEISVYSIQQIQFMNIIRTSPN--YANVLTAILDG--LE--LI-EIVGSIAGYDTIIIISSNISDATTINNIFKTHIDPDLQ-----------",
+            "order": 112,
+            "acc": "GCA_001434225.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_001434255.1_02514",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMSKLKVAGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNELE---R--LYRMINGTVTDIRQIQFVNVIHTQSS--YANPLAAVIDD--LN--MD-DVAGTLAGYDTIVIFSPSVDAARDLNDLFTKHANPDILVSSIKDN----",
+            "order": 113,
+            "acc": "GCA_001434255.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434315.1_00608",
+            "seq": "--------------MKKSLRQAKIEQIISQYSISTQDDLLNKLTDAGISATQATISRDIREMQIVKSADGTGELRYTIF-KV----GNRTEQN---R--LYTTINDVVTNVTQVEFMNIVRTLPS--DGNMLAAIIDD--LS--LP-EVAGTLAGHDTIFIISPNQVVAKKFNQKIKEHINENIYVD---------",
+            "order": 114,
+            "acc": "GCA_001434315.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434365.1_00917",
+            "seq": "--------------MDFRTRRALIKDLIKEREISTQEELMELVAQHGVQATQATISRDLQHLNIVKVMGQQGRTYYAQL-QE----TPMALNE---R--LVEAIRHRVESVTTVQFMNVVKTTPNSNFAMIVAGEFDG--DE--NE-KIVGTLAGNDTLIIISPDEEAARSVAEFINQYL----------------",
+            "order": 115,
+            "acc": "GCA_001434365.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434395.1_00198",
+            "seq": "--------------MKKSMRQSRIEQLINQYPIGTQEELMEHLEEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---R--LRETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--LP-EVAGTLAGHDTIFIISPSAEVAEKLHDMIADEMNPDIVH----------",
+            "order": 116,
+            "acc": "GCA_001434395.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001434405.1_00869",
+            "seq": "--------------MKKELRQEKIEQLINQRIISNQEELMQALKEMGITATQATISRDIREMQIVKQQDGDGNLRYFIF-KA----NNQSEQD---K--LYKAINDSVTSITLVEFMNVIHTTPR--NANVLAAILDD--LA--LS-DIAGTIAGFDTLVVISPTKESAQNVNAMFNEHVDLDNLL----------",
+            "order": 117,
+            "acc": "GCA_001434405.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001434455.1_01105",
+            "seq": "--------------MDQRQRRAMIAKIFDENTITTQDQILKILNELGVNVTQATISRDMKALNIVKMSTDDGKTVYKQL-KV----QTKKNYE---K--LYSEIYENVLGLQTIQFINLIKTSANLGYANILAARLDD--LE--IP-EIAGTLAGNDTIVVFSKNNEDAKYVYDLIYEHMDDSLK-----------",
+            "order": 118,
+            "acc": "GCA_001434455.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001434465.1_00915",
+            "seq": "--------------MDRKERRRFIVQLVNERKIETQDELLQLLTDAGIETTQATISRDIHTLNIVKASDANGHTYYVQL-QK----DPAHNYD---R--LYLGIRNNVRTIETVQFINVVKTELNSSYATILAGMFDE--LD--VP-EVIGTLAGNDTLILISKTPEDAQKVYQLIMDHMNG--------------",
+            "order": 119,
+            "acc": "GCA_001434465.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434475.1_01957",
+            "seq": "--------------MKKSVRQAKIEQLINQYTITTQDDLMQRLKDNDITATQATISRDIREMQIVKAADGNGSLRYTIF-KA----GNKSEEL---R--LYDTIYEVVTNITQVEFMNIVRTLPS--DGNLLAAIIDD--LN--LP-EVAGTLAGHDTIFIVSPNENVAKQFNDKIVSHVNPDLYLGN--------",
+            "order": 120,
+            "acc": "GCA_001434475.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434535.1_00657",
+            "seq": "--------------MKKEMRQGKIEQLINQQVISNQEELMQALQAIGISATQATISRDIREMQIVKQQDGNGKLRYVIF-KA----NNQSEQD---K--LYKAISDAVTAITTVEFMNVIHTTPR--NANVLAAILDD--LS--LP-EVAGTLAGFDTVVVISPSREAAAQLYALFMEHVDPDNLL----------",
+            "order": 121,
+            "acc": "GCA_001434535.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434575.1_00947",
+            "seq": "--------------MKKSVRQAKIEQIIKQQPVSTQEELLAHLKAEGIPATQATISRDIREMQIVKERDQEGKIRYAIF-HN----GEKSEEE---R--LRETLGQVALSVTQVEFVNLIRTAPG--NGNLLAAIIDN--LK--MP-EIAGTLAGHDTILVISPSAPAATKLNAYFLEHIDPEAAY----------",
+            "order": 122,
+            "acc": "GCA_001434575.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_001434615.1_00821",
+            "seq": "--------------MDRKARRKYIEQVVNDRKIETQEELLKFLTEAGFETTQATISRDIHALNIVKANDGDGHTHYVQL-HV----TPEHNFE---R--LYQGIHDNVRTIETVQFMNVIKTALNSSYATILAGMFDE--LD--IP-EVVGTLAGNDTLIIISKDNDDAKMVYDLIIQHMHS--------------",
+            "order": 123,
+            "acc": "GCA_001434615.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001434635.1_01715",
+            "seq": "--------------MNYKERRHLIYELIQTNKIETQEQLLLLLQAHGANATQATISRDIRALHISKVPDDDGRSYYVKA-PS----AAVNRER---Q--LKDAIRERVATVTAVQFTVVIQTSMKLTYAPILAGLIDD--ID--ND-DVVGTIAGTDTLLVILKDAEAAASFADWAQAIVKERKIY----------",
+            "order": 124,
+            "acc": "GCA_001434635.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_001434655.1_01283",
+            "seq": "--------------MKKDVRQAKIEQIINQYTITTQEELMEKLRLSGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNELE---R--MYRMINGTVTEVRQIEFINVIHTQPS--YANPLAAVIDD--LH--MD-DVAGTLAGYDTIVTFCPSVKSAENIKNLFLKHSNPDLLITTVD------",
+            "order": 125,
+            "acc": "GCA_001434655.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_001434695.1_00042",
+            "seq": "--------------MKKEIRQTKIEQLINKKIIATQDELISELDRTGIKATQATISRDIREMKIVKAQDEQGNLKYAIF-KS----GNLSEEV---H--LFEIIFEVVTSITEIQFMNVVKTIPS--NGNLLAAIIDD--FG--FS-DIVGTVAGHDTIMIISPNEQAAQRVHTIFMNHANPDNLV----------",
+            "order": 126,
+            "acc": "GCA_001434695.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434705.1_00796",
+            "seq": "--------------MNKSERQAAVARIINQQPIATQDELLEALKAANITATQATISRDVRELKIFKAQDANGNVRYTLF-RG----DEASQIE---R--LGASIREVGLGITRVQFMNVIKTLPS--NGNLLAAQIDE--IH--FK-QVVGTLAGHDTIVVISPDEVAAKWFQQRYENSFE---------------",
+            "order": 127,
+            "acc": "GCA_001434705.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434735.1_02061",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMEKLKVAGISVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNEIE---R--MYRMINGTVTDIRQIQFVNVIHTQPS--YANPLAAVIDD--LH--ME-NVSGTLAGYDTIVTFSPSVDSAREINDLFTKHANPDLLVSSIQDGE---",
+            "order": 128,
+            "acc": "GCA_001434735.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434785.1_00166",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMEHLQEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNIVRTLPS--NGNLLAVIFDD--LN--LP-EIAGTLAGHDTIFIISPSAEVAKKLHDRIAAEMNPEIAH----------",
+            "order": 129,
+            "acc": "GCA_001434785.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001434815.1_01446",
+            "seq": "--------------MNYKERRQLIYELIQTNKIETQEQLLLLLKTHGATATQATISRDIHALHISKVPDDDGRSYYVKA-PS----AAVNRER---Q--LREAIRDRVATVTAVQFTVVIQTSMKLTYAPILAGLIDD--VE--ND-DIAGTIAGTDTLLVIMKNNEAAQEFADWADAIVKDRKVY----------",
+            "order": 130,
+            "acc": "GCA_001434815.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434835.1_00880",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMERLQTVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--LP-EIAGTLAGHDTIFIISPSAAVAEKLHDQIAAEMNPEIVH----------",
+            "order": 131,
+            "acc": "GCA_001434835.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001434845.1_01387",
+            "seq": "--------------MKKEVRQAKIEQLITQNDIGTQEELMEVLAHEGIKATQATISRDIREMRIIKEPNGNGRIRYTIF-KG----SSPSEEE---K--MYTTISESVIDVTRVQTMNVVHTLPR--TANVLSAIIDD--LE--KK-EVVGTIAGYDTILVISKNDEDAKSMNDLFNKYLKIGRS-----------",
+            "order": 132,
+            "acc": "GCA_001434845.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001434895.1_00856",
+            "seq": "--------------MKKSIRQSRIEQLINQYPIGTQEDLMRHLKDIGIKATQATISRDIREMQVVKAQDGHGHLRYTIF-KP----GNKSEEE---H--LRETINEVVIGLTRIEFMNVIRTLPS--NGNLLAAILDD--LK--LP-EVVGTLAGHDTILVISPNAEVAQQLNDEIAENMNPDIVH----------",
+            "order": 133,
+            "acc": "GCA_001434895.1",
+            "group": "high_salt"
+        },
+        {
+            "name": "GCA_001434895.1_01239",
+            "seq": "--------------MKKSVRQTKIEQLINQFPIATQEELMSALQQAGIKATQATISRDIREMQIVKQQDASGTLRYMIY-KA----GNQNEQQ---H--LFRAIGDTVTQLERIQFINIVHTLPS--YANMLAAILDD--LN--LP-EVAGTLAGHDTIAIISASEDQAKQIYALFKTHVSQDLLE----------",
+            "order": 134,
+            "acc": "GCA_001434895.1",
+            "group": "high_salt"
+        },
+        {
+            "name": "GCA_001434915.1_00188",
+            "seq": "--------------MKKEQRQAKIEQLITQNEIATQDELMQALASMGIRATQATISRDIREMRIIKEQDTNGRVHYVVF-KG----DHQSEEE---K--LFENIHEMVTDITQVEFINIIHTLPR--NANVLTAIIDN--LK--LK-EVAGTMAGYDTILIISKSSEDAKNISALFKKYIDKTITTD---------",
+            "order": 135,
+            "acc": "GCA_001434915.1",
+            "group": "high_salt"
+        },
+        {
+            "name": "GCA_001434935.1_01273",
+            "seq": "--------------MKKEERQAKIAQIINQNEIATQDELMKALSNSGIKSTQATISRDIREMRIVKEQGVGGQLHYAIF-KG----NRQSEEE---K--LFENIHEMVTDITQVEFINVIHTSPR--NANVLTAIIDD--LK--LK-EVVGTMAGYDTIIIISKSKDDAQMIEKLFMKYIDKNNVES---------",
+            "order": 136,
+            "acc": "GCA_001434935.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435035.1_02778",
+            "seq": "--------------MNKSQRQNALARIINQKVISTQDELLTELKNAGIEATQATISRDIRELRIVKAQDASGALRYTIF-RG----DSESQLE---R--LGNSIREVGLSITRVQFMNVIKTLPS--NGNLLAAIIDD--IK--FA-QVVGTLAGHDTIVVISPDEESAIWFNQQYDRAFSD--------------",
+            "order": 137,
+            "acc": "GCA_001435035.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435055.1_00858",
+            "seq": "--------------MNHRDRRKLLLEIINTHHVSTQEQLLKLLEANGVTATQATVSRDIHALNIVKVSYQHGKTYYAQL-HV----DNEDKHQ---R--LYDAIHDSVESCTTVQFMNVIKTTPNSSYATVLAGMLDD--SD--LT-EIVGTLAGNDTFITISKTNESALAISRLVHEHMAEH-------------",
+            "order": 138,
+            "acc": "GCA_001435055.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435065.1_00592",
+            "seq": "--------------MKKADRQTRIEQIINQQVIATQEELLETLKKENIEATQATISRDIREMQIVKARDVNGELRYTVF-HA----DERTQVQ---K--LKDKLREVALSVTQVQMMNVIKTLPS--NGNLLAALIDD--IN--YQ-EVVGTLAGHDTIVVISPDEASATRLNQQFSENLATPVKVEL--------",
+            "order": 139,
+            "acc": "GCA_001435065.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435095.1_02052",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMEHLQEVGIQATQATISRDIREMQIVKAQDGHGHLCYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNIIRTLPS--NGNLLAVIFDD--LN--LP-EIAGTLAGHDTIFIISPSAEVAEKLHDQIAAEMNPEIAH----------",
+            "order": 140,
+            "acc": "GCA_001435095.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001435115.1_01851",
+            "seq": "--------------MKKSIRQSRIEQLINQYPIGTQEDLMRHLKEIGIKATQATISRDIREMQVVKAQDGHGHLRYTIF-KP----GNKSEEE---H--MRETINEVVVGLTQIEFINVIKTLPS--NGNLLAAILDD--LK--LP-EVVGTLAGHDTILVISPSKEVAQQLNNEIAKSMNPDIVH----------",
+            "order": 141,
+            "acc": "GCA_001435115.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435115.1_02545",
+            "seq": "--------------MKKEVRQSKIEQIINQFAVTTQDDLMARLKDAGINATQATISRDIREMQIVKQQDATGASRYMIY-KA----GNQNELQ---H--LYREISETVTKYERIQFLTIVHTLPS--YANMLAAILDD--LT--LE-EVSGTLAGHDTIVLFSPDEDRARTIYELFKRHANPDLVAE---------",
+            "order": 142,
+            "acc": "GCA_001435115.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435135.1_00445",
+            "seq": "--------------MQKQQRQAAIVKLIESANITNQDALQKALVAQNVHVTLATLSRDLKELHIVKEPNAEGHAVYRAL-KT----TNGVSND---R--FEQRFGEVVIDFTQVEFMNVVKTTPS--DGNALAALIDD--MD--DD-AITGTLAGHDTILVISPNREAAGRLHNRWAAYQH---------------",
+            "order": 143,
+            "acc": "GCA_001435135.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001435155.1_01723",
+            "seq": "--------------MKKAERQRIMSRIISGKVIETQKQLLEELQSAGVKATQATVSRDIRELNIVKSKGNDGRMRYVIF-SK----QPHNDTD---R--LQQSIRENGLSIVRVQFMNVIHTVPS--NGNLLAALIDD--IE--FT-KVVGTLAGHDTIVVISPDEAGAEWFNDFYQSSFMD--------------",
+            "order": 144,
+            "acc": "GCA_001435155.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001435165.1_00025",
+            "seq": "--------------MKKEERQAIIERVIVQNRIGTQEELIKILKDRGIKATQATISRDIRELHITKKADNTGQVRYVVY-KH----QPADQSE---R--LYKSIRDNVSQVDQVQFMLIVHTIAR--NANGLGAVIDD--YQ--IP-HVLGTLAGYDTLVLICDSAESANQVGTMIKQHMKNA-------------",
+            "order": 145,
+            "acc": "GCA_001435165.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001435195.1_00008",
+            "seq": "--------------MKKETRQAKIEQLITQYEVGTQEELMKLLTQNGIAATQATISRDMREMRIVKEQSSSGKIHYAIF-KG----NAVSEKE---K--LYNSISEAVLEVVPVQFINIVKTLPH--NANVLTAIIDE--LA--LD-EIVGTIAGYDTILVISKSEEDARKVNSLFTKYAQHDESAQ---------",
+            "order": 146,
+            "acc": "GCA_001435195.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435215.1_00884",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLQAKGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----ANKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 147,
+            "acc": "GCA_001435215.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435235.1_00003",
+            "seq": "--------------MKKEIRQATIEQLISQQEISNQEELMQALKQKGIKATQATISRDIRELRIVKEQGISGKLHYAVF-KD----DPVSEKE---Q--LYANITEMVIEATQVQFLNVVKTLPH--SANVLTAIIDD--LE--LP-EVVGTMAGYDTIIIISRDEQAAAQVNQIFLNHMQQSE------------",
+            "order": 148,
+            "acc": "GCA_001435235.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435235.1_00376",
+            "seq": "--------------MNREKRRKLIELLIVQHEVSTQDELLNLLKENGVESTQATISRDIRELNIVKRSDDQGKIYYTQE-RM----DRRKEIE---K--LYQSIEISVYSIQQIQFMNIIRTSPN--YANVLTAILDG--LE--LT-EIVGSIAGYDTIIIISSNINDATTINNLFKMHIDPNLQ-----------",
+            "order": 149,
+            "acc": "GCA_001435235.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435245.1_00524",
+            "seq": "--------------MEYQARRQAIEQLVTKNIIKNQQELIKLLNQQGYTVTQATVSRDLEELSIVKVHDHQVGTHYAKL-EL----QVTRDQW---R--LIQMIKQWVESVTTVKFMNVVKTTPNSNFATIVAGEFDT--HP--NEKLIVGTLAGNDTLIIISPNEIAANTVKNFIQQYLTTK-------------",
+            "order": 150,
+            "acc": "GCA_001435245.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435245.1_01185",
+            "seq": "--------------MEYRVRREVIQKLVAEHTIRSQQELIKLVNEHGFQVTQATVSRDLEALNIVKVRGVKGGSYYAQL-QL----QTDGERE---R--LAKMIQQRVESVATVEFMNVVKTTPNSNFATIVAGEFDA--ET--ND-LIVGTLAGNDTLIIISPDAAAAKTVADFIRKHLA---------------",
+            "order": 151,
+            "acc": "GCA_001435245.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435315.1_01732",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMEKLRVAGITVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNEIE---R--MYRMINGTVTDIRQIEFVNVIHTQPS--YANPLAAVIDD--LH--MD-NVSGTLAGYDTIVTFSPSVDAAHEIHDLVTKHANPDLLVSE--------",
+            "order": 152,
+            "acc": "GCA_001435315.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435345.1_00150",
+            "seq": "--------------MDRKARRKFIEQLVNDRKIETQDELLQLLTEAGVETTQATISRDIHALNIVKANDGKGHTYYVQL-HL----APEHDFN---R--LYQGIHDNVRTIETVQFLNVVKTALNSSYATILAGMFDE--LD--IP-EVVGTIAGNDTLIIISKDNADAKLVYNLITKHINARIV-----------",
+            "order": 153,
+            "acc": "GCA_001435345.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001435395.1_00049",
+            "seq": "--------------MKKEIRQAAIEQLISQEEIANQEELMAALEKQGIKATQATISRDIRELRIVKEQATNGKLHYVIF-RE----DPISEKQ---Q--LYANISEMVTEITQVQFLNVVKTLPH--NANVLSAILDD--LE--LP-QVVGTLAGYDTIVILSQTIEQATKINQIFKEHLQSQD------------",
+            "order": 154,
+            "acc": "GCA_001435395.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435395.1_00389",
+            "seq": "--------------MENDKRRKLIQLLINKKKISTQQELIEQLKENGVEVTQATISRDIRSLNIVKKRDDKGLIYYAQA-QV----SKENMIW---K--FYETVEQYVYNVQRIEYINVIHTVPN--FANVLTALLDS--LE--IP-EVTGSVAGYDTIMIISSSIDDAMVVEKLFEDHIDASLK-----------",
+            "order": 155,
+            "acc": "GCA_001435395.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435425.1_01129",
+            "seq": "-----------MTILKKVDRQAKIEEIIKEHTIATQEALLAALEAEGIPATQATISRDIREMQVVKERDQDGTLRYTIY-HN----GEKTVAE---R--LDETIAEVVVAVKLVEFVNVIHTAPG--NGNSLAAIIDD--LA--FP-QVAGTLAGHDTILIISPDRDSAQYVHDYFAERMVVE-------------",
+            "order": 156,
+            "acc": "GCA_001435425.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435475.1_01741",
+            "seq": "--------------MDRKERRRFIAQLVNERKIETQDELLQLLTDAGIETTQATISRDIHTLNIVKSSDANGHTYYVQL-QK----DPAHNYD---R--LYLGIRNNVRTIETVQFINVVKTELNSSYATILAGMFDE--LD--VP-EVIGTLAGNDTLILISKTPEDAQKVYQLIMDHMNG--------------",
+            "order": 157,
+            "acc": "GCA_001435475.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435495.1_01386",
+            "seq": "--------------MKKGDRQARIEQIINQQVVSTQEDLLATLKQDGIDATQATISRDIREMQIVKARDVNGELRYTIF-HD----DERTQTQ---K--LKDKLREVALSITQVQMLNVIKTLPS--NGNLLAALIDD--LG--YP-EVVGTLAGHDTIVIISPSEELAAELNERFAQHLATAR------------",
+            "order": 158,
+            "acc": "GCA_001435495.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_001435525.1_00190",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMEHLEEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LKETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--LP-EIAGTLAGHDTIFIISPNAQVAEKLHDEIAAEMNPEIIH----------",
+            "order": 159,
+            "acc": "GCA_001435525.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001435575.1_01866",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMEKLKVAGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNEIE---R--MYRMINGTVTDIRQIQFVNVIHTQPS--YANPLAAVIDD--LH--ME-NVSGTLAGYDTIVTFSPSVEAAVEINDLFTKHANPDLLVSSIKE-----",
+            "order": 160,
+            "acc": "GCA_001435575.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001435585.1_01486",
+            "seq": "--------------MKREERMAAIRQLVTTIRFERQRDLMAALHAKGIMISQGNLSRDIRELGIHKFKDRTGHSYYALS-DA----RTAVLPD---A--LQEAVATQVHSVTSVQFTVVLKTEPG--SGNLVAAALDD--VT--MP-EVVGTLAGHDTVLVICPDIDAADRFARTVKFVIDDQALSAEEKD-----",
+            "order": 161,
+            "acc": "GCA_001435585.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435655.1_02920",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KA----ANKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LK--LP-EVSGTLAGHDTIFIVSPNTTVAKQLHESFASHIASED------------",
+            "order": 162,
+            "acc": "GCA_001435655.1",
+            "group": "liquor;beer"
+        },
+        {
+            "name": "GCA_001435715.1_01092",
+            "seq": "-------------MMKKVDRQTRIEQIINQQVITTQEELLATLRDDGIDATQATISRDIREMQIVKARDVNGELRYTVF-HD----DERTQEQ---R--LNDKLREVALTITQVQVMNVIKTVPS--NGNLLAALIDD--LG--YE-DVVGTLAGHDTIVVISPDEAHAADLNQRFSAHLAVTNRN----------",
+            "order": 163,
+            "acc": "GCA_001435715.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435735.1_00961",
+            "seq": "--------------MKKEARQNAILKIIAENEITTQDDLMKALANEDIVATQATISRDMRELKIVKGQNAAGKSYYTHF-KE----EKNTSSK---R--LNQVIKDVVLEVDCVEFTNVIHTLPR--NANVLAALLDE--LR--PL-NLLGTIAGYDTLVTYSKSVADAKELNNFFKECLH---------------",
+            "order": 164,
+            "acc": "GCA_001435735.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001435755.1_00602",
+            "seq": "--------------MNREKRLELIKKIVDSEKISTQEELLETLKKRGVNATQATISRDIKSLGLFKSMK-NGTKYYITPYKQ----KEAKKIN---K--IQEAIHDNVTSVERIAWLNIVRMPLNSNYANALGSLLDT--SN--IP-EIVGTLAGNDTLVIISKSEDDAAKIKQFILESIDN--------------",
+            "order": 165,
+            "acc": "GCA_001435755.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435755.1_01864",
+            "seq": "--------------MKKEDRQRKIEQLIKQQKISNQDSLIQALEDEGIHSTQATVSRDIREMKIIKQADTDGNTYYTLL-KK----DHSDPKQ---R--IKETISDIVTNVTNVQFVNIVQTTPR--NANVLAALIDD--NE--LP-GVVGTLAGYDTVVLFSPNNETAQEVSRFFIANIGE--------------",
+            "order": 166,
+            "acc": "GCA_001435755.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435775.1_00734",
+            "seq": "--------------MGNKERRKLIKNLIAAEKISTQDELLKRLKAAGVEATQATISRDLHALNVAKVSDGNGRSYYAQL-EV----AAPKIDQ---R--LYDAIENTVESITMVQFMNVIKTTPNSNYATILAGLFDD--SQ--MT-EITGTLAGNDTLITISKSPEEAQVINQLVLDHMN---------------",
+            "order": 167,
+            "acc": "GCA_001435775.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435795.1_00576",
+            "seq": "--------------MNYKERRQLIYELIQTNKIETQEQLLLLLQAHGANATQATISRDIHALHISKVPDDDGRSYYVKA-PS----AAVNRER---Q--LKDAIRERVATVTAVQFTVVIQTSMKLTYAPILAGLIDD--ID--ND-DVVGTIAGTDTLLVILKDAEAAASFADWAQAIVKERKIY----------",
+            "order": 168,
+            "acc": "GCA_001435795.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_001435835.1_01073",
+            "seq": "-------------MMNKKERHSILEKIVQEHLVHTQEELQGYLHEYGLKTTQATLSRDLRELKITKMRDEYGKSRYLKLSTE----TTGDAQA---R--LFSALKTVTKSVDTVEFLVIIHTSPS--YGNFLAAALDD--LRHTPPTDILGTIAGHDTVVAVCESSDQATTVANFLNEHLRLL-------------",
+            "order": 169,
+            "acc": "GCA_001435835.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435875.1_00786",
+            "seq": "--------------MKKDVRQAKIEQIINQYTITTQEELMEKLKLSGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNELE---R--MYRMINGTVTEVRQIEFINVIHTQPS--YANPLAAVIDD--LH--MD-DVAGTLAGYDTIVTFCPSVKSAENIKNLFLKHSNPDLLVSSVD------",
+            "order": 170,
+            "acc": "GCA_001435875.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435895.1_01831",
+            "seq": "--------------MKKDARQAKIEQIINQYSITTQDELMARLKVAGISVTQATLSRDIREMQIVKQPDSAGNSRYMIF-KS----GNQNELE---R--LYRMINGTVTEIRQVQFVTVIHTQPS--YANPLAAVIDD--LH--MD-DVAGTLAGYDTVVMFSPSVPAADRIKAMFLKHANPDLLMGSQE------",
+            "order": 171,
+            "acc": "GCA_001435895.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435915.1_01510",
+            "seq": "--------------MNRKARRKVIEQLVSDHKIETQDELLDLLTQQGIETTQATISRDIHALNIVKANDGEGHTYYVQL-QL----TPEHDFS---R--LYTGIRENVRTIETVQFINVVKTALNSSYATILGGMFDE--LD--IP-EVVGTIAGNDTLIIISKNNNDARAIYNLIMKHISSHLD-----------",
+            "order": 172,
+            "acc": "GCA_001435915.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435935.1_00567",
+            "seq": "--------------MDRKARRKYIEQLVSERKIETQDELLKLLNDAGIETTQATISRDIHMLNIVKASDGTGHTYYVQL-QK----DPAHNYD---R--LYLGIHNNVQTVETVQFLNVVKTEPNSSYATILAGMFDE--LD--VP-EVIGTLAGNDTLILISKTPEDAQAVNKLITDHLA---------------",
+            "order": 173,
+            "acc": "GCA_001435935.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001435955.1_01840",
+            "seq": "-----------------------MEQLFADNKITTQEQLQQLLRAEGVEVTQATISRDMRILNIVKVSDQNGNTYYKQM-KV----EGEKNYE---R--LFQEINDNVLGIQRINFINLIRTTVNSSYANILAAKLDD--LE--LA-EIAGTLAGNDTVVVFSKNEEDAEIVYKMIYEHMDDDLK-----------",
+            "order": 174,
+            "acc": "GCA_001435955.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435975.1_01761",
+            "seq": "--------------MKKSIRQSRIEQLINQYPIGTQEDLMRHLKEIGIKATQATISRDIREMQVVKAQDGHGHLRYTIF-KP----GNKSEEE---H--MRETINEVVVGLTQIEFINVIKTLPS--NGNLLAAILDD--LK--LP-EVVGTLAGHDTILVISPSKEVAQQLNNEIAKSMNPDIVH----------",
+            "order": 175,
+            "acc": "GCA_001435975.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001435975.1_02109",
+            "seq": "--------------MKKEVRQSKIEQIINQFAVTTQDDLMARLKDAGINATQATISRDIREMQIVKQQDATGASRYMIY-KA----GNQNELQ---H--LYREISETVTKYERIQFLTIVHTLPS--YANMLAAILDD--LT--LE-EVSGTLAGHDTIVLFSPDEERAQMIYDLFKQHANPDLVAE---------",
+            "order": 176,
+            "acc": "GCA_001435975.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436015.1_02004",
+            "seq": "--------------MKKEMRQGKIEQLINQQVISNQEELMQALQAIGISATQATISRDIREMQIVKQQDGNGNLRYVIF-KA----NNQSEQD---K--LYKAISDAVTAITTVEFMNVIHTTPR--NANVLAAILDD--LA--LP-EVAGTLAGFDTVVVISPSRELAIKLYELFMEHVDPDNLL----------",
+            "order": 177,
+            "acc": "GCA_001436015.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001436025.1_00407",
+            "seq": "--------------MDRKERRQLIQELVTQQRINTQHDLLAMLAEHGIDATQATISRDIHALNIVKVSDQHGHTYYSIL-HT----HA-DEYQ---R--LFDGISHNVEKVTNVQFINVIQTTLNSNYATVLAGLFDN--AQ--LP-EVVGTLAGNDTLLTISKNNEDAQAINRLIKEHMTED-------------",
+            "order": 178,
+            "acc": "GCA_001436025.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001436045.1_01698",
+            "seq": "--------------MNRTARRKMIEQLVSDHKIETQDELLALLNQHGVETTQATISRDIHALNIVKANDGEGRTYYVQL-QL----TPEHDFS---R--LYAGIRDNVRTIETVQFMNVVKTALNSSYATILGGMFDE--LD--IP-EVVGTLAGNDTLIIISKSNDDAQVIYNLIVEHMNSHL------------",
+            "order": 179,
+            "acc": "GCA_001436045.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001436095.1_01266",
+            "seq": "--------------MKKKERQVILQKIIQEHLVHTQEELQAYLHEYGVRTTQATLSRDLRELKITKMRDEYGKSRYLKLSTE----TTGDAQA---R--LFSALKTVTKSIDTVEFLVIIHTSPS--YGNFLAAALDD--LRDTPPTDILGTIAGHDTVVAFCKDIAQAETLSDYLKDHLRLL-------------",
+            "order": 180,
+            "acc": "GCA_001436095.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436115.1_00187",
+            "seq": "--------------MNKTERQSALAKIINQKPIATQEELLSELKAAGIDATQATISRDIREMRVVKAQDASGRLRYAIF-RA----DSQSQLE---R--LAASIREVGLGITQVQFLNVIATLPS--NGNLLAAMIDD--LH--FP-QVVGTVAGHDTVVVISPDVKAATWFKDQFDKTFAM--------------",
+            "order": 181,
+            "acc": "GCA_001436115.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001436135.1_00251",
+            "seq": "--------------MKKAERQRIVSRIISAQVIETQQQLLTELQRAGVKATQATVSRDIREMNIVKAKGADGRTRYVIY-SQ----KTDSSLD---K--LLASIRDNGLSITRVQFLNVIHTVPS--NGNLLAALIDD--IE--FT-QVVGTVAGHDTIVVISPDEDGARWFNQLYQRAFGNA-------------",
+            "order": 182,
+            "acc": "GCA_001436135.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436215.1_01539",
+            "seq": "--------------MKKAERQRKIEQLIKQNVIATQDELMRQLEANGIKATQATISRDIRELQIIKEQDSNGVVRYVIF-KG----NNQNEEE---K--LIKAIEETVVDIRQVEFMNIIHTLPR--NANVLAAILDG--LS--LP-AVAGTLAGYDTVVIISGSKDEASQINSLFTKHVAEQ-------------",
+            "order": 183,
+            "acc": "GCA_001436215.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436225.1_02054",
+            "seq": "--------------MKKAERQAAVAKIIGTKVVQTQEQLLKELQKAGIFATQATVSRDIREMRIVKSKDLDGSSRYTIL-QQ----GNISLTE---R--LNSTVREVGLKITRVQFINVIKTLPS--NGNLLAALIDD--AD--FA-QVAGTVAGHDTIVVISPDEEGAIWFNQQYHDALAVE-------------",
+            "order": 184,
+            "acc": "GCA_001436225.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436255.1_02315",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMAKLKLSGINVTQATLSRDIREMQIVKQPDSSGDSRYMIF-KS----GNQNELE---R--MYRMINGTVTDIRQIQFINVIHTQPS--YANPLAAVIDD--LH--LD-DVAGTLAGYDTIVLFSPSVEAAKSINNLFTKHSNPDLLVSSIQD-----",
+            "order": 185,
+            "acc": "GCA_001436255.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001436275.1_01874",
+            "seq": "--------------MKKELRQAKIAQLITQEEIGTQEELMNVLKENGITATQATISRDIREMRIAKEQGENGKIRYAIF-KE----SSASEKE---K--LQSSISETVLNVVRVQFINVIKTLPH--NANVLSAVFDG--LA--LE-EVVGTIAGYDTLLVISKSEEDAQEINRLIAKYEQKDNLGK---------",
+            "order": 186,
+            "acc": "GCA_001436275.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_001436295.1_00010",
+            "seq": "--------------MKKSTRQAKIEQLISQYTITTQEELMQRLKDNEITATQATISRDIREMQIVKAADGNGNLRYTIF-KA----GNKSEEL---R--LYDTIHEVVTNVSQVEFMNIIRTLPS--DGNLLAAIIDD--LN--LP-EVAGTLAGHDTIFIVSPSTKIAQQFNQKIVEHVNADLYLEK--------",
+            "order": 187,
+            "acc": "GCA_001436295.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436325.1_02407",
+            "seq": "--------------MKREERKAAIRQLVTSTRFERQRDLMAALHDRGIMISQGNLSRDMRELGIRKYKDRNGHAYYAVA-DH----QAPTLPE---N--LRQAVATQVLTAVAVQFTVVLKTEAG--SGNLVAAALDD--VH--RP-DIIGTLAGHDTVLVICPDEDAAKAFQQTISDTLATPADTDENAPE----",
+            "order": 188,
+            "acc": "GCA_001436325.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436375.1_00771",
+            "seq": "--------------MKKTERQMILEQIIHQHVVSTQDELLALLKDEGVDATQATISRDIRDLQIVKARDESGNLRYMIF-QG----DSVSNDE---R--LEDTISNVVLSVVQVQFLNVVKTLPS--NGNVLAAVIDD--LS--MP-DVVGTVAGHDTVVIISPDNDAAKRMHQRISDNIIE--------------",
+            "order": 189,
+            "acc": "GCA_001436375.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436395.1_00667",
+            "seq": "--------------MKKAIRQAKIEQLINKFEISTQDELMEKLNSIQIVATQATISRDIREMQIVKQQGATGKVRYVIY-KS----GNETEKQ---H--LFRAIHDTVIKVEQVQFLNIVHTLPS--YANLLAAIIDD--LS--IE-DISGTLAGHDTIVLVSKDAITAKSINKLIVDNADSNLLDM---------",
+            "order": 190,
+            "acc": "GCA_001436395.1",
+            "group": "liquor;beer"
+        },
+        {
+            "name": "GCA_001436395.1_00731",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEDLMKRLEDTGIKATQATISRDIREMQIVKTQDGQGNLRYTIF-KA----GNKSEKE---H--LRETINEVVTGLTRVEFINIVRTLPS--NGNLLAAIFDD--LD--MP-EIAGTLAGHDTIFIISPSEEVAKEMNEQISESMNPDIIH----------",
+            "order": 191,
+            "acc": "GCA_001436395.1",
+            "group": "liquor;beer"
+        },
+        {
+            "name": "GCA_001436415.1_01167",
+            "seq": "--------------MKKGDRQARIEQIINQQVIATQEDLLAALKREAIDATQATISRDIREMQIVKARDVNGELRYAIF-HD----DERTQVQ---K--LKDKLREVALSVTQVQMLNVIKTLPS--NGNLLAALIDD--LD--YS-EVVGTLAGHDTIVIISPSETQATKLNERFSQHLATIR------------",
+            "order": 192,
+            "acc": "GCA_001436415.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436475.1_00122",
+            "seq": "--------------MKKELRQAKIEQLITKQIISNQDDLLKALKKAGISATQATISRDIREMQIVKQQDGDGHLRYVVF-KE----QNQAEWL---R--LYKAIYDFVIEITQVEFVNVVKTMPR--NANVLAAIIDD--LK--PE-CVAGTIAGYDTMVVISPSADAALEFKKMAIEHINHDAIGIAPEDD----",
+            "order": 193,
+            "acc": "GCA_001436475.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436485.1_01921",
+            "seq": "--------------MNKSERQAALTRIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKSQDATGTLRYTIF-RG----SSESQLE---R--LGRSIREVGLSITRVHFMNVIKTLPS--NGNLLAAIIDD--IG--FE-QVVGTIAGHDTIVVISPDEKQAKWFEAAYRQAFNS--------------",
+            "order": 194,
+            "acc": "GCA_001436485.1",
+            "group": "dairy"
+        },
+        {
+            "name": "GCA_001436505.1_00698",
+            "seq": "--------------MKKNKRQAKIEQIIQQQTIGTQEKLLAALEAEGIHATQATVSRDIREMQIVKERDSQGQLRYTIY-HN----GEKTVAE---R--LDDTIAEVVVSIQQVEFVNVVTTAPG--NGNSLAAIIDE--LT--FP-QIAGTIAGHDTILIISPDRQSARDIHDYFTQRLLVE-------------",
+            "order": 195,
+            "acc": "GCA_001436505.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436535.1_00058",
+            "seq": "--------------MKKEVRQAKIEQLITQNEIGTQEELMDVLAQEGIKATQATISRDIREMRIIKEPNGSGRIRYTIF-KG----NSPSEEE---K--MYAAISDSVTDVTLVQTMNVVHTLPR--TANVLSAIIDD--LK--KE-EVVGTIAGYDTILVISKNKEDAKIMNDLFNKYLRIGRS-----------",
+            "order": 196,
+            "acc": "GCA_001436535.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436555.1_01473",
+            "seq": "--------------MKKEARQARIEQIINQESIATQEELMTKLKEVGIDVTQATLSRDIREMKIVKQPDSFGNPHYTIF-KS----GNQNELT---R--LQRMISSTVTEVTQIEFVNVIHTQPG--YANVLAAIVDD--VK--LE-TVTGTLAGHDTIVLFSPGVDQATKLNQFINEYTTEL-------------",
+            "order": 197,
+            "acc": "GCA_001436555.1",
+            "group": "intestinal"
+        },
+        {
+            "name": "GCA_001436595.1_02426",
+            "seq": "--------------MKKSIRQSRIEQLINQYPIGTQEDLMRHLKEIGIKATQATISRDIREMQVVKAQDGHGHLRYTIF-KP----GNKSEEE---H--LRETINEVVIGLTRIEFINVIKTLPS--NGNLLAAILDD--LK--LP-EVVGTLAGHDTILVISPNADVAQQLNDEIAENMNPDIVH----------",
+            "order": 198,
+            "acc": "GCA_001436595.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_001436605.1_01074",
+            "seq": "-------------MKQKKRRQDELLKILKSHHIKTQSDLMNYLNDKGINITQATLSRDMKELGIIKLIQDDSQMSYVVS-GT----QEIDDLT---Q--LKEVFANNVQDVLQIQFTVIIKCNPN--SANVLSALIDN--HG--YS-ELVASLAGYDTLVCYCTDEEKAKQLKAEFLKLK----------------",
+            "order": 199,
+            "acc": "GCA_001436605.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436615.1_01138",
+            "seq": "--------------MNKSERQAVLAKIINSQVITTQDELLEALKVAGIEATQATISRDIREMQVVKAQDASGQLRYTIF-RG----DSQSQLE---R--LSNSVREVGLSITRVQFLNVIKTLPS--NGNLMAAIIDD--IG--FA-QVVGTLAGHDTIVVISPDEASAKWFNAQYQKAFIS--------------",
+            "order": 200,
+            "acc": "GCA_001436615.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436675.1_00242",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMEHLDEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--LP-EVAGTLAGHDTIFIMSPNTEVAVKLHDEIAAEMNPDIIH----------",
+            "order": 201,
+            "acc": "GCA_001436675.1",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "GCA_001436705.1_01650",
+            "seq": "--------------MKKEQRQAKIEQIITQNEIATQDELMKALSNVGIKATQATISRDIREMRIIKEQDANGQVHYVIF-KG----NRQSEEE---K--LFENIHEMVTDITQVEFINIIHTLPR--NANVLTAIIDD--LN--LK-EVVGTMAGYDTILIISKSREDARTVSDLFKKYIDENNVAD---------",
+            "order": 202,
+            "acc": "GCA_001436705.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436735.1_01263",
+            "seq": "--------------MKKEIRQAKIEQLITQNEIGTQEELMEILAQNGIKATQATISRDIREMRIIKEQNAKGKIHYAIF-KG----GLPSEEE---K--MYNAITESVIDITLVQTMNVVHTLPR--TANVLSAIIDE--LE--VS-EVVGTIAGYDTILIISKNEQDARLVRDTFKKYLKNE-------------",
+            "order": 203,
+            "acc": "GCA_001436735.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436755.1_00938",
+            "seq": "--------------MKKEERQAKIEQIINQNEIATQDELMKALSNIGIKSTQATISRDIREMRIVKEQGASGQLHYAIF-KG----NRQSEEE---K--LFENIHEMVTDITQVEFINIIHTLPR--NANVLTAIIDD--LK--LK-EVVGTMAGYDTILIISKSREDAEAVERLFMKYIDKNNLDD---------",
+            "order": 204,
+            "acc": "GCA_001436755.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436945.1_00658",
+            "seq": "--------------MNREKRLELIKKIVDSEKISTQEELLETLKKRGVNATQATISRDIKSLGLFKSMK-NGTKYYITPYKQ----KEAKKIN---K--IQEAIHDNVTSVERIAWLNIVRMPLNSNYANALGSLLDT--SN--IP-EIVGTLAGNDTLVIISKSEDDAAKIKQFILESIDN--------------",
+            "order": 205,
+            "acc": "GCA_001436945.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001436945.1_01719",
+            "seq": "--------------MKKKDRQRKIEQLIKQQKISNQDSLIQALEDEGIHSTQATVSRDIREMKIIKQADTDGNTYYTLL-KK----DHSDPKQ---R--IKETISDIVTNVTNVQFVNIVQTTPR--NANVLAALIDD--NE--LP-GVVGTLAGYDTVVLFSPNNETAQEVSRFFIANIGE--------------",
+            "order": 206,
+            "acc": "GCA_001436945.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001437055.1_01012",
+            "seq": "--------------MNHKERRQLILKLVNENQITTQEQLLGLLKEQGVVATQATVSRDIHALNIVKASDSRGVTFYKQL-QV----DTADQHQ---R--LYDAIRSNVVSATVVQFMNVIKTTPNSSFATVLAGLLDD--SD--LT-DIVGTLAGNDTLITISKTNESANVVNKLVKDHMDIN-------------",
+            "order": 207,
+            "acc": "GCA_001437055.1",
+            "group": "low_pH"
+        },
+        {
+            "name": "GCA_001437125.1_00633",
+            "seq": "--------------MKKSMRQARIEQLINQYPIGTQEELMEHLEEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--LP-EIAGTLAGHDTIFIISPDAKVAARLHDEIAAEMNPDIIH----------",
+            "order": 208,
+            "acc": "GCA_001437125.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001437155.1_01638",
+            "seq": "--------------MKKEVRQAKIEQLITQNEIGTQEELMDVLAQEGIKATQATISRDIREMRIIKEPNGSGRIRYTIF-KG----NSPSEEE---K--MYAAISESVTDVTLVQTMNVVHTLPR--TANVLSAIIDD--LK--KE-EVVGTIAGYDTILVISKDKEDAKIMNDLFNKYLRIGRS-----------",
+            "order": 209,
+            "acc": "GCA_001437155.1",
+            "group": "liquor"
+        },
+        {
+            "name": "GCA_001437505.1_01993",
+            "seq": "--------------MKKSVRQSKIEQLISQYSIATQEELMNQLKRAGTSATQATISRDIREMQIVKSADGNGKLRYTIF-KT----GNKSEEA---R--LYSTIYDVVTNITRVEFMNIIRTLPS--DGNMLAAIIDD--LG--LK-EVAGTLAGHDTIFVISPTTNVARDFNKKLMEYVNQELYVNKE-------",
+            "order": 210,
+            "acc": "GCA_001437505.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001437605.1_01666",
+            "seq": "--------------MSKRERQEQIINIIQSSDISTQSDLMKMLQKEGIKTTQATLSRDIRELNLVKQADITGATVYRVI-SE----REQHVIE---VDPVQEAVAESVLTITQVQFINILKTEPN--EGNRVAAVIDD--SD--LS-EIKGTIAGYDTVVIFSESPATAGSLNQKLNNYIHQR-------------",
+            "order": 211,
+            "acc": "GCA_001437605.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001438655.1_00317",
+            "seq": "--------------MKKNERQKIITELIINQPITKQDDLMRLLEEHGVNATQATISRDMRELHIVKGADREGKQRYMIF-QT----STEDPTE---V--LFKTFKQTAKKIDQIQFVNVIKTTPN--DGNRLAAVFDD--TK--MP-EIVGTIAGFDTIVIFSPDQKQATQLNQRLAKILETD-------------",
+            "order": 212,
+            "acc": "GCA_001438655.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001438785.1_00476",
+            "seq": "--------------MKKEERQNKIEQLINKEIIATQEELLLALQKDGIKTTQATLSRDIREMQIVKEADGNGNIRYTLF-QK----NDNTQEE---Y--LQQNVYDTLMKITQVEFMNIIQTTPR--NANALAAIIDE--MS--LD-GIVGTLAGYDTVVVISDSKESAKNINQLFLSYADRDLLVRK--------",
+            "order": 213,
+            "acc": "GCA_001438785.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001443645.1_01180",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KA----ANKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LK--LP-EVSGTLAGHDTIFIVSPNTTVAKQLHESFASHIASED------------",
+            "order": 214,
+            "acc": "GCA_001443645.1",
+            "group": "other"
+        },
+        {
+            "name": "GCA_001444495.1_00873",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 215,
+            "acc": "GCA_001444495.1",
+            "group": "dairy"
+        },
+        {
+            "name": "TXV41627.1",
+            "seq": "--------------MNRLKRQTMIKRLVTENEIHTQSELLALLEKENIHTTQATISRDIRELNLNKVDNGQGEAYYRILNNSALRPKYKTDEE---R--LVDIIIETGVSLTQIEFTNLLTVLPG--NGQAIGVLIDRIRIH--NP-HILGCIAGDDTILILSKNKEDALEVNNYFQQYLYHP-------------",
+            "order": 216,
+            "acc": "GCA_008121035.1_ASM812103v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "TXV41114.1",
+            "seq": "--------------MKKAERQRLIKQLIMQQEIETQDELITRLEELGVRATQATVSRDIREMSIVKTHGADGRVKYAIFSQA----QGTSSEE---K--LRESVKDSVVRMERVQFIVILHTEMG--NADVVSNFLDE--VA--YP-EVAGTVAGADTIIVITRSEEDAEHFIERIENMIF---------------",
+            "order": 217,
+            "acc": "GCA_008121035.1_ASM812103v1_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "TYK88533.1",
+            "seq": "--------------MNKMERQQQIKRIIQAEHIGTQEDIKNHLQKEGIVVTQATLSRDLREIGLLKLRDEQGKLYYSL--------SEPVATP------FSPEVRFYVLKVDRAGFMLVLHTNLG--EADVLANLIDNDAIE-----DILGTIAGADTLLVICRDEEIAKRFEKDLAAGL----------------",
+            "order": 218,
+            "acc": "GCA_008121595.1_SPY5004_genomicff",
+            "group": "outgroup"
+        },
+        {
+            "name": "SRR1151124_02649",
+            "seq": "--------------MKKSVRQAKIEQIIKQQPVSTQEELLAHLKAEGIPATQATISRDIREMQIVKERDQEGKIRYAIF-HN----GEKSEEE---R--LRETLGQVALSVTQVEFVNLIRTAPG--NGNLLAAIIDN--LK--MP-EIAGTLAGHDTILVISPSAPAATKLNAYFLEHIDPEAAY----------",
+            "order": 219,
+            "acc": "SRR1151124",
+            "group": "dairy"
+        },
+        {
+            "name": "SRR1151125_01446",
+            "seq": "--------------MKKGDRQARIEQIINQQVVSTQEDLLATLKQDGIDATQATISRDIREMQIVKARDVNGELRYTIF-HD----DERTQTQ---K--LKDKLREVALSITQVQMLNVIKTLPS--NGNLLAALIDD--LG--YP-EVVGTLAGHDTIVIISPSEELAAELNERFAQHLATAR------------",
+            "order": 220,
+            "acc": "SRR1151125",
+            "group": "dairy"
+        },
+        {
+            "name": "SRR1151129_01349",
+            "seq": "--------------MNKSERQAALTRIINQKPIATQEELLAALKAAGIDATQATISRDIREMKIVKSQDATGTLRYTIF-RG----SSESQLE---R--LGRSIREVGLSITRVHFMNVIKTLPS--NGNLLAAIIDD--IG--FE-QVVGTIAGHDTIVVISPDEKQAKWFEAAYRQAFNS--------------",
+            "order": 221,
+            "acc": "SRR1151129",
+            "group": "dairy"
+        },
+        {
+            "name": "SRR1151132_00820",
+            "seq": "-------------MMNKKERHSILEKIVQEHLVHTQEELQGYLHEYGLKTTQATLSRDLRELKITKMRDEYGKSRYLKLSTE----TTGDAQA---R--LFSALKTVTKSVDTVEFLVIIHTSPS--YGNFLAAALDD--LRHTPPTDILGTIAGHDTVVAVCESSDQATTVANFLNEHLRLL-------------",
+            "order": 222,
+            "acc": "SRR1151132",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151133_01162",
+            "seq": "-----------MTILKKVDRQAKIEEIIKEHTIATQEALLAALEAEGIPATQATISRDIREMQVVKERDQDGTLRYTIY-HN----GEKTVAE---R--LDETIAEVVVAVKLVEFVNVIHTAPG--NGNSLAAIIDD--LA--FP-QVAGTLAGHDTILIISPDRDSAQYVHDYFAERMVVE-------------",
+            "order": 223,
+            "acc": "SRR1151133",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151134_00232",
+            "seq": "--------------MKKSIRQSRIEQLINQYPIGTQEDLMRHLKEIGIKATQATISRDIREMQVVKAQDGHGHLRYTIF-KP----GNKSEEE---H--MRETINEVVVGLTQIEFINVIKTLPS--NGNLLAAILDD--LK--LP-EVVGTLAGHDTILVISPSKEVAQQLNNEIAKSMNPDIVH----------",
+            "order": 224,
+            "acc": "SRR1151134",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151134_00649",
+            "seq": "--------------MKKEVRQSKIEQIINQFAVTTQDDLMARLKDAGINATQATISRDIREMQIVKQQDATGASRYMIY-KA----GNQNELQ---H--LYREISETVTKYERIQFLTIVHTLPS--YANMLAAILDD--LT--LE-EVSGTLAGHDTIVLFSPDEDRARTIYELFKRHANPDLVAE---------",
+            "order": 225,
+            "acc": "SRR1151134",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151135_00538",
+            "seq": "--------------MKKAERQAAVAKIIGTKVVQTQEQLLKELQKAGIFATQATVSRDIREMRIVKSKDLDGSSRYTIL-QQ----GNISLTE---R--LNSTVREVGLKITRVQFINVIKTLPS--NGNLLAALIDD--AD--FA-QVAGTVAGHDTIVVISPDEEGAIWFNQQYHDALAVE-------------",
+            "order": 226,
+            "acc": "SRR1151135",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151138_00088",
+            "seq": "--------------MEYRVRREVIQKLVAEHTIRSQQELIKLVNEHGFQVTQATVSRDLEALNIVKVRGVKGGSYYAQL-QL----QTDGERE---R--LAKMIQQRVESVATVEFMNVVKTTPNSNFATIVAGEFDA--ET--ND-LIVGTLAGNDTLIIISPDAAAAKTVADFIRKHLA---------------",
+            "order": 227,
+            "acc": "SRR1151138",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151138_00374",
+            "seq": "--------------MEYQARRQAIEQLVTKNIIKNQQELIKLLNQQGYTVTQATVSRDLEELSIVKVHDHQVGTHYAKL-EL----QVTRDQW---R--LIQMIKQWVESVTTVKFMNVVKTTPNSNFATIVAGEFDT--HP--NEKLIVGTLAGNDTLIIISPNEIAANTVKNFIQQYLTTK-------------",
+            "order": 228,
+            "acc": "SRR1151138",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151142_00132",
+            "seq": "--------------MKKELRQAKIEQLITKQIISNQDDLLKALKKAGISATQATISRDIREMQIVKQQDGDGHLRYVVF-KE----QNQAEWL---R--LYKAIYDFVIEITQVEFVNVVKTMPR--NANVLAAIIDD--LK--PE-CVAGTIAGYDTMVVISPSADAALEFKKMAIEHINHDAIGIAPEDD----",
+            "order": 229,
+            "acc": "SRR1151142",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151147_00239",
+            "seq": "--------------MKKEMRQGKIEQLINQQVISNQEELMQALQAIGISATQATISRDIREMQIVKQQDGNGKLRYVIF-KA----NNQSEQD---K--LYKAISDAVTAITTVEFMNVIHTTPR--NANVLAAILDD--LS--LP-EVAGTLAGFDTVVVISPSREAAAQLYALFMEHVDPDNLL----------",
+            "order": 230,
+            "acc": "SRR1151147",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151148_00879",
+            "seq": "--------------MDRKERRRFIAQLVNERKIETQDELLQLLTDAGIETTQATISRDIHTLNIVKSSDANGHTYYVQL-QK----DPAHNYD---R--LYLGIRNNVRTIETVQFINVVKTELNSSYATILAGMFDE--LD--VP-EVIGTLAGNDTLILISKTPEDAQKVYQLIMDHMNG--------------",
+            "order": 231,
+            "acc": "SRR1151148",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151149_00281",
+            "seq": "--------------MKKELRQEKIEQLINQRIISNQEELMQALKEMGITATQATISRDIREMQIVKQQDGDGNLRYFIF-KA----NNQSEQD---K--LYKAINDSVTSITLVEFMNVIHTTPR--NANVLAAILDD--LA--LS-DIAGTIAGFDTLVVISPTKESAQNVNAMFNEHVDLDNLL----------",
+            "order": 232,
+            "acc": "SRR1151149",
+            "group": "intestinal"
+        },
+        {
+            "name": "SRR1151152_00180",
+            "seq": "--------------MNHRDRRKLLLEIINTHHVSTQEQLLKLLEANGVTATQATVSRDIHALNIVKVSYQHGKTYYAQL-HV----DNEDKHQ---R--LYDAIHDSVESCTTVQFMNVIKTTPNSSYATVLAGMLDD--SD--LT-EIVGTLAGNDTFITISKTNESALAISRLVHEHMAEH-------------",
+            "order": 233,
+            "acc": "SRR1151152",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151160_00811",
+            "seq": "--------------MGNKERRKLIKNLIAAEKISTQDELLKRLKAAGVEATQATISRDLHALNVAKVSDGNGRSYYAQL-EV----AAPKIDQ---R--LYDAIENTVESITMVQFMNVIKTTPNSNYATILAGLFDD--SQ--MT-EITGTLAGNDTLITISKSPEEAQVINQLVLDHMN---------------",
+            "order": 234,
+            "acc": "SRR1151160",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151164_01083",
+            "seq": "--------------MDRKERRQLIQELVTQQRINTQHDLLAMLAEHGIDATQATISRDIHALNIVKVSDQHGHTYYSIL-HT----HA-DEYQ---R--LFDGISHNVEKVTNVQFINVIQTTLNSNYATVLAGLFDN--AQ--LP-EVVGTLAGNDTLLTISKNNEDAQAINRLIKEHMTED-------------",
+            "order": 235,
+            "acc": "SRR1151164",
+            "group": "intestinal"
+        },
+        {
+            "name": "SRR1151167_00999",
+            "seq": "--------------MKKAERQRIMSRIISGKVIETQKQLLEELQSAGVKATQATVSRDIRELNIVKSKGNDGRMRYVIF-SK----QPHNDTD---R--LQQSIRENGLSIVRVQFMNVIHTVPS--NGNLLAALIDD--IE--FT-KVVGTLAGHDTIVVISPDEAGAEWFNDFYQSSFMD--------------",
+            "order": 236,
+            "acc": "SRR1151167",
+            "group": "intestinal"
+        },
+        {
+            "name": "SRR1151168_01052",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMEKLRVAGITVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNEIE---R--MYRMINGTVTDIRQIEFVNVIHTQPS--YANPLAAVIDD--LH--MD-NVSGTLAGYDTIVTFSPSVDAAHEIHDLVTKHANPDLLVSE--------",
+            "order": 237,
+            "acc": "SRR1151168",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151170_01338",
+            "seq": "--------------MDRKARRKYIEQVVNDRKIETQEELLKFLTEAGFETTQATISRDIHALNIVKANDGDGHTHYVQL-HV----TPEHNFE---R--LYQGIHDNVRTIETVQFMNVIKTALNSSYATILAGMFDE--LD--IP-EVVGTLAGNDTLIIISKDNDDAKMVYDLIIQHMHS--------------",
+            "order": 238,
+            "acc": "SRR1151170",
+            "group": "intestinal"
+        },
+        {
+            "name": "SRR1151171_00163",
+            "seq": "--------------MKKEERQAIIERVIVQNRIGTQEELIKILKDRGIKATQATISRDIRELHITKKADNTGQVRYVVY-KH----QPADQSE---R--LYKSIRDNVSQVDQVQFMLIVHTIAR--NANGLGAVIDD--YQ--IP-HVLGTLAGYDTLVLICDSAESANQVGTMIKQHMKNA-------------",
+            "order": 239,
+            "acc": "SRR1151171",
+            "group": "intestinal"
+        },
+        {
+            "name": "SRR1151172_01218",
+            "seq": "-----------------------MEQLFADNKITTQEQLQQLLRAEGVEVTQATISRDMRILNIVKVSDQNGNTYYKQM-KV----EGEKNYE---R--LFQEINDNVLGIQRINFINLIRTTVNSSYANILAAKLDD--LE--LA-EIAGTLAGNDTVVVFSKNEEDAEIVYKMIYEHMDDDLK-----------",
+            "order": 240,
+            "acc": "SRR1151172",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151175_00263",
+            "seq": "--------------MNRKARRKVIEQLVSDHKIETQDELLDLLTQQGIETTQATISRDIHALNIVKANDGEGHTYYVQL-QL----TPEHDFS---R--LYTGIRENVRTIETVQFINVVKTALNSSYATILGGMFDE--LD--IP-EVVGTIAGNDTLIIISKNNNDARAIYNLIMKHISSHLD-----------",
+            "order": 241,
+            "acc": "SRR1151175",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151186_00874",
+            "seq": "--------------MKKADRQTRIEQIINQQVIATQEELLETLKKENIEATQATISRDIREMQIVKARDVNGELRYTVF-HA----DERTQVQ---K--LKDKLREVALSVTQVQMMNVIKTLPS--NGNLLAALIDD--IN--YQ-EVVGTLAGHDTIVVISPDEASATRLNQQFSENLATPVKVEL--------",
+            "order": 242,
+            "acc": "SRR1151186",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151187_01210",
+            "seq": "--------------MKKSLRQAKIEQIISQYSISTQDDLLNKLTDAGISATQATISRDIREMQIVKSADGTGELRYTIF-KV----GNRTEQN---R--LYTTINDVVTNVTQVEFMNIVRTLPS--DGNMLAAIIDD--LS--LP-EVAGTLAGHDTIFIISPNQVVAKKFNQKIKEHINENIYVD---------",
+            "order": 243,
+            "acc": "SRR1151187",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151188_00341",
+            "seq": "-------------MMKKVDRQTRIEQIINQQVITTQEELLATLRDDGIDATQATISRDIREMQIVKARDVNGELRYTVF-HD----DERTQEQ---R--LNDKLREVALTITQVQVMNVIKTVPS--NGNLLAALIDD--LG--YE-DVVGTLAGHDTIVVISPDEAHAADLNQRFSAHLAVTNRN----------",
+            "order": 244,
+            "acc": "SRR1151188",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151192_01235",
+            "seq": "--------------MNKSERQAVLAKIINSQVITTQDELLEALKVAGIEATQATISRDIREMQVVKAQDASGQLRYTIF-RG----DSQSQLE---R--LSNSVREVGLSITRVQFLNVIKTLPS--NGNLMAAIIDD--IG--FA-QVVGTLAGHDTIVVISPDEASAKWFNAQYQKAFIS--------------",
+            "order": 245,
+            "acc": "SRR1151192",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151193_02812",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----TNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 246,
+            "acc": "SRR1151193",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "SRR1151196_00684",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMEKLKVAGISVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNEIE---R--MYRMINGTVTDIRQIQFVNVIHTQPS--YANPLAAVIDD--LH--ME-NVSGTLAGYDTIVTFSPSVDSAREINDLFTKHANPDLLVSSIQDGE---",
+            "order": 247,
+            "acc": "SRR1151196",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151197_00717",
+            "seq": "--------------MKKEIRQAKIEQLITQNEIGTQEELMEILAQNGIKATQATISRDIREMRIIKEQNAKGKIHYAIF-KG----GLPSEEE---K--MYNAITESVIDITLVQTMNVVHTLPR--TANVLSAIIDE--LE--VS-EVVGTIAGYDTILIISKNEQDARLVRDTFKKYLKNE-------------",
+            "order": 248,
+            "acc": "SRR1151197",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151198_00990",
+            "seq": "--------------MKKEQRQAKIEQLITQNEIATQDELMQALASMGIRATQATISRDIREMRIIKEQDTNGRVHYVVF-KG----DHQSEEE---K--LFENIHEMVTDITQVEFINIIHTLPR--NANVLTAIIDN--LK--LK-EVAGTMAGYDTILIISKSSEDAKNISALFKKYIDKTITTD---------",
+            "order": 249,
+            "acc": "SRR1151198",
+            "group": "high_salt"
+        },
+        {
+            "name": "SRR1151200_02269",
+            "seq": "--------------MKKTERQMILEQIIHQHVVSTQDELLALLKDEGVDATQATISRDIRDLQIVKARDESGNLRYMIF-QG----DSVSNDE---R--LEDTISNVVLSVVQVQFLNVVKTLPS--NGNVLAAVIDD--LS--MP-DVVGTVAGHDTVVIISPDNDAAKRMHQRISDNIIE--------------",
+            "order": 250,
+            "acc": "SRR1151200",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151201_01334",
+            "seq": "--------------MKKKERQVILQKIIQEHLVHTQEELQAYLHEYGVRTTQATLSRDLRELKITKMRDEYGKSRYLKLSTE----TTGDAQA---R--LFSALKTVTKSIDTVEFLVIIHTSPS--YGNFLAAALDD--LRDTPPTDILGTIAGHDTVVAFCKDIAQAETLSDYLKDHLRLL-------------",
+            "order": 251,
+            "acc": "SRR1151201",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151203_00986",
+            "seq": "--------------MKKTDRQAAIEQLINQYPIATQEDLMARLKADGIAATQATISRDIREMQIVKSPDENGHARYTIF-KE----NGKNEQD---R--LYESLHDVVTGVDRVEFMNIIHTLPS--NGNLLAAIIDD--LH--LP-EVSGTLAGHDTIFVVSPSVAVAESFHDMVLSHVRTEDEL----------",
+            "order": 252,
+            "acc": "SRR1151203",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151204_00447",
+            "seq": "-------------MKQKKRRQDELLKILKSHHIKTQSDLMNYLNDKGINITQATLSRDMKELGIIKLIQDDSQMSYVVS-GT----QEIDDLT---Q--LKEVFANNVQDVLQIQFTVIIKCNPN--SANVLSALIDN--HG--YS-ELVASLAGYDTLVCYCTDEEKAKQLKAEFLKLK----------------",
+            "order": 253,
+            "acc": "SRR1151204",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151207_01374",
+            "seq": "--------------MNREKRRKLIELLIVQHEVSTQDELLNLLKENGVESTQATISRDIRELNIVKRSDDQGKIYYTQE-RM----DRRKEIE---K--LYQSIEISVYSIQQIQFMNIIRTSPN--YANVLTAILDG--LE--LT-EIVGSIAGYDTIIIISSNINDATTINNLFKMHIDPNLQ-----------",
+            "order": 254,
+            "acc": "SRR1151207",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151207_01906",
+            "seq": "--------------MKKEIRQATIEQLISQQEISNQEELMQALKQKGIKATQATISRDIRELRIVKEQGISGKLHYAVF-KD----DPVSEKE---Q--LYANITEMVIEATQVQFLNVVKTLPH--SANVLTAIIDD--LE--LP-EVVGTMAGYDTIIIISRDEQAAAQVNQIFLNHMQQSE------------",
+            "order": 255,
+            "acc": "SRR1151207",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151208_00980",
+            "seq": "--------------MKKGDRQARIEQIINQQVIATQEDLLAALKREAIDATQATISRDIREMQIVKARDVNGELRYAIF-HD----DERTQVQ---K--LKDKLREVALSVTQVQMLNVIKTLPS--NGNLLAALIDD--LD--YS-EVVGTLAGHDTIVIISPSETQATKLNERFSQHLATIR------------",
+            "order": 256,
+            "acc": "SRR1151208",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151209_02827",
+            "seq": "--------------MKREERKAAIRQLVTSTRFERQRDLMAALHDRGIMISQGNLSRDMRELGIRKYKDRNGHAYYAVA-DH----QAPTLPE---N--LRQAVATQVLTAVAVQFTVVLKTEAG--SGNLVAAALDD--VH--RP-DIIGTLAGHDTVLVICPDEDAAKAFQQTISDTLATPADTDENAPE----",
+            "order": 257,
+            "acc": "SRR1151209",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151210_00557",
+            "seq": "--------------MKKEVRQAKIEQLITQNDIGTQEELMEVLAHEGIKATQATISRDIREMRIIKEPNGNGRIRYTIF-KG----SSPSEEE---K--MYTTISESVIDVTRVQTMNVVHTLPR--TANVLSAIIDD--LE--KK-EVVGTIAGYDTILVISKNDEDAKSMNDLFNKYLKIGRS-----------",
+            "order": 258,
+            "acc": "SRR1151210",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151213_02123",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMEKLKVAGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNEIE---R--MYRMINGTVTDIRQIQFVNVIHTQPS--YANPLAAVIDD--LH--MD-NVSGTLAGYDTIVTFSPSVNAAREINDLFTEHANPDLLVSSIKE-----",
+            "order": 259,
+            "acc": "SRR1151213",
+            "group": "dairy"
+        },
+        {
+            "name": "SRR1151214_00516",
+            "seq": "--------------MSKEKRQEKIEQLLNHYKITTQDELRERLQEAGIKATQATVSRDIKDMQIVKQQDVDGNLYYVIY-KA----GNQNEIK---H--LYRAISETVTKLERVSFINIVHTLPS--YANMLAAIIDD--LE--LS-EISGTLAGHDTIVMFCPDEAAAKRLYATFHEHLSDDILTD---------",
+            "order": 260,
+            "acc": "SRR1151214",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "SRR1151214_00744",
+            "seq": "--------------MKKEVRQSKIEQLINQYSIATQEELMARLKSAGIVATQATISRDIREMQIVKQQDATGASHYMVY-KA----GNQNERQ---R--LYRSISETVTNYQRVRFITIVHTLPS--YANMLAAIIDD--LD--LD-AVAGTLAGHDTIVLISPSEPDAESVLAVFARYANPDLSEE---------",
+            "order": 261,
+            "acc": "SRR1151214",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "SRR1151214_01072",
+            "seq": "--------------MKKSLRQSRIEQLINQYPIGTQEDLMRHLEEIGIKATQATISRDIREMQVVKAQDGNGNLRYTIF-KP----GNKSEEE---H--LHETINEVVIGLTRVQFMNVIKTLPS--NGNLLAAILDD--LN--MP-EVVGTLAGHDTIIVVSPNEKVAQQLNEEIAQNMNPDIVH----------",
+            "order": 262,
+            "acc": "SRR1151214",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "SRR1151216_01200",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMEKLKLSGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNELE---R--MYRMINGTVTDIRQIQFVNVIHTQPS--YANPLAAVVDD--LH--LD-DVAGTLAGYDTIVLFSPSVASAKSINDLFTKHSNPDLLVSSIQD-----",
+            "order": 263,
+            "acc": "SRR1151216",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "SRR1151217_02382",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMEHLEEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LKETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--LP-EIAGTLAGHDTIFIISPNAQVAEKLHDEIAAEMNPEIIH----------",
+            "order": 264,
+            "acc": "SRR1151217",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "SRR1151218_00725",
+            "seq": "--------------MKKEVRQAKIEQLITQNEIGTQEELMDVLAQEGIKATQATISRDIREMRIIKEPNGSGRIRYTIF-KG----NSPSEEE---K--MYAAISDSVTDVTLVQTMNVVHTLPR--TANVLSAIIDD--LK--KE-EVVGTIAGYDTILVISKNKEDAKIMNDLFNKYLRIGRS-----------",
+            "order": 265,
+            "acc": "SRR1151218",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151219_00778",
+            "seq": "--------------MNKSQRQNALARIINQKVISTQDELLTELKNAGIEATQATISRDIRELRIVKAQDASGALRYTIF-RG----DSESQLE---R--LGNSIREVGLSITRVQFMNVIKTLPS--NGNLLAAIIDD--IK--FA-QVVGTLAGHDTIVVISPDEESAIWFNQQYDRAFSD--------------",
+            "order": 266,
+            "acc": "SRR1151219",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151220_01770",
+            "seq": "--------------MNKSERQAAVARIINQQPIATQDELLEALKAANITATQATISRDVRELKIFKAQDANGNVRYTLF-RG----DEASQIE---R--LGASIREVGLGITRVQFMNVIKTLPS--NGNLLAAQIDE--IH--FK-QVVGTLAGHDTIVVISPDEVAAKWFQQRYENSFE---------------",
+            "order": 267,
+            "acc": "SRR1151220",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151225_01161",
+            "seq": "--------------MKKSMRQSRIEQLINQYPIGTQEELMEHLEEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---R--LRETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--LP-EVAGTLAGHDTIFIISPSAEVAVKLHDMIADEMNPDIVH----------",
+            "order": 268,
+            "acc": "SRR1151225",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151227_00763",
+            "seq": "--------------MKREERMAAIRQLVTTIRFERQRDLMAALHAKGIMISQGNLSRDIRELGIHKFKDRTGHSYYALS-DA----RTAVLPD---A--LQEAVATQVHSVTSVQFTVVLKTEPG--SGNLVAAALDD--VT--MP-EVVGTLAGHDTVLVICPDIDAADRFARTVKFVIDDQALSAEEKD-----",
+            "order": 269,
+            "acc": "SRR1151227",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151228_00186",
+            "seq": "--------------MKKSERQAVIEQLISEYPIATQEELMAKLQAKGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KT----ANKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYESFASHISNED------------",
+            "order": 270,
+            "acc": "SRR1151228",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151229_01776",
+            "seq": "--------------MKKEDRQQKIEHLIKKNKITNQEGLLQALEDAGIHATQATVSRDIREMKIIKQTKPDGSSYYVLL-KQ----DYSDPKQ---R--IKETISDIVTDVTNVQFVNIVKTTPR--NANVLAALIDD--DE--LS-GIVGTLAGYDTVVLFSPDNESAQKVTRYFVENISK--------------",
+            "order": 271,
+            "acc": "SRR1151229",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151230_01153",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMAKLKLSGINVTQATLSRDIREMQIVKQPDSSGDSRYMIF-KS----GNQNELE---R--MYRMINGTVTDIRQIQFINVIHTQPS--YANPLAAVIDD--LH--LD-DVAGTLAGYDTIVLFSPSVEAAKSINNLFTKHSNPDLLVSSIQD-----",
+            "order": 272,
+            "acc": "SRR1151230",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "SRR1151232_01457",
+            "seq": "--------------MKKSIRQSRIEQLINQYPIGTQEDLMRHLKEIGIKATQATISRDIREMQVVKAQDGHGHLRYTIF-KP----GNKSEEE---H--LRETINEVVIGLTRIEFINVIKTLPS--NGNLLAAILDD--LK--LP-EVVGTLAGHDTILVISPNADVAQQLNDEIAENMNPDIVH----------",
+            "order": 273,
+            "acc": "SRR1151232",
+            "group": "liquor"
+        },
+        {
+            "name": "SRR1151235_02490",
+            "seq": "--------------MKKEARQSKIEQIINQYTITTQDELMEKLKVAGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNEIE---R--MYRMINGTVTDIRQIQFVNVIHTQPS--YANPLAAVIDD--LH--ME-NVSGTLAGYDTIVTFSPSVEAAVEINDLFTKHANPDLLVSSIKE-----",
+            "order": 274,
+            "acc": "SRR1151235",
+            "group": "high_salt;low_pH"
+        },
+        {
+            "name": "SRR1151237_00266",
+            "seq": "--------------MKKAERQRIVSRIISAQVIETQQQLLTELQRAGVKATQATVSRDIREMNIVKAKGADGRTRYVIY-SQ----KTDSSLD---K--LLASIRDNGLSITRVQFLNVIHTVPS--NGNLLAALIDD--IE--FT-QVVGTVAGHDTIVVISPDEDGARWFNQLYQRAFGNA-------------",
+            "order": 275,
+            "acc": "SRR1151237",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151242_03230",
+            "seq": "--------------MKKSERQAVIAQLITEYPIATQEELMAKLKAEGIAATQATISRDIREMQIVKTPDEHGQTRYAIF-KA----NNKNEQD---R--LFETLHDVVTSIDRVEFMNIIHTLPS--NGNLLAAIIDD--LN--LP-EVSGTLAGHDTIFVVSPNTTVAKQLYDSFASHVSNED------------",
+            "order": 276,
+            "acc": "SRR1151242",
+            "group": "other"
+        },
+        {
+            "name": "SRR1151248_01381",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMEHLQEVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNIVRTLPS--NGNLLAVIFDD--LN--LP-EIAGTLAGHDTIFIISPSAEVAKKLHDRIAAEMNPEIAH----------",
+            "order": 277,
+            "acc": "SRR1151248",
+            "group": "low_pH"
+        },
+        {
+            "name": "SRR1151250_01026",
+            "seq": "--------------MDRKARRKYIEQLVSERKIETQDELLKLLNDAGIETTQATISRDIHMLNIVKASDGTGHTYYVQL-QK----DPAHNYD---R--LYLGIHNNVQTVETVQFLNVVKTEPNSSYATILAGMFDE--LD--VP-EVIGTLAGNDTLILISKTPEDAQAVNKLITDHLA---------------",
+            "order": 278,
+            "acc": "SRR1151250",
+            "group": "low_pH"
+        },
+        {
+            "name": "SRR1151252_00494",
+            "seq": "--------------MDRKARRKFIEQLVNDRKIETQDELLQLLTEAGVETTQATISRDIHALNIVKANDGKGHTYYVQL-HL----APEHDFN---R--LYQGIHDNVRTIETVQFLNVVKTALNSSYATILAGMFDE--LD--IP-EVVGTIAGNDTLIIISKDNADAKLVYNLITKHINARIV-----------",
+            "order": 279,
+            "acc": "SRR1151252",
+            "group": "low_pH"
+        },
+        {
+            "name": "SRR1151253_00445",
+            "seq": "--------------MQKQQRQAAIVKLIESANITNQDALQKALVAQNVHVTLATLSRDLKELHIVKEPNAEGHAVYRAL-KT----TNGVSND---R--FEQRFGEVVIDFTQVEFMNVVKTTPS--DGNALAALIDD--MD--DD-AITGTLAGHDTILVISPNREAAGRLHNRWAAYQH---------------",
+            "order": 280,
+            "acc": "SRR1151253",
+            "group": "low_pH"
+        },
+        {
+            "name": "SRR1151255_01319",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMEHLQEVGIQATQATISRDIREMQIVKAQDGHGHLCYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNIIRTLPS--NGNLLAVIFDD--LN--LP-EIAGTLAGHDTIFIISPSAEVAEKLHDQIAAEMNPEIAH----------",
+            "order": 281,
+            "acc": "SRR1151255",
+            "group": "low_pH"
+        },
+        {
+            "name": "SRR1151256_01798",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEELMERLQAVGIQATQATISRDIREMQIVKAQDGHGHLRYTIF-KA----GNRSEEE---H--LRETINEVVTGLTRVEFVNILKTLPS--NGNLLAAIFDD--LN--MP-EIAGTLAGHDTIFIISPSADVAEKLHDQIAAEMNPEIAH----------",
+            "order": 282,
+            "acc": "SRR1151256",
+            "group": "low_pH"
+        },
+        {
+            "name": "SRR1151260_00484",
+            "seq": "--------------MKKDVRQAKIEQIINQYTITTQEELMEKLRLSGINVTQATLSRDIREMQIVKQPDSSGNSRYMIF-KS----GNQNELE---R--MYRMINGTVTEVRQIEFINVIHTQPS--YANPLAAVIDD--LH--MD-DVAGTLAGYDTIVTFCPSVKSAENIKNLFLKHSNPDLLITTVD------",
+            "order": 283,
+            "acc": "SRR1151260",
+            "group": "liquor"
+        },
+        {
+            "name": "SRR1151262_00185",
+            "seq": "--------------MKKAIRQAKIEQLINKFEISTQDELMEKLNSIQIVATQATISRDIREMQIVKQQGATGKVRYVIY-KS----GNETEKQ---H--LFRAIHDTVIKVEQVQFLNIVHTLPS--YANLLAAIIDD--LS--IE-DISGTLAGHDTIVLVSKDAITAKSINKLIVDNADSNLLDM---------",
+            "order": 284,
+            "acc": "SRR1151262",
+            "group": "liquor;beer"
+        },
+        {
+            "name": "SRR1151262_01064",
+            "seq": "--------------MKKSIRQARIEQLINQYPIGTQEDLMKRLEDTGIKATQATISRDIREMQIVKTQDGQGNLRYTIF-KA----GNKSEKE---H--LRETINEVVTGLTRVEFINIVRTLPS--NGNLLAAIFDD--LD--MP-EIAGTLAGHDTIFIISPSEEVAKEMNEQISESMNPDIIH----------",
+            "order": 285,
+            "acc": "SRR1151262",
+            "group": "liquor;beer"
+        },
+        {
+            "name": "SRR1151263_01239",
+            "seq": "--------------MKKEIRQATIEQLISQTEISNQEELMQALLKKGIKATQATISRDIRELRIVKEQGISGKLHYVIF-KD----DPVSEKE---Q--LYMNITEMVIEATQVQFLNVVKTLPH--SANVLTAIIDD--LE--LP-EVVGTMAGYDTIIIISQNEQAASVLNQMFLKHMQQSE------------",
+            "order": 286,
+            "acc": "SRR1151263",
+            "group": "liquor"
+        },
+        {
+            "name": "SRR1151263_01617",
+            "seq": "--------------MNREKRRKLIELLIVQHEVSTQDELLNLLKENGIESTQATISRDIRELNIVKRSDDQGKIYYTQE-RM----DRRKEIE---K--LYQFIEISVYSIQQIQFMNIIRTSPN--YANVLTAILDG--LE--LI-EIVGSIAGYDTIIIISSNISDATTINNIFKTHIDPDLQ-----------",
+            "order": 287,
+            "acc": "SRR1151263",
+            "group": "liquor"
+        },
+        {
+            "name": "SRR1151264_00140",
+            "seq": "--------------MKKELRQAKIAQLITQEEIGTQEELMNVLKENGITATQATISRDIREMRIAKEQGENGKIRYAIF-KE----SSASEKE---K--LQSSISETVLNVVRVQFINVIKTLPH--NANVLSAVFDG--LA--LE-EVVGTIAGYDTLLVISKSEEDAQEINRLIAKYEQKDNLGK---------",
+            "order": 288,
+            "acc": "SRR1151264",
+            "group": "liquor"
+        },
+        {
+            "name": "SRR1151267_00052",
+            "seq": "-------------MMKKVDRQTRIEQIINQQVITTQEELLATLRDDGIDATQATISRDIREMQIVKARDVNGELRYTVF-HD----DERTQEQ---R--LNDKLREVALTITQVQVMNVIKTVPS--NGNLLAALIDD--LG--YE-DVVGTLAGHDTIVVISPDEAHAADLNQRFSAHLAGTNRN----------",
+            "order": 289,
+            "acc": "SRR1151267",
+            "group": "liquor"
+        },
+        {
+            "name": "SRR1151268_00667",
+            "seq": "--------------MKKETRQAKIEQLITQYEVGTQEELMKLLTQNGIAATQATISRDMREMRIVKEQSSSGKIHYAIF-KG----NAVSEKE---K--LYNSISEAVLEVVPVQFINIVKTLPH--NANVLTAIIDE--LA--LD-EIVGTIAGYDTILVISKSEEDARKVNSLFTKYAQHDESAQ---------",
+            "order": 290,
+            "acc": "SRR1151268",
+            "group": "other"
+        },
+        {
+            "name": "SRR1554393_01716",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 291,
+            "acc": "SRR1554393",
+            "group": "other"
+        },
+        {
+            "name": "SRR1554404_01718",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 292,
+            "acc": "SRR1554404",
+            "group": "other"
+        },
+        {
+            "name": "SRR1554410_01717",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 293,
+            "acc": "SRR1554410",
+            "group": "other"
+        },
+        {
+            "name": "SRR1554411_01518",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 294,
+            "acc": "SRR1554411",
+            "group": "other"
+        },
+        {
+            "name": "SRR1554430_01725",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 295,
+            "acc": "SRR1554430",
+            "group": "other"
+        },
+        {
+            "name": "SRR1554448_01517",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 296,
+            "acc": "SRR1554448",
+            "group": "other"
+        },
+        {
+            "name": "SRR1554450_01516",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 297,
+            "acc": "SRR1554450",
+            "group": "other"
+        },
+        {
+            "name": "SRR1554460_01282",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 298,
+            "acc": "SRR1554460",
+            "group": "other"
+        },
+        {
+            "name": "SRR1554461_01518",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 299,
+            "acc": "SRR1554461",
+            "group": "other"
+        },
+        {
+            "name": "SRR2624424_00330",
+            "seq": "--------------MDRKARRKYIEQVVNDRKIETQEELLKFLTEAGFETTQATISRDIHALNIVKANDGDGHTHYVQL-HV----TPEHNFE---R--LYQGIHDNVRTIETVQFMNVIKTALNSSYATILAGMFDE--LD--IP-EVVGTLAGNDTLIIISKDNDDAKMVYDLIIQHMHS--------------",
+            "order": 300,
+            "acc": "SRR2624424",
+            "group": "intestinal"
+        }
+    ],
+    "type": "prot",
+    "is_annotated": "true",
+    "version": "1.0"
+}

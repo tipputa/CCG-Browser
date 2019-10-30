@@ -1,2 +1,6 @@
 text.json
 159strain.html
+node_modules
+examples/msa/gb_summary.tsv
+examples/msa/all_acc_locusTag.tsv
+docs/Hp72/

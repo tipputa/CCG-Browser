@@ -2,17 +2,22 @@ let genome_browser_container = d3.select("#genome-browser-container")
 let genome_width = 1;
 let geneBoxHeight = 5;
 let lgWidth = genome_browser_container.node().getBoundingClientRect().width;
-let lg_yCdsSize = 60;
-let lg_yGenomeSize = 20;
-let lg_yMargin = 30;
-let lg_genome_name_fontSize = 20;
+//let lg_yCdsSize = 60;
+//let lg_yGenomeSize = 20;
+//let lg_yMargin = 30;
+//let lg_genome_name_fontSize = 20;
+let lg_yCdsSize = 8;
+let lg_yGenomeSize = 8;
+let lg_yMargin = 8;
+let lg_genome_name_fontSize = 12;
+let lg_genome_base_font = 8;
 let lg_zoom_changeYRad = 0.02;
 let lg_zoom_changeXRad = 0.02;
 let lg_aligned_diff = [];
 let lg_aligned_consensus_diff = [];
 let locusTagObj = {}
 let consensusObj = {}
-
+let lgHeight = height;
 
 let isGeneSeparationColor = false;
 
@@ -35,17 +40,15 @@ let tooltip = genome_browser_container.append("div").attr("class", "linear-genom
 
 
 isReady = false;
-initialize();
 
-function initialize() {
-    fileName1 = "locusTag_test5sp.json";
-    fileName2 = "consensusId_test5sp.json";
-    d3.json(fileName1).then(function (root) {
+function initializelg(f1, f2) {
+    console.log("reading " + f1);
+    d3.json(f1).then(function (root) {
         locusTagObj = root;
-        console.log("read " + fileName1);
-        d3.json(fileName2).then(function (r) {
+        console.log("read " + f1);
+        d3.json(f2).then(function (r) {
             consensusObj = r;
-            console.log("read " + fileName2);
+            console.log("read " + f2);
             isReady = true;
         });
     });
@@ -53,6 +56,7 @@ function initialize() {
 
 function drawLinearGenomeBrowser() {
     if (isReady) {
+        lgHeight = 20 + (numGenomes + 1) * (lg_yMargin + lg_yCdsSize + lg_yGenomeSize) + 20;
         refreshAlignment()
         refreshLinearGenome();
         drawLinearGenome();
@@ -244,7 +248,7 @@ function drawGenomeSequence(g, start, end, aligned_diff) {
         .style("top", y + "px")
         .style("color", "black")
         .attr("width", lgWidth - 210)
-        .attr("height", lg_yGenomeSize + 20)
+        .attr("height", lg_yGenomeSize)
         .on("mousemove", function () {
 
             event.preventDefault();
@@ -304,7 +308,7 @@ function drawGenomeSequence(g, start, end, aligned_diff) {
             for (let i = 0; i < genome.length; i++) {
                 let col = baseColor[genome[i]];
                 genome_browser_ctx.beginPath();
-                genome_browser_ctx.font = "16px Arial serif";
+                genome_browser_ctx.font = lg_genome_base_font + "px Arial serif";
                 genome_browser_ctx.moveTo(i * baseWidth, yStart);
                 genome_browser_ctx.lineTo((i + 1) * baseWidth, yStart);
                 genome_browser_ctx.lineWidth = lg_yGenomeSize - 2;
@@ -318,7 +322,7 @@ function drawGenomeSequence(g, start, end, aligned_diff) {
             for (let i = 0; i < genome.length; i++) {
                 let col = baseColor[genome[i]];
                 genome_browser_ctx.beginPath();
-                genome_browser_ctx.font = "16px Arial serif";
+                genome_browser_ctx.font = lg_genome_base_font + "px Arial serif";
                 genome_browser_ctx.moveTo(i * baseWidth, yStart);
                 genome_browser_ctx.lineTo((i + 1) * baseWidth, yStart);
                 genome_browser_ctx.lineWidth = lg_yGenomeSize - 2;
@@ -389,9 +393,6 @@ function drawGenomeScale(genenome_canvas, genome, start, end) {
 
 }
 
-function drawScale() {
-
-}
 
 let lg_clicked = false;
 
@@ -403,7 +404,7 @@ function refreshLinearGenome() {
     genenome_svg = genome_browser_container.append("svg")
         .attr("id", "svg_container")
         .attr("width", lgWidth)
-        .attr("height", height)
+        .attr("height", lgHeight)
         .on("mousemove", function () {
 
             event.preventDefault();
@@ -446,7 +447,8 @@ function refreshLinearGenome() {
         .on("mouseleave", function () {
             event.preventDefault();
             //console.log("leave");
-        });
+        })
+    console.log(genenome_svg)
     tooltip = genome_browser_container.append("div").attr("class", "linear-genome-tooltip");
 }
 

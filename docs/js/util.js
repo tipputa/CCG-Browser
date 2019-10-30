@@ -7,7 +7,6 @@ for (let k = 1; k >= 0.5; k -= 0.1) {
         }
     }
 }
-console.log(AngleColer)
 
 function getColorPallet(i) {
     return AngleColer[i * 12]

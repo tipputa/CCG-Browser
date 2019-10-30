@@ -212,6 +212,7 @@ function drawDataIni() {
         ringSize = ((outerRadius - Math.max(20, ((numGenomes - 1) * ringMargin + 50))) / numGenomes);
     }
 
+    console.log("Ring size: " + ringSize);
     maxR = outerRadius + 5 + ringSize / 2;
     let p = Math.PI * 2;
 
@@ -233,7 +234,9 @@ function drawDataIni() {
 
 function drawData() {
     drawKaryotype();
+    console.log("Num: " + numGenomes);
     for (let loop = 0; loop < numGenomes; loop++) {
+        console.log("r: " + importedJs.each_genome_info[loop]["r"]);
         for (let i = 0; i < importedJs.each_genome_info[loop].genes.length; i++) {
             drawCCG(importedJs.each_genome_info[loop]["r"], importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"], importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"], ringSize, importedJs.each_genome_info[loop].genes[i].angle, importedJs.each_genome_info[loop].genes[i].feature);
         }
@@ -305,7 +308,6 @@ function drawCCG(r, start, stop, lineWidth, angle, feature) {
     ctx.arc(halfX, halfY, r, start - deg90, stop - deg90);
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = val;
-    ctx.fill();
     ctx.stroke();
 }
 

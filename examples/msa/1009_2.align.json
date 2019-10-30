@@ -1,0 +1,21 @@
+{
+    "sequences": [
+        {
+            "name": "SRR1554461_01518",
+            "seq": "--------------MNKSERQAALARIINQKPIATQEELLAALKAAGIDATQATISRDIREMQIVKAQDAKGTLRYTIF-RG----SEESQLE---R--LGRSIREVGLTITRVQFLNVIKTLPS--NGNLLAAIIDD--ID--FD-QVVGTIAGHDTIVVISPDEKQAKWFEEAYRHAFDR--------------",
+            "order": 1,
+            "acc": "SRR1554461",
+            "group": "other"
+        },
+        {
+            "name": "SRR2624424_00330",
+            "seq": "--------------MDRKARRKYIEQVVNDRKIETQEELLKFLTEAGFETTQATISRDIHALNIVKANDGDGHTHYVQL-HV----TPEHNFE---R--LYQGIHDNVRTIETVQFMNVIKTALNSSYATILAGMFDE--LD--IP-EVVGTLAGNDTLIIISKDNDDAKMVYDLIIQHMHS--------------",
+            "order": 0,
+            "acc": "SRR2624424",
+            "group": "intestinal"
+        }
+    ],
+    "type": "prot",
+    "is_annotated": "true",
+    "version": "1.0"
+}
