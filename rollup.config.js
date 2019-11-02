@@ -15,10 +15,12 @@ const config = {
     output: {
         file: 'dist/bundle.js',
         format: 'iife',
-        name: 'bio'
+        name: 'bio',
+        banner: ""
     }
-
 }
+
+
 export default [
     config,
     {
@@ -35,5 +37,5 @@ export default [
                 }
             })
         ]
-    }
+    },
 ];

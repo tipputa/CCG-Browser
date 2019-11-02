@@ -1,6 +1,15 @@
 // almost same functions as underscore.js
 // ref: https: //underscorejs.org/docs/underscore.html
 
+const ObjProto = Object.prototype,
+    toString = ObjProto.toString,
+    hasOwnProperty = ObjProto.hasOwnProperty;
+
+const has = function (obj, path) {
+    return obj != null && hasOwnProperty.call(obj, path);
+}
+
+
 const nativeIsArray = Array.isArray,
     nativeKeys = Object.keys,
     nativeCreate = Object.create;
@@ -71,3 +80,33 @@ export const each = function (obj, iteratee, context) {
     }
     return obj;
 };
+
+const group = function (behavior, partition) {
+    return function (obj, iteratee, context) {
+        var result = partition ? [
+            [],
+            []
+        ] : {};
+        iteratee = optimizeCb(iteratee, context);
+        each(obj, function (value, index) {
+            var key = iteratee(value, index, obj);
+            behavior(result, value, key);
+        });
+        return result;
+    };
+};
+
+export const groupBy = group(function (result, value, key) {
+    if (has(result, key)) result[key].push(value);
+    else result[key] = [value];
+
+});
+
+export const countBy = group(function (result, value, key) {
+    if (has(result, key)) result[key]++;
+    else result[key] = 1;
+});
+
+export const indexBy = group(function (result, value, key) {
+    result[key] = value;
+});

@@ -1,13 +1,175 @@
-const alignmentBrowser = new bio.Alignment();
-alignmentBrowser.setContainer("app");
+let alignmentBrowser = null;
+let globalId = 1009;
+
+d3.select("#dp-links")
+    .selectAll("button")
+    .data([1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6])
+    .enter()
+    .append("button")
+    .attr("class", "dropdown-item")
+    .attr("onclick", (d) => {
+        return `newDemos(${d})`
+    })
+    .html((d) => {
+        return d
+    });
+
+const ddDLSelector = bio.select("#dd-download-links");
+ddDLSelector.create("button")
+    .setClass("dropdown-item")
+    .attr("onclick", )
+    .attr("class", "dropdown-item")
+    .attr("onclick", "saveAllSeq()")
+    .html("Alignment sequences with gap as fasta");
+
+ddDLSelector.create("button")
+    .setClass("dropdown-item")
+    .attr("onclick", )
+    .attr("class", "dropdown-item")
+    .attr("onclick", "saveConservedRegion()")
+    .html("Conserved alignment sequences as fasta");
+
+ddDLSelector.create("button")
+    .setClass("dropdown-item")
+    .attr("onclick", )
+    .attr("class", "dropdown-item")
+    .attr("onclick", "saveVisualizedRegion()")
+    .html("Visualized region as fasta");
+
+
+ddDLSelector.create("button")
+    .setClass("dropdown-item")
+    .attr("onclick", )
+    .attr("class", "dropdown-item")
+    .attr("onclick", "saveRawJson()")
+    .html("Raw input file as json");
+
+const saveAllSeq = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.saveAllSequence();
+    }
+}
+
+const saveConservedRegion = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.saveConservedRegion();
+    }
+}
+
+
+const saveRawJson = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.saveRawJson();
+    }
+}
+
+const saveVisualizedRegion = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.saveVisualizedRegion();
+    }
+}
+
+
+const newDemos = (id) => {
+    setFileName(`${id}.align.json`, `${id}.fas.nwk`);
+    globalId = id;
+    bio.selectID("main-headline").html(`ID:${id}`);
+}
+
+const alignmentZoom = () => {
+    if (alignmentBrowser) {
+        const btn = bio.selectID("btn-zoom-func");
+        if (btn.html() === "Zoom In") {
+            alignmentBrowser.zoomInShowSequence();
+            btn.html("Zoom Out");
+        } else {
+            alignmentBrowser._resetZoom();
+            btn.html("Zoom In");
+        }
+    }
+}
+
+const alignmentZoomIn = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.zoomInShowSequence();
+    }
+}
+
+const alignmentZoomOut = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser._resetZoom();
+    }
+}
+
+
+const showConservedRegion = () => {
+    if (alignmentBrowser) {
+        if (alignmentBrowser) {
+            const btn = bio.selectID("btn-conserve-func");
+            if (btn.html() === "Show conserved region") {
+                alignmentBrowser.change2conservedRegion();
+                btn.html("Show all region");
+            } else {
+                alignmentBrowser.change2allRegion();
+                btn.html("Show conserved region");
+            }
+        }
+    }
+}
+
+const addAlignmentExplanations = () => {
+    const expSelector = bio.selectID("div-alignment-explanation")
+        .setClass("mt-1 mb-5").html("");
+    expSelector.create("p").html(`Number of alignment sequences: ${alignmentBrowser.inputJson["sequences"].length}, total length:  ${alignmentBrowser.seqLength}, conserved length:  ${alignmentBrowser.conservedRegionLength}`);
+}
 
 const treeSelect = d3.select("#tree_display")
 const treeHeight = 1000;
 const setFileName = (json_path, nwk_path) => {
+    alignmentBrowser = new bio.Alignment(globalId, {
+        header: {
+            top: 10,
+            enable: true,
+            height: 100
+        }
+    });
+    alignmentBrowser.setContainer("app");
+
     bio.json(json_path).then(function (root) {
+        console.log("reading");
         alignmentBrowser.setJson(root);
         alignmentBrowser.render();
+        const sortable = Sortable.create(alignmentBrowser.labelContainer.elements[0], {
+            animation: 150,
+            group: "label_group",
+            multiDrag: true,
+            ghostClass: "background-class",
+            handle: ".handle",
+            selectedClass: 'selected-class',
+            onChoose: function (evt) {
+                alignmentBrowser.highlightedIndicies = [{
+                    index: evt.oldIndex
+                }];
+                alignmentBrowser._drawHighlightRect();
+            },
+            onSelect: function (evt) {
+                alignmentBrowser.highlightedIndicies = evt.newIndicies;
+                alignmentBrowser._drawHighlightRect();
+            },
+            onDeselect: function (evt) {
+                alignmentBrowser.highlightedIndicies = evt.newIndicies
+                alignmentBrowser.drawSequences();
+            },
+            onEnd: function ( /**Event*/ evt) {
+                alignmentBrowser.highlightedIndicies = evt.newIndicies
+                alignmentBrowser._updateSortInfo(sortable);
+
+                //  refresh();
+            },
+        });
+        addAlignmentExplanations();
         loadTreeFromURL(nwk_path);
+
     })
 }
 
@@ -26,28 +188,29 @@ function drawATree(newick) {
         .options({
             'selectable': false,
             'left-offset': 10,
+            brush: false,
+            hide: false,
             // 'top-bottom-spacing': 'fit-to-size',
             // 'left-right-spacing': 'fit-to-size',
         })
         // .size([treeHeight, treeWidth])
         .svg(treeSelect)
-        .node_circle_size(0.1);
+        .node_circle_size(4);
     //.align_tips(true);
-    console.log(treeHeight);
     tree(d3.layout.newick_parser(newick));
 
 
-
-    treeAlignment_canvas = tree_alignment.append("canvas")
-        .attr("class", "pos_absolute")
-        .attr("id", "tree-alignment-canvas")
-        .style("left", treeWidth + 6 + "px")
-        .style("top", "0 px")
-        .style("color", "black")
-        .attr("width", alignmentWidth)
-        .attr("height", treeHeight)
-    treeAlignment_ctx = treeAlignment_canvas.node().getContext("2d");
-
+    /*
+        treeAlignment_canvas = tree_alignment.append("canvas")
+            .attr("class", "pos_absolute")
+            .attr("id", "tree-alignment-canvas")
+            .style("left", treeWidth + 6 + "px")
+            .style("top", "0 px")
+            .style("color", "black")
+            .attr("width", alignmentWidth)
+            .attr("height", treeHeight)
+        treeAlignment_ctx = treeAlignment_canvas.node().getContext("2d");
+    */
     /*
     to get space for alignemnt spot
           tree.branch_name(function (node) {
@@ -118,12 +281,11 @@ function drawATree(newick) {
             var children_clusters = _.keys(_.countBy(node.children, function (d) {
                 return d.cluster;
             }));
-            console.log(children_clusters.length + "_" + children_clusters[0]);
             if (children_clusters.length == 1 && children_clusters[0]) {
                 node.cluster = children_clusters[0];
             }
         }
-    }, "leaf-order");
+    }, "post-order");
 
     tree.style_nodes(function (element, node_data) {
         if (!node_data.children) {
@@ -178,9 +340,9 @@ function drawATree(newick) {
             }
         }
     });
-    tree.spacing_y(60);
-    tree.spacing_x(9);
-    // resize(tree);
+    //tree.spacing_y(60);
+    //tree.spacing_x(9);
+    resize(tree);
     tree.placenodes().layout();
     d3.select(".canvas-container").style("height", treeSelect.node().clientHeight + "px");
 
@@ -224,27 +386,7 @@ function loadTreeFromURL(url) {
     });
 }
 
-// download https://jsgao0.wordpress.com/2016/06/01/export-svg-file-using-xmlserializer/
-function generateLink(fileName, data) {
-    var link = document.createElement('a'); // Create a element.
-    link.download = fileName; // Set value as the file name of download file.
-    link.href = data; // Set value as the file content of download file.
-    return link;
-}
-
-function exportSVG(element, fileName) {
-    var svg = element;
-    var svgString;
-    if (window.ActiveXObject) {
-        svgString = svg.xml;
-    } else {
-        var oSerializer = new XMLSerializer();
-        svgString = oSerializer.serializeToString(svg);
-    }
-    generateLink(fileName + '.svg', 'data:image/svg+xml;utf8,' + svgString).click();
-}
-
 document.getElementById('downloadBtn').onclick = function () {
     var element = document.getElementById('tree_display');
-    exportSVG(element, 'SVG-01');
+    bio.exportSVG(element, `Tree-${globalId}`);
 }

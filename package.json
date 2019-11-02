@@ -12,6 +12,7 @@
     "@babel/preset-env": "^7.6.3",
     "rollup": "^1.25.2",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-terser": "^5.1.2"
+    "rollup-plugin-terser": "^5.1.2",
+    "xml2js": "^0.4.22"
   }
 }

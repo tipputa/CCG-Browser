@@ -133,71 +133,15 @@ var bio = (function (exports) {
     return _assertThisInitialized(self);
   }
 
-  /**
-   * Test functio nto print text message
-   * @param {*} txt input text message
-   */
-  function message(txt) {
-    console.log(txt);
-    console.log(this.v);
-  }
-
-  var BaseClass =
-  /*#__PURE__*/
-  function () {
-    function BaseClass() {
-      _classCallCheck(this, BaseClass);
-
-      this.name = "my name";
-    }
-
-    _createClass(BaseClass, [{
-      key: "echoName",
-      value: function echoName() {
-        console.log(this.name);
-      }
-    }]);
-
-    return BaseClass;
-  }();
-
-  var GraphicBase =
-  /*#__PURE__*/
-  function (_BaseClass) {
-    _inherits(GraphicBase, _BaseClass);
-
-    function GraphicBase() {
-      var _this;
-
-      _classCallCheck(this, GraphicBase);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(GraphicBase).call(this));
-      _this.v = "a";
-      _this.name = "new name";
-      _this.echo = message;
-      return _this;
-    }
-
-    _createClass(GraphicBase, [{
-      key: "get",
-      value: function get() {
-        return this.v;
-      }
-    }]);
-
-    return GraphicBase;
-  }(BaseClass);
-
-  var getFunc = function getFunc(data) {
-    return function (txt) {
-      console.log(txt);
-    };
-  };
-
-  var func = getFunc();
-
   // almost same functions as underscore.js
   // ref: https: //underscorejs.org/docs/underscore.html
+  var ObjProto = Object.prototype,
+      hasOwnProperty = ObjProto.hasOwnProperty;
+
+  var has = function has(obj, path) {
+    return obj != null && hasOwnProperty.call(obj, path);
+  };
+
   var nativeKeys = Object.keys;
 
   var shallowProperty = function shallowProperty(key) {
@@ -277,6 +221,157 @@ var bio = (function (exports) {
     return obj;
   };
 
+  var group = function group(behavior, partition) {
+    return function (obj, iteratee, context) {
+      var result = partition ? [[], []] : {};
+      iteratee = optimizeCb(iteratee, context);
+      each(obj, function (value, index) {
+        var key = iteratee(value, index, obj);
+        behavior(result, value, key);
+      });
+      return result;
+    };
+  };
+
+  var groupBy = group(function (result, value, key) {
+    if (has(result, key)) result[key].push(value);else result[key] = [value];
+  });
+  var countBy = group(function (result, value, key) {
+    if (has(result, key)) result[key]++;else result[key] = 1;
+  });
+  var indexBy = group(function (result, value, key) {
+    result[key] = value;
+  });
+
+  var seqStat = function seqStat(seqs) {
+    var results = [];
+
+    var init = function init(len) {
+      for (var i = 0; i < len; i++) {
+        results.push({});
+      }
+    };
+
+    var others = function others(seq) {
+      var seqArr = seq.split("");
+      each(seqArr, function (val, i) {
+        if (val in results[i]) results[i][val]++;else results[i][val] = 1;
+      });
+    };
+
+    init(seqs[0].seq.length);
+    each(seqs, function (val) {
+      others(val.seq);
+    });
+    return results;
+  };
+  var isConservedRegoin = function isConservedRegoin(seqArr) {
+    var conserved = [];
+    each(seqArr, function (val) {
+      if (val.hasOwnProperty("-")) {
+        conserved.push(false);
+      } else {
+        conserved.push(true);
+      }
+    });
+    return conserved;
+  };
+  var conservedRegionLength = function conservedRegionLength(seqArr) {
+    var counter = 0;
+    each(seqArr, function (val) {
+      if (!val.hasOwnProperty("-")) {
+        counter++;
+      }
+    });
+    return counter;
+  };
+  var calcGapRate = function calcGapRate(seqArr, numSeq) {
+    var res = [];
+    each(seqArr, function (val) {
+      if (val.hasOwnProperty("-")) {
+        res.push(val["-"] / numSeq);
+      } else res.push(0);
+    });
+    return res;
+  };
+  var calcShannonEntropy = function calcShannonEntropy(seqArr, numSeq) {
+    var results = [];
+    each(seqArr, function (seqs) {
+      var res = {};
+      var s = 0;
+      each(seqs, function (val, key) {
+        var v = -1 * val / numSeq * Math.log2(val / numSeq);
+        res[key] = v;
+        s += v;
+      });
+      res["Entropy"] = Math.log2(22) - s;
+      each(res, function (val, key) {
+        if (key !== "Entropy") {
+          res[key] = res["Entropy"] * seqs[key] / numSeq;
+        }
+      });
+      results.push(res);
+    });
+    return results;
+  };
+  /**
+   * return {sum: totalHeight, res: {name: letter, value: letterHeight}}
+   * @param {*} entropyArr 
+   */
+
+  var filterAndSortEntroy = function filterAndSortEntroy(entropyArr) {
+    var res = [];
+    var buf = {};
+    var s = 0;
+    each(entropyArr, function (val, key) {
+      if (val > 0.1 && key !== "Entropy") {
+        res.push({
+          name: key,
+          value: val
+        });
+        s += val;
+      }
+    });
+    res.sort(function (a, b) {
+      return b.value - a.value;
+    });
+    buf["sum"] = s;
+    buf["res"] = res;
+    return buf;
+  };
+  var getTrueArr = function getTrueArr(resourceArr, booleanArr) {
+    var res = [];
+
+    if (resourceArr.length !== booleanArr.length) {
+      console.log("not match: " + resourceArr.length + " " + booleanArr.length);
+      return res;
+    }
+
+    each(resourceArr, function (val, i) {
+      if (booleanArr[i]) res.push(val);
+    });
+    return res;
+  };
+  var getAllSequenceAsFasta = function getAllSequenceAsFasta(sequenceObj) {
+    var ret = [];
+    each(sequenceObj, function (val) {
+      ret.push(">" + val.name);
+      ret.push(val.seq);
+    });
+    var result = ret.join("\n");
+    return result;
+  };
+  var getConservedRegionAsFasta = function getConservedRegionAsFasta(sequenceObj, booleanArr) {
+    var ret = [];
+    each(sequenceObj, function (val) {
+      var seqArr = getTrueArr(val.seq.split(""), booleanArr);
+      ret.push(">" + val.name);
+      ret.push(seqArr.join(""));
+    });
+    var result = ret.join("\n");
+    return result;
+  };
+
   /**
    * faster than select;
    * @param {string} elements id
@@ -318,7 +413,7 @@ var bio = (function (exports) {
         each(this.elements, function (el) {
           var newEle = document.createElement(elementName);
           el.appendChild(newEle);
-          elements.push(el.lastElementChild);
+          elements.push(newEle);
         });
 
         return new Selector(elements);
@@ -431,6 +526,89 @@ var bio = (function (exports) {
     });
   };
 
+  // colors: https://github.com/wilzbach/msa-colorschemes/tree/master/src
+  var CLUSTAL2_COLOR = {
+    A: "#80a0f0",
+    R: "#f01505",
+    N: "#00ff00",
+    D: "#c048c0",
+    C: "#f08080",
+    Q: "#00ff00",
+    E: "#c048c0",
+    G: "#f09048",
+    H: "#15a4a4",
+    I: "#80a0f0",
+    L: "#80a0f0",
+    K: "#f01505",
+    M: "#80a0f0",
+    F: "#80a0f0",
+    P: "#ffff00",
+    S: "#00ff00",
+    T: "#00ff00",
+    W: "#80a0f0",
+    Y: "#15a4a4",
+    V: "#80a0f0",
+    B: "#fff",
+    X: "#fff",
+    Z: "#fff",
+    "-": "rgb(200,200,200)",
+    "\\": "rgb(200,200,200)"
+  };
+  var STRAND_COLOR = {
+    A: "#5858a7",
+    R: "#6b6b94",
+    N: "#64649b",
+    D: "#2121de",
+    C: "#9d9d62",
+    Q: "#8c8c73",
+    E: "#0000ff",
+    G: "#4949b6",
+    H: "#60609f",
+    I: "#ecec13",
+    L: "#b2b24d",
+    K: "#4747b8",
+    M: "#82827d",
+    F: "#c2c23d",
+    P: "#2323dc",
+    S: "#4949b6",
+    T: "#9d9d62",
+    W: "#c0c03f",
+    Y: "#d3d32c",
+    V: "#ffff00",
+    B: "#4343bc",
+    X: "#797986",
+    Z: "#4747b8",
+    "-": "rgb(200,200,200)",
+    "\\": "rgb(200,200,200)"
+  };
+  var TAYLOR_COLOR = {
+    A: "#ccff00",
+    R: "#0000ff",
+    N: "#cc00ff",
+    D: "#ff0000",
+    C: "#ffff00",
+    Q: "#ff00cc",
+    E: "#ff0066",
+    G: "#ff9900",
+    H: "#0066ff",
+    I: "#66ff00",
+    L: "#33ff00",
+    K: "#6600ff",
+    M: "#00ff00",
+    F: "#00ff66",
+    P: "#ffcc00",
+    S: "#ff3300",
+    T: "#ff6600",
+    W: "#00ccff",
+    Y: "#00ffcc",
+    V: "#99ff00",
+    B: "#fff",
+    X: "#fff",
+    Z: "#fff",
+    "-": "rgb(200,200,200)",
+    "\\": "rgb(200,200,200)"
+  };
+
   var hsvToRgb = function hsvToRgb(H, S, V) {
     // https://qiita.com/hachisukansw/items/633d1bf6baf008e82847
     var C = V * S;
@@ -521,6 +699,47 @@ var bio = (function (exports) {
   PROTEIN_COL_V1["Z"] = getColorPallet(25);
   PROTEIN_COL_V1["-"] = "rgb(200,200,200)";
 
+  // download https://jsgao0.wordpress.com/2016/06/01/export-svg-file-using-xmlserializer/
+  var generateLink = function generateLink(fileName, dataPath) {
+    var link = document.createElement('a'); // Create a element.
+
+    link.download = fileName; // Set value as the file name of download file.
+
+    link.href = dataPath; // Set value as the file content of download file.
+
+    return link;
+  };
+  var exportSVG = function exportSVG(svgElement, fileName) {
+    var svg = svgElement;
+    var svgString;
+
+    if (window.ActiveXObject) {
+      svgString = svg.xml;
+    } else {
+      var oSerializer = new XMLSerializer();
+      svgString = oSerializer.serializeToString(svg);
+    }
+
+    generateLink(fileName + '.svg', 'data:image/svg+xml;utf8,' + svgString).click();
+  };
+  var exportText = function exportText(textString, fileName) {
+    var blob = new Blob([textString], {
+      type: "type/plain"
+    });
+    var url = window.URL.createObjectURL(blob);
+    generateLink(fileName, url).click();
+  }; // replacer:  https://qiita.com/qoAop/items/57d35a41ef9629351c3c
+
+  var exportJson = function exportJson(json, fileName) {
+    var replacer = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var indent = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 4;
+    var blob = new Blob([JSON.stringify(json, replacer, indent)], {
+      type: "application/json"
+    });
+    var url = window.URL.createObjectURL(blob);
+    generateLink(fileName, url).click();
+  };
+
   var Viewer = function Viewer() {
     _classCallCheck(this, Viewer);
 
@@ -546,34 +765,107 @@ var bio = (function (exports) {
     setSize: false,
     height: 600,
     width: 600,
-    seqHeight: 12,
+    seqHeight: 25,
     isGrouping: true,
+    colorScheme: TAYLOR_COLOR,
     header: _objectSpread2({}, size, {}, font, {
-      height: 50
+      height: 100,
+      top: 10,
+      enable: true
     }),
+    seqLogo: {
+      enable: true
+    },
+    nonGapRate: {
+      enable: true,
+      left: 10,
+      top: 10,
+      bottom: 0,
+      baseColor: "rgb(120,120,120)",
+      highColor: "rgb(30, 30, 250)",
+      th: 1
+    },
     label: _objectSpread2({}, size, {}, font, {
-      fontSize: 9,
+      fontSize: 13,
       left: 10,
       top: 0,
-      width: 200
+      width: 300
     }),
     sequence: _objectSpread2({}, size, {}, font, {
-      fontSize: 9,
+      fontSize: 12,
       left: 10,
-      top: 3,
+      right: 10,
+      top: 0,
       width: 480,
       topMargin: 0,
       bottomMargin: 0
+    }),
+    scaleBar: _objectSpread2({}, font, {
+      fontSize: 13,
+      height: 40,
+      enable: true
     })
   };
 
-  var AlignmentPosition = function AlignmentPosition(size) {
-    _classCallCheck(this, AlignmentPosition);
-
-    this.start = 0;
-    this.end = size;
-    this.size = size;
+  var setLineWidth = function setLineWidth(ctx, lineWidth) {
+    ctx.lineWidth = lineWidth;
   };
+  var setTextAlign = function setTextAlign(ctx, align) {
+    ctx.textAlign = align; // center
+  };
+  var setFillStyle = function setFillStyle(ctx, fStyle) {
+    ctx.fillStyle = fStyle;
+  };
+  var setStrokeStyle = function setStrokeStyle(ctx, sStyle) {
+    ctx.strokeStyle = sStyle;
+  };
+  var drawLine = function drawLine(ctx, startX, endX, startY, endY, strokeStyle) {
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(endX, endY);
+    ctx.strokeStyle = strokeStyle;
+    ctx.stroke();
+  };
+  var drawRect = function drawRect(ctx, x, y, width, height, strokeStyle, lineWidth) {
+    ctx.beginPath();
+    ctx.strokeStyle = strokeStyle;
+    ctx.lineWidth = lineWidth;
+    ctx.strokeRect(x, y, width, height);
+  };
+  var drawTxt = function drawTxt(ctx, text, x, y, font) {
+    ctx.font = font;
+    ctx.fillText(text, x, y);
+  };
+  var clear = function clear(ctx, width, height) {
+    ctx.clearRect(0, 0, width, height);
+  };
+
+  var AlignmentPosition =
+  /*#__PURE__*/
+  function () {
+    function AlignmentPosition(size) {
+      _classCallCheck(this, AlignmentPosition);
+
+      this.start = 0;
+      this.end = size;
+      this.size = size;
+      this.preStart = -1;
+      this.preEnd = -1;
+    }
+
+    _createClass(AlignmentPosition, [{
+      key: "update",
+      value: function update(size) {
+        this.start = 0;
+        this.end = size;
+        this.size = size;
+        this.preStart = -1;
+        this.preEnd = -1;
+      }
+    }]);
+
+    return AlignmentPosition;
+  }();
 
   var getGroup = function getGroup(dicArr) {
     var _group = {};
@@ -594,46 +886,46 @@ var bio = (function (exports) {
     return _group;
   };
 
-  var initCtx = function initCtx(ctx, lineWidth) {
-    ctx.lineWidth = lineWidth;
-  };
-
-  var drawLine = function drawLine(ctx, startX, endX, startY, endY, strokeStyle) {
-    ctx.beginPath();
-    ctx.moveTo(startX, startY);
-    ctx.lineTo(endX, endY);
-    ctx.strokeStyle = strokeStyle;
-    ctx.stroke();
-  };
-
-  var refreshCtx = function refreshCtx(ctx, width, height) {
-    ctx.clearRect(0, 0, width, height);
-  };
-
   var Alignment =
   /*#__PURE__*/
   function (_Viewer) {
     _inherits(Alignment, _Viewer);
 
-    function Alignment() {
+    function Alignment(id, opt) {
       var _this;
 
       _classCallCheck(this, Alignment);
 
       _this = _possibleConstructorReturn(this, _getPrototypeOf(Alignment).call(this));
+      _this.id = id;
       _this.container = null;
       _this.inputJson = null;
-      _this.options = _objectSpread2({}, options);
+      _this.options = _objectSpread2({}, options, {}, opt);
       _this.numSeq = 0;
       _this.group = null;
       _this.canvasHeight = 0;
       _this.headerContainer = null;
       _this.bodyContainer = null;
       _this.labelContainer = null;
+      _this.labelDiv = null;
       _this.canvasContainer = null;
       _this.ctx = null;
       _this.alignmentPosition = null;
       _this.baseWidth = 0;
+      _this.seqLength = 0; // sortable and highlight
+
+      _this.orderedAlignments = null;
+      _this.highlightedIndicies = null; // conserved region mode
+
+      _this.isConservedRegionMode = false;
+      _this.conservedRegionBooleanArr = null;
+      _this.conservedRegionLength = 0; // seqLog & 1 - gapRate
+
+      _this.headerCanvas = null;
+      _this.headerCtx = null;
+      _this.seqStat = null;
+      _this.gapRate = null;
+      _this.shannonEntropyArr = null;
       return _this;
     }
     /**
@@ -646,6 +938,7 @@ var bio = (function (exports) {
       key: "setContainer",
       value: function setContainer(elementID) {
         this.container = selectID(elementID);
+        this.container.html("");
         this.options.id = elementID;
 
         if (!this.options.setSize) {
@@ -663,15 +956,18 @@ var bio = (function (exports) {
     }, {
       key: "setJson",
       value: function setJson(json) {
+        var _this2 = this;
+
         this.inputJson = json;
         this.numSeq = json["sequences"].length;
         this.canvasHeight = this.numSeq * this.options.seqHeight + 50;
-        this.alignmentPosition = new AlignmentPosition(json["sequences"][0]["seq"].length);
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        var _this2 = this;
+        this.seqLength = this.inputJson["sequences"][0]["seq"].length;
+        this.alignmentPosition = new AlignmentPosition(this.seqLength);
+        this.seqStat = seqStat(this.inputJson["sequences"]);
+        this.conservedRegionBooleanArr = isConservedRegoin(this.seqStat);
+        this.conservedRegionLength = conservedRegionLength(this.seqStat);
+        this.gapRate = calcGapRate(this.seqStat, this.numSeq);
+        this.shannonEntropyArr = calcShannonEntropy(this.seqStat, this.numSeq); // grouping
 
         if (this.options.isGrouping) {
           (function () {
@@ -692,183 +988,462 @@ var bio = (function (exports) {
           })();
         }
 
+        this.orderedAlignments = new Array(this.inputJson["sequences"].length);
+        each(this.inputJson["sequences"], function (alignment) {
+          _this2.orderedAlignments[alignment.order] = alignment;
+        });
+      }
+    }, {
+      key: "render",
+      value: function render() {
         this._DOMcreate();
 
-        this._drawSequences();
+        this.ctx = this.mainCanvas.elements[0].getContext("2d");
+
+        this._initHeader();
+
+        this._drawSequenceLabel();
+
+        this.drawSequences();
+      }
+    }, {
+      key: "zoomInShowSequence",
+      value: function zoomInShowSequence() {
+        if (this.alignmentPosition.end - this.alignmentPosition.start < 20) return;
+        this.alignmentPosition.preStart = this.alignmentPosition.start;
+        this.alignmentPosition.preEnd = this.alignmentPosition.end;
+        this.alignmentPosition.start = 0;
+        this.alignmentPosition.end = 30;
+        this.drawSequences();
+      }
+    }, {
+      key: "change2conservedRegion",
+      value: function change2conservedRegion() {
+        this.isConservedRegionMode = true;
+        this.alignmentPosition.update(this.conservedRegionLength);
+        this.drawSequences();
+      }
+    }, {
+      key: "change2allRegion",
+      value: function change2allRegion() {
+        this.isConservedRegionMode = false;
+        this.alignmentPosition.update(this.seqLength);
+        this.drawSequences();
+      }
+    }, {
+      key: "saveRawJson",
+      value: function saveRawJson() {
+        exportJson(this.inputJson, "all_rawJson_".concat(this.id, ".json"));
+      }
+    }, {
+      key: "saveAllSequence",
+      value: function saveAllSequence() {
+        exportText(getAllSequenceAsFasta(this.inputJson["sequences"]), "all_alignments_".concat(this.id, ".fas"));
+      }
+    }, {
+      key: "saveConservedRegion",
+      value: function saveConservedRegion() {
+        exportText(getConservedRegionAsFasta(this.inputJson["sequences"], this.conservedRegionBooleanArr), "conservedRegion_alignments_".concat(this.id, ".fas"));
+      }
+    }, {
+      key: "saveVisualizedRegion",
+      value: function saveVisualizedRegion() {
+        var _this3 = this;
+
+        if (this.isConservedRegionMode) {
+          var seqs = [];
+          each(this.inputJson["sequences"], function (val) {
+            var conservedSeq = getTrueArr(val.seq.split(""), _this3.conservedRegionBooleanArr);
+            var targetSeq = conservedSeq.slice(parseInt(_this3.alignmentPosition.start + 0.5), parseInt(_this3.alignmentPosition.end + 0.5)).join("");
+            seqs.push({
+              name: val.name,
+              seq: targetSeq
+            });
+          });
+          exportText(getAllSequenceAsFasta(seqs), "visualizedRegion_conserved_".concat(this.id, ".fas"));
+        } else {
+          var _seqs = [];
+          each(this.inputJson["sequences"], function (val) {
+            var targetSeq = val.seq.substr(parseInt(_this3.alignmentPosition.start + 0.5), parseInt(_this3.alignmentPosition.end + 0.5) - parseInt(_this3.alignmentPosition.start + 0.5));
+
+            _seqs.push({
+              name: val.name,
+              seq: targetSeq
+            });
+          });
+          exportText(getAllSequenceAsFasta(_seqs), "visualizedRegion_".concat(this.id, ".fas"));
+        }
       }
     }, {
       key: "_DOMcreate",
       value: function _DOMcreate() {
-        var _this3 = this;
+        var _this4 = this;
 
         this.options.sequence.width = this.width - this.options.label.width - this.options.label.left - this.options.sequence.left - this.options.sequence.right;
-        this.headerContainer = this.container.create("div").setID("".concat(this.options.id, "_header"));
-        /*   .style("height", this.options.header.height + "px")
-           .style("background-color", "green")
-           .html("Alignment Viewer Header");
-           */
+        this.headerContainer = this.container.create("div").setID("".concat(this.options.id, "_header")); //    .html("Alignment Viewer Header");
 
-        this.bodyContainer = this.container.create("div").setID("".concat(this.options.id, "_body")).style("position", "relative");
-        /*
-                this.labelContainer = this.bodyContainer.create("div")
-                    .setID(`${this.options.id}_label`)
-                    .style("position", "absolute")
-                    .style("height", `${this.canvasHeight}px`)
-                    .style("width", `${this.options.label.width}px`)
-                    .style("margin-left", `${this.options.label.left}px`)
-                    .style("margin-top", `${this.options.label.top}px`);
-          */
-
+        this.bodyContainer = this.container.create("div").setID("".concat(this.options.id, "_body")).style("position", "relative").setClass("d-flex flex-row");
         this.canvasContainer = this.bodyContainer.create("div").setID("".concat(this.options.id, "_canvasContainer")).style("position", "relative").style("height", "".concat(this.canvasHeight, "px"));
-        this.mainCanvas = this.canvasContainer.create("canvas").setID("".concat(this.options.id, "_canvas")).style("position", "absolute").style("left", this.options.label.width + this.options.label.left + this.options.sequence.left + "px").style("top", this.options.sequence.top + "px").attr("height", this.canvasHeight).attr("width", this.options.sequence.width);
+        this.labelContainer = this.bodyContainer.create("div").setID("".concat(this.options.id, "_label")) //.style("position", "absolute")
+        //.style("height", `${this.canvasHeight}px`)
+        //.style("width", `${this.options.label.width}px`)
+        .style("margin-left", "".concat(this.options.label.left, "px")).style("margin-top", this.options.label.top + this.options.scaleBar.height + "px");
+        this.mainCanvas = this.canvasContainer.create("canvas").setID("".concat(this.options.id, "_canvas")).style("position", "absolute").style("left", this.options.label.width + this.options.label.left + "px").style("top", this.options.sequence.top + "px").attr("height", this.canvasHeight).attr("width", this.width - this.options.label.width - this.options.label.left);
         this.mainCanvas.on("mousemove", function () {
           event.preventDefault();
 
-          if (_this3.isDragging) {
-            _this3._move(event.movementX);
+          if (_this4.isDragging) {
+            _this4._move(event.movementX / window.devicePixelRatio);
           }
         }).on("mousewheel", function () {
           event.preventDefault();
 
           if (event.deltaY > 0) {
-            _this3._zoomOut();
+            _this4._zoomOut();
           } else if (event.deltaY < 0) {
-            _this3._zoomIn();
+            _this4._zoomIn();
           }
         }).on("mousedown", function () {
           event.preventDefault(); // 0: left button, 1: wheel, 2: right
 
           if (event.button == 0) {
-            _this3.isDragging = true;
+            _this4.isDragging = true;
           }
         }).on("mouseup", function () {
           event.preventDefault(); // 0: left button, 1: wheel, 2: right
 
           if (event.button == 0) {
-            _this3.isDragging = false;
+            _this4.isDragging = false;
           }
         }).on("mouseout", function () {
-          _this3.isDragging = false;
+          _this4.isDragging = false;
         }).on("dblclick", function () {
-          _this3._zoomIn();
-        });
-        this.ctx = this.mainCanvas.elements[0].getContext("2d");
-        each(this.inputJson["sequences"], function (val) {
-          _this3._drawSequenceLabel(val);
+          _this4._resetZoom();
         });
       }
-    }, {
-      key: "_drawSequences",
-      value: function _drawSequences() {
-        var _this4 = this;
+      /*    _sortAlignments(newIndex, oldIndex) {
+              const target = this.orderedAlignments[oldIndex]
+              this.orderedAlignments.splice(oldIndex, 1);
+              this.orderedAlignments.splice(newIndex, 0, target);
+              this._drawSequences();
+          }
+      */
 
-        refreshCtx(this.ctx, this.options.sequence.width, this.canvasHeight);
-        var seqWidth = this.options.seqHeight - this.options.sequence.topMargin - this.options.sequence.bottomMargin;
-        initCtx(this.ctx, seqWidth);
-        each(this.inputJson["sequences"], function (val, i) {
-          _this4._drawSequence(val, i);
+    }, {
+      key: "_initHeader",
+      value: function _initHeader() {
+        if (this.options.header.enable) {
+          this.headerCanvas = this.headerContainer.style("position", "relative").style("height", this.options.header.height + 2 + "px").create("canvas").attr("height", this.options.header.height + 2 + "px").attr("width", this.width).style("position", "absolute");
+          this.headerCtx = this.headerCanvas.elements[0].getContext("2d");
+          this.options.header.left = this.options.sequence.left + this.options.label.width + this.options.label.left + this.options.label.right;
+        }
+      }
+    }, {
+      key: "_updateSortInfo",
+      value: function _updateSortInfo(sortable) {
+        var sortArr = sortable.toArray();
+        each(this.inputJson["sequences"], function (val) {
+          val.order = sortArr.indexOf(val.name);
         });
+        this.drawSequences();
+      }
+    }, {
+      key: "drawSequences",
+      value: function drawSequences() {
+        var _this5 = this;
+
+        clear(this.ctx, this.width, this.canvasHeight);
+        var seqWidth = this.options.seqHeight - this.options.sequence.topMargin - this.options.sequence.bottomMargin;
+        setLineWidth(this.ctx, seqWidth);
+        setTextAlign(this.ctx, "center");
+        each(this.inputJson["sequences"], function (val) {
+          _this5._drawSequence(val);
+        });
+
+        this._drawHighlightRect();
+
+        this._drawScaleBar();
+
+        this._drawHeader();
       }
     }, {
       key: "_drawSequence",
       value: function _drawSequence(alignment) {
-        var _this5 = this;
+        var _this6 = this;
 
-        var y = this.options.seqHeight * (alignment["order"] + 1) + this.options.sequence.topMargin;
-        var seq = alignment["seq"].substr(this.alignmentPosition.start, parseInt(this.alignmentPosition.end - this.alignmentPosition.start)).split("");
-        this.baseWidth = this.options.sequence.width / seq.length;
+        var seqWidth = this.options.seqHeight - this.options.sequence.topMargin - this.options.sequence.bottomMargin;
+        var y = this.options.scaleBar.height + this.options.seqHeight * (alignment.order + 1) + this.options.sequence.topMargin - seqWidth / 2;
+        var seq = [];
+
+        if (this.isConservedRegionMode) {
+          var conservedSeq = getTrueArr(alignment["seq"].split(""), this.conservedRegionBooleanArr);
+          seq = conservedSeq.slice(parseInt(this.alignmentPosition.start + 0.5), parseInt(this.alignmentPosition.end + 0.5));
+        } else {
+          seq = alignment["seq"].substr(parseInt(this.alignmentPosition.start + 0.5), parseInt(this.alignmentPosition.end + 0.5) - parseInt(this.alignmentPosition.start + 0.5)).split("");
+        }
+
+        if (seq.length == 0) return;
+        var seqLength = seq.length; //        if (seq.length < 10) seqLength = 10;
+
+        this.baseWidth = this.options.sequence.width / seqLength;
+        setFillStyle(this.ctx, "black");
+        this.ctx.font = this.options.sequence.fontSize + "px Arial serif";
 
         if (this.baseWidth < 10) {
           each(seq, function (val, i) {
-            drawLine(_this5.ctx, i * _this5.baseWidth, (i + 1) * _this5.baseWidth, y, y, PROTEIN_COL_V1[val]);
+            drawLine(_this6.ctx, _this6.options.sequence.left + i * _this6.baseWidth, _this6.options.sequence.left + (i + 1) * _this6.baseWidth, y, y, _this6.options.colorScheme[val]);
           });
         } else {
           each(seq, function (val, i) {
-            _this5.ctx.beginPath();
+            drawLine(_this6.ctx, _this6.options.sequence.left + i * _this6.baseWidth, _this6.options.sequence.left + (i + 1) * _this6.baseWidth, y, y, _this6.options.colorScheme[val]);
 
-            _this5.ctx.font = _this5.options.sequence.fontSize + "px Arial serif";
-
-            _this5.ctx.moveTo(i * _this5.baseWidth, y);
-
-            _this5.ctx.lineTo((i + 1) * _this5.baseWidth, y);
-
-            _this5.ctx.strokeStyle = PROTEIN_COL_V1[val];
-            _this5.ctx.fillStyle = "black";
-            _this5.ctx.textAlign = "center";
-
-            _this5.ctx.stroke();
-
-            _this5.ctx.fillText(val, i * _this5.baseWidth + _this5.baseWidth / 2, y + _this5.options.sequence.fontSize * 0.33);
+            _this6.ctx.fillText(val, _this6.options.sequence.left + i * _this6.baseWidth + _this6.baseWidth / 2, y + _this6.options.sequence.fontSize * 0.33);
           });
         }
       }
     }, {
       key: "_drawSequenceLabel",
-      value: function _drawSequenceLabel(alignment) {
-        var y = this.options.seqHeight * (alignment.order + 1) - this.options.label.fontSize / 2;
-        this.bodyContainer.create("div").style("position", "absolute").style("top", y + "px").style("font-size", this.options.label.fontSize + "px").style("color", this.group[alignment["group"]].col).html(alignment.name + "_" + alignment["group"]);
+      value: function _drawSequenceLabel() {
+        var _this7 = this;
+
+        each(this.orderedAlignments, function (alignment, i) {
+          var y = _this7.options.seqHeight * (i + 1);
+          _this7.labelDiv = _this7.labelContainer.create("div") //.style("position", "absolute")
+          //.style("top", y + "px")
+          .attr("data-id", alignment.name).style("font-size", _this7.options.label.fontSize + "px").style("color", _this7.group[alignment["group"]].col).style("height", _this7.options.seqHeight + "px");
+
+          var label_p = _this7.labelDiv.create("p").style("margin", "0").style("height", _this7.options.seqHeight + "px");
+
+          label_p.create("span").setClass("handle fas fa-expand-arrows-alt").html(" ");
+          label_p.elements[0].innerHTML += alignment.name + "_" + alignment["group"];
+        });
       }
+    }, {
+      key: "_drawHighlightRect",
+      value: function _drawHighlightRect() {
+        var _this8 = this;
+
+        each(this.highlightedIndicies, function (val) {
+          var i = val.index;
+          var y = _this8.options.scaleBar.height + _this8.options.seqHeight * i + _this8.options.sequence.topMargin;
+          drawRect(_this8.ctx, _this8.options.sequence.left, y, _this8.options.sequence.width, _this8.options.seqHeight, "red", 3);
+        });
+      }
+    }, {
+      key: "_drawScaleBar",
+      value: function _drawScaleBar() {
+        if (this.options.scaleBar.enable) {
+          setLineWidth(this.ctx, 1.5);
+          var s = this.alignmentPosition.start;
+          var e = this.alignmentPosition.end;
+          var size = e - s;
+          var numBreaks = this.options.sequence.width > 500 ? 10 : 5;
+          var stepSize = parseInt(size / numBreaks);
+          numBreaks = parseInt(size / stepSize);
+
+          if (size < 30 && this.baseWidth > 20) {
+            numBreaks = size;
+            stepSize = 1;
+          }
+
+          var startX = this.options.sequence.left;
+          var startY = this.options.scaleBar.height - this.options.scaleBar.fontSize / 2;
+
+          for (var i = 0; i < numBreaks; i++) {
+            startX = this.options.sequence.left + i * stepSize * this.baseWidth + this.baseWidth / 2;
+            drawTxt(this.ctx, parseInt(s + i * stepSize + 0.5 + 1), startX, startY, this.options.scaleBar.fontSize + "px Arial serif");
+            drawLine(this.ctx, startX, startX, this.options.scaleBar.height, startY + 1, "grey");
+          }
+
+          if (stepSize !== 1) {
+            startX = this.options.sequence.left + parseInt(size + 0.5) * this.baseWidth - this.baseWidth / 2;
+            drawTxt(this.ctx, parseInt(e), startX, startY, this.options.scaleBar.fontSize + "px Arial serif");
+            drawLine(this.ctx, startX, startX, this.options.scaleBar.height, startY + 1, "grey");
+          }
+        }
+      }
+    }, {
+      key: "_drawHeader",
+      value: function _drawHeader() {
+        if (this.options.header.enable) {
+          var leftMergin = 10;
+          clear(this.headerCtx, this.width, this.options.header.height);
+
+          this._drawNonGrapRate();
+
+          this._drawSeqLogo();
+
+          setLineWidth(this.headerCtx, 1);
+          setStrokeStyle(this.headerCtx, "black");
+          var startX = this.options.header.left;
+          var startY = this.options.header.top;
+          drawLine(this.headerCtx, startX - leftMergin, startX - leftMergin, this.options.header.height + 1, startY);
+          drawLine(this.headerCtx, this.width - 1, this.width - 1, this.options.header.height + 1, startY);
+          drawLine(this.headerCtx, startX - leftMergin, this.width, startY, startY);
+          drawLine(this.headerCtx, startX - leftMergin, this.width, this.options.header.height + 1, this.options.header.height + 1);
+        }
+      }
+    }, {
+      key: "_drawSeqLogo",
+      value: function _drawSeqLogo() {
+        var _this9 = this;
+
+        if (this.options.seqLogo.enable && this.baseWidth > 10) {
+          // draw Y axis
+          setTextAlign(this.headerCtx, "center");
+          setFillStyle(this.headerCtx, "black");
+          this.headerCtx.rotate(Math.PI * 3 / 2);
+          drawTxt(this.headerCtx, "bits", -(this.options.header.height / 2), this.options.header.left - 35, "14px sans-serif");
+          this.headerCtx.rotate(Math.PI * 1 / 2);
+          setTextAlign(this.headerCtx, "right");
+          drawTxt(this.headerCtx, "0", this.options.header.left - 14, this.options.header.height, "12px sans-serif");
+          drawTxt(this.headerCtx, "4.5", this.options.header.left - 14, this.options.header.top + 6, "12px sans-serif");
+          setLineWidth(this.headerCtx, 1);
+          setTextAlign(this.headerCtx, "center");
+          this.headerCtx.font = '900 ' + 30 * (this.options.header.height - this.options.header.top) / 100 + 'px "Arial Black", Arial, Gadget, sans-serif';
+          var maxVal = Math.log2(22);
+          var logoHeight = this.options.header.height - this.options.header.top - 1;
+          var baseHeight = logoHeight / maxVal;
+          var startX = this.options.header.left;
+          var startY = this.options.header.top + 1;
+          var wSize = this.baseWidth;
+          var entropies = [];
+
+          if (this.isConservedRegionMode) {
+            entropies = getTrueArr(this.shannonEntropyArr, this.conservedRegionBooleanArr);
+          } else {
+            entropies = this.shannonEntropyArr;
+          }
+
+          each(entropies, function (site, i) {
+            if (i >= parseInt(_this9.alignmentPosition.start + 0.5) && i <= parseInt(_this9.alignmentPosition.end + 0.5 - 1)) {
+              var buf = filterAndSortEntroy(site);
+              var preHeight = logoHeight * (1 - buf["sum"] / maxVal);
+              each(buf["res"], function (val) {
+                var text = val.name.replace("-", "\\");
+                var height = logoHeight * val.value / maxVal;
+                var hRate = height / baseHeight;
+
+                _this9.headerCtx.transform(1, 0, 0, hRate, startX + wSize / 2 + wSize * (i - parseInt(_this9.alignmentPosition.start + 0.5)), startY + height + preHeight);
+
+                _this9.headerCtx.fillStyle = TAYLOR_COLOR[text];
+
+                _this9.headerCtx.fillText(text, 0, 0, wSize);
+
+                _this9.headerCtx.setTransform(1, 0, 0, 1, 0, 0);
+
+                preHeight = height + preHeight;
+              });
+            }
+          });
+        }
+      }
+      /**
+       *  draw 1 - gap rate
+       */
+
+    }, {
+      key: "_drawNonGrapRate",
+      value: function _drawNonGrapRate() {
+        var _this10 = this;
+
+        if (this.options.nonGapRate.enable && this.baseWidth <= 10 && !this.isConservedRegionMode) {
+          setTextAlign(this.headerCtx, "center");
+          setFillStyle(this.headerCtx, "black"); // draw Y axis
+
+          this.headerCtx.rotate(Math.PI * 3 / 2);
+          drawTxt(this.headerCtx, "1 - gap rate", -(this.options.header.height / 2), this.options.header.left - 35, "14px sans-serif");
+          this.headerCtx.rotate(Math.PI * 1 / 2);
+          setTextAlign(this.headerCtx, "right");
+          drawTxt(this.headerCtx, "0", this.options.header.left - 14, this.options.header.height, "12px sans-serif");
+          drawTxt(this.headerCtx, "1", this.options.header.left - 14, this.options.header.top + 6, "12px sans-serif");
+          setTextAlign(this.headerCtx, "center");
+          setLineWidth(this.headerCtx, this.baseWidth);
+          var bottomLineY = this.options.header.height;
+          var maxVal = this.options.header.height - this.options.header.top - 1;
+          each(this.gapRate, function (val, i) {
+            if (i >= parseInt(_this10.alignmentPosition.start + 0.5) && i <= parseInt(_this10.alignmentPosition.end + 0.5 - 1)) {
+              var x = _this10.options.header.left + (i - parseInt(_this10.alignmentPosition.start + 0.5)) * _this10.baseWidth + _this10.baseWidth * 0.5;
+              drawLine(_this10.headerCtx, x, x, bottomLineY, bottomLineY - maxVal * (1 - val), 1 - val >= _this10.options.nonGapRate.th ? _this10.options.nonGapRate.highColor : _this10.options.nonGapRate.baseColor);
+            }
+          });
+        }
+      } // zoom functions
+
     }, {
       key: "_zoomIn",
       value: function _zoomIn() {
-        var zoomSize = 5;
+        var zoomSize = this.baseWidth < 5 ? 20 : this.baseWidth < 10 ? 10 : 5;
 
         if (this.alignmentPosition.end - this.alignmentPosition.start > 30) {
           this.alignmentPosition.start += zoomSize;
           this.alignmentPosition.end -= zoomSize;
+          this.drawSequences();
+        } else if (this.alignmentPosition.end - this.alignmentPosition.start > 10) {
+          this.alignmentPosition.start += 2;
+          this.alignmentPosition.end -= 2;
+          this.drawSequences();
+        } else if (this.alignmentPosition.end - this.alignmentPosition.start > 2) {
+          this.alignmentPosition.start += 1;
+          this.alignmentPosition.end -= 1;
+          this.drawSequences();
         }
-
-        this._drawSequences();
       }
     }, {
       key: "_zoomOut",
       value: function _zoomOut() {
-        var zoomSize = 5;
-        if (this.alignmentPosition.start == 0 && this.alignmentPosition.end == this.alignmentPosition.size) return;
-        this.alignmentPosition.start -= zoomSize;
-        this.alignmentPosition.end += zoomSize;
+        if (this.alignmentPosition.end - this.alignmentPosition.start < 30) {
+          this.alignmentPosition.start -= 2;
+          this.alignmentPosition.end += 2;
+        } else {
+          var zoomSize = this.baseWidth < 5 ? 20 : this.baseWidth < 10 ? 10 : 5;
+          if (this.alignmentPosition.start == 0 && this.alignmentPosition.end == this.alignmentPosition.size) return;
+          this.alignmentPosition.start -= zoomSize;
+          this.alignmentPosition.end += zoomSize;
 
-        if (this.alignmentPosition.start < 0) {
-          this.alignmentPosition.start = 0;
+          if (this.alignmentPosition.start < 0) {
+            this.alignmentPosition.start = 0;
+          }
+
+          if (this.alignmentPosition.end > this.alignmentPosition.size) {
+            this.alignmentPosition.end = this.alignmentPosition.size;
+          }
         }
 
-        if (this.alignmentPosition.end > this.alignmentPosition.size) {
-          this.alignmentPosition.end = this.alignmentPosition.size;
-        }
-
-        this._drawSequences();
+        this.drawSequences();
       }
     }, {
       key: "_move",
       value: function _move(x) {
-        var moveSize = 10;
+        if (x === 0) return;
+        var moveSize = x / this.baseWidth;
+        this.alignmentPosition.start -= moveSize;
+        this.alignmentPosition.end -= moveSize;
 
-        if (x > 10) {
-          moveSize = 10;
-        } else {
-          moveSize = 5;
-        }
-
-        if (x < 0) {
+        if (this.alignmentPosition.end > this.alignmentPosition.size) {
           this.alignmentPosition.start += moveSize;
-          this.alignmentPosition.end += moveSize;
-
-          if (this.alignmentPosition.end > this.alignmentPosition.size) {
-            var diff = this.alignmentPosition.end - this.alignmentPosition.size;
-            this.alignmentPosition.start -= diff;
-            this.alignmentPosition.end -= diff;
-          }
-        } else {
-          this.alignmentPosition.start -= moveSize;
-          this.alignmentPosition.end -= moveSize;
-
-          if (this.alignmentPosition.start < 0) {
-            this.alignmentPosition.start = 0;
-            this.alignmentPosition.end += moveSize;
-          }
+          this.alignmentPosition.end = this.alignmentPosition.size;
         }
 
-        this._drawSequences();
+        if (this.alignmentPosition.start < 0) {
+          this.alignmentPosition.start = 0;
+          this.alignmentPosition.end += moveSize;
+        }
+
+        if (parseInt(this.alignmentPosition.start + 0.5) !== parseInt(this.alignmentPosition.preStart + 0.5) || parseInt(this.alignmentPosition.end - this.alignmentPosition.start + 0.5) !== parseInt(this.alignmentPosition.preEnd - this.alignmentPosition.preStart + 0.5)) {
+          this.alignmentPosition.preStart = this.alignmentPosition.start;
+          this.alignmentPosition.preEnd = this.alignmentPosition.end;
+          this.drawSequences();
+        }
+      }
+    }, {
+      key: "_resetZoom",
+      value: function _resetZoom() {
+        this.alignmentPosition.preStart = this.alignmentPosition.start;
+        this.alignmentPosition.preEnd = this.alignmentPosition.end;
+        this.alignmentPosition.start = 0;
+        this.alignmentPosition.end = this.alignmentPosition.size;
+        this.drawSequences();
       }
     }]);
 
@@ -876,17 +1451,34 @@ var bio = (function (exports) {
   }(Viewer);
 
   exports.Alignment = Alignment;
+  exports.CLUSTAL2_COLOR = CLUSTAL2_COLOR;
   exports.COLER_ARR = COLER_ARR;
-  exports.GraphicBase = GraphicBase;
   exports.PROTEIN_COL_V1 = PROTEIN_COL_V1;
+  exports.STRAND_COLOR = STRAND_COLOR;
+  exports.TAYLOR_COLOR = TAYLOR_COLOR;
+  exports.calcGapRate = calcGapRate;
+  exports.calcShannonEntropy = calcShannonEntropy;
+  exports.conservedRegionLength = conservedRegionLength;
+  exports.countBy = countBy;
   exports.each = each;
-  exports.func = func;
+  exports.exportJson = exportJson;
+  exports.exportSVG = exportSVG;
+  exports.exportText = exportText;
+  exports.filterAndSortEntroy = filterAndSortEntroy;
+  exports.generateLink = generateLink;
+  exports.getAllSequenceAsFasta = getAllSequenceAsFasta;
   exports.getColors = getColors;
+  exports.getConservedRegionAsFasta = getConservedRegionAsFasta;
+  exports.getTrueArr = getTrueArr;
+  exports.groupBy = groupBy;
+  exports.indexBy = indexBy;
+  exports.isConservedRegoin = isConservedRegoin;
   exports.json = json;
   exports.select = select;
   exports.selectAll = selectAll;
   exports.selectClass = selectClass;
   exports.selectID = selectID;
+  exports.seqStat = seqStat;
   exports.text = text;
 
   return exports;

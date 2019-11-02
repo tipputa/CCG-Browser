@@ -35,3 +35,6 @@ app_elem.create("div")
 bio.each(["1", "2"], (val, id, arr) => {
     console.log(`${val} of ${id} in ${arr}`);
 });
+
+
+new Sortable(bio.selectID("list").elements[0]);

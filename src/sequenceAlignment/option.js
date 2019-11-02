@@ -1,3 +1,4 @@
+import * as col from "../utils/color"
 const size = {
     width: 0,
     height: 0,
@@ -15,29 +16,51 @@ export const options = {
     setSize: false,
     height: 600,
     width: 600,
-    seqHeight: 12,
+    seqHeight: 25,
     isGrouping: true,
+    colorScheme: col.TAYLOR_COLOR,
     header: {
         ...size,
         ...font,
-        height: 50
+        height: 100,
+        top: 10,
+        enable: true,
+    },
+    seqLogo: {
+        enable: true,
+    },
+    nonGapRate: {
+        enable: true,
+        left: 10,
+        top: 10,
+        bottom: 0,
+        baseColor: "rgb(120,120,120)",
+        highColor: "rgb(30, 30, 250)",
+        th: 1,
     },
     label: {
         ...size,
         ...font,
-        fontSize: 9,
+        fontSize: 13,
         left: 10,
         top: 0,
-        width: 200
+        width: 300
     },
     sequence: {
         ...size,
         ...font,
-        fontSize: 9,
+        fontSize: 12,
         left: 10,
-        top: 3,
+        right: 10,
+        top: 0,
         width: 480,
         topMargin: 0,
         bottomMargin: 0
+    },
+    scaleBar: {
+        ...font,
+        fontSize: 13,
+        height: 40,
+        enable: true,
     }
 }

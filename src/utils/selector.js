@@ -27,7 +27,7 @@ class Selector {
         _.each(this.elements, (el) => {
             const newEle = document.createElement(elementName);
             el.appendChild(newEle);
-            elements.push(el.lastElementChild);
+            elements.push(newEle);
         });
         return new Selector(elements);
     }
