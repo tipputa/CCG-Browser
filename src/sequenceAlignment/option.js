@@ -11,6 +11,7 @@ const size = {
 const font = {
     fontSize: 13
 }
+
 export const options = {
     id: "def",
     setSize: false,

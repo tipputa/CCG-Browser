@@ -81,19 +81,18 @@ def sortAndConvert2Index(series):
     
 def main(dir, tag, gap):
     os.chdir(dir)
-    isCreateGbSummary = True    
+    isCreateGbSummary = False    
     isHp72 = False
 
     locusTag_fName = "LocusTag_minus" + str(gap) + ".tsv"
     single_locusTag_fName = "SingleCopy_AlmostConserved_LocusTag_minus" + str(gap) + ".tsv"
     remain_locusTag_fName = "Remaining_LocusTag_minus" + str(gap) + ".tsv"
-    gene_order_fName = "gene_order_Hp73.txt"
-    gene_order_rm_fName = "gene_order_" + tag + ".txt"
-    reorders_fName = "reorder_info.tsv"
-    accID_genomeSize_fName = "AccID_GenomeSize.tsv"    
+    gene_order_fName = "gene_order_" + tag + ".txt"
+    gene_order_rm_fName = "gene_order_removed_" + tag + ".txt"
+    reorders_fName = "reorder_info_" + tag + ".tsv"
     
     gbDir = dir + "/gb/"    
-    gbSummary_fName = dir + "/gbSummary.tsv" 
+    gbSummary_fName = dir + "/gb_summary.tsv" 
     if(isCreateGbSummary):
         createCsvFromGenBank(gbDir, gbSummary_fName)    
 
@@ -101,7 +100,6 @@ def main(dir, tag, gap):
 
     ortholog_group_file = "./ortholog_groups/ortholog_groups.tsv"
     ortholog_group_df = pd.read_csv(ortholog_group_file, sep="\t")
-
 
     # df have 4 additional columns and 2 * genomes
     numCol = len(ortholog_group_df.columns)
@@ -113,6 +111,7 @@ def main(dir, tag, gap):
     ortholog_group_tag = ortholog_group_df.iloc[:, is_locusTag]
 
     # get single copy genes and conserved genes
+    gap = 5
     isSingle = ortholog_group_df.apply(get_single_copy_genes, axis=1, args = (numGenomes-gap,))
 
     singleCopyOrhologGroup =  ortholog_group_tag[isSingle]
@@ -171,7 +170,11 @@ def main(dir, tag, gap):
         singleCopyOrhologIndex_Removed.to_csv(gene_order_rm_fName, sep="\t", index=None, header=None)
 
     else:
-        singleCopyOrhologStartPositionSorted = singleCopyOrhologStartPosition
+        # count NaN
+        df_bool = (singleCopyOrhologStartPosition.isna())
+        df_count_nan = df_bool.sum()
+        acc = (df_count_nan[df_count_nan==df_count_nan.min()]).index[0] # one of strains keeping max number of genes
+        singleCopyOrhologStartPositionSorted = singleCopyOrhologStartPosition.sort_values(by=acc)
         # save index
         first_sorted_index_target = singleCopyOrhologStartPositionSorted.index.to_series()
         first_sorted_index_target.index = range(len(first_sorted_index_target))
@@ -188,11 +191,12 @@ def main(dir, tag, gap):
 
         
 if __name__ == '__main__':
-    dir="G:/マイドライブ/1_study/6_pylori/test5sp"
+    #dir="G:/マイドライブ/1_study/6_pylori/test5sp"
     #dir="G:/マイドライブ/1_study/6_pylori/Hp73"
     #dir="G:/マイドライブ/1_study/6_pylori/NAG"
     #dir="G:/マイドライブ/1_study/6_pylori/others"
-    tag = "test5sp"   
-    gap = 0
+    dir="G:/マイドライブ/1_study/6_pylori/HpGP/all"
+    tag = "HpGP"
+    gap=10
 
     main(dir, tag, gap)

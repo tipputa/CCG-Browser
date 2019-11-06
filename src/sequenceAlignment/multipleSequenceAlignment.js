@@ -1,7 +1,4 @@
 import {
-    Viewer
-} from "../common/viewer";
-import {
     options
 } from "./option";
 import * as drawer from "../utils/canvas"
@@ -45,9 +42,13 @@ const getGroup = (dicArr) => {
 
 
 
-export class Alignment extends Viewer {
+export class Alignment {
     constructor(id, opt) {
-        super();
+        this.height = 500;
+        this.width = 500;
+        this.mainCanvas = null;
+        this.isDragging = false;
+
         this.id = id;
         this.container = null;
         this.inputJson = null;

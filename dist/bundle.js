@@ -86,53 +86,6 @@ var bio = (function (exports) {
     return target;
   }
 
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function");
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) _setPrototypeOf(subClass, superClass);
-  }
-
-  function _getPrototypeOf(o) {
-    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-      return o.__proto__ || Object.getPrototypeOf(o);
-    };
-    return _getPrototypeOf(o);
-  }
-
-  function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-
-    return _setPrototypeOf(o, p);
-  }
-
-  function _assertThisInitialized(self) {
-    if (self === void 0) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return self;
-  }
-
-  function _possibleConstructorReturn(self, call) {
-    if (call && (typeof call === "object" || typeof call === "function")) {
-      return call;
-    }
-
-    return _assertThisInitialized(self);
-  }
-
   // almost same functions as underscore.js
   // ref: https: //underscorejs.org/docs/underscore.html
   var ObjProto = Object.prototype,
@@ -202,7 +155,7 @@ var bio = (function (exports) {
     return keys;
   };
 
-  var each = function each(obj, iteratee, context) {
+  var each$1 = function each(obj, iteratee, context) {
     iteratee = optimizeCb(iteratee, context);
     var i, length;
 
@@ -225,7 +178,7 @@ var bio = (function (exports) {
     return function (obj, iteratee, context) {
       var result = partition ? [[], []] : {};
       iteratee = optimizeCb(iteratee, context);
-      each(obj, function (value, index) {
+      each$1(obj, function (value, index) {
         var key = iteratee(value, index, obj);
         behavior(result, value, key);
       });
@@ -254,20 +207,20 @@ var bio = (function (exports) {
 
     var others = function others(seq) {
       var seqArr = seq.split("");
-      each(seqArr, function (val, i) {
+      each$1(seqArr, function (val, i) {
         if (val in results[i]) results[i][val]++;else results[i][val] = 1;
       });
     };
 
     init(seqs[0].seq.length);
-    each(seqs, function (val) {
+    each$1(seqs, function (val) {
       others(val.seq);
     });
     return results;
   };
   var isConservedRegoin = function isConservedRegoin(seqArr) {
     var conserved = [];
-    each(seqArr, function (val) {
+    each$1(seqArr, function (val) {
       if (val.hasOwnProperty("-")) {
         conserved.push(false);
       } else {
@@ -278,7 +231,7 @@ var bio = (function (exports) {
   };
   var conservedRegionLength = function conservedRegionLength(seqArr) {
     var counter = 0;
-    each(seqArr, function (val) {
+    each$1(seqArr, function (val) {
       if (!val.hasOwnProperty("-")) {
         counter++;
       }
@@ -287,7 +240,7 @@ var bio = (function (exports) {
   };
   var calcGapRate = function calcGapRate(seqArr, numSeq) {
     var res = [];
-    each(seqArr, function (val) {
+    each$1(seqArr, function (val) {
       if (val.hasOwnProperty("-")) {
         res.push(val["-"] / numSeq);
       } else res.push(0);
@@ -296,16 +249,16 @@ var bio = (function (exports) {
   };
   var calcShannonEntropy = function calcShannonEntropy(seqArr, numSeq) {
     var results = [];
-    each(seqArr, function (seqs) {
+    each$1(seqArr, function (seqs) {
       var res = {};
       var s = 0;
-      each(seqs, function (val, key) {
+      each$1(seqs, function (val, key) {
         var v = -1 * val / numSeq * Math.log2(val / numSeq);
         res[key] = v;
         s += v;
       });
       res["Entropy"] = Math.log2(22) - s;
-      each(res, function (val, key) {
+      each$1(res, function (val, key) {
         if (key !== "Entropy") {
           res[key] = res["Entropy"] * seqs[key] / numSeq;
         }
@@ -323,7 +276,7 @@ var bio = (function (exports) {
     var res = [];
     var buf = {};
     var s = 0;
-    each(entropyArr, function (val, key) {
+    each$1(entropyArr, function (val, key) {
       if (val > 0.1 && key !== "Entropy") {
         res.push({
           name: key,
@@ -347,14 +300,14 @@ var bio = (function (exports) {
       return res;
     }
 
-    each(resourceArr, function (val, i) {
+    each$1(resourceArr, function (val, i) {
       if (booleanArr[i]) res.push(val);
     });
     return res;
   };
   var getAllSequenceAsFasta = function getAllSequenceAsFasta(sequenceObj) {
     var ret = [];
-    each(sequenceObj, function (val) {
+    each$1(sequenceObj, function (val) {
       ret.push(">" + val.name);
       ret.push(val.seq);
     });
@@ -363,7 +316,7 @@ var bio = (function (exports) {
   };
   var getConservedRegionAsFasta = function getConservedRegionAsFasta(sequenceObj, booleanArr) {
     var ret = [];
-    each(sequenceObj, function (val) {
+    each$1(sequenceObj, function (val) {
       var seqArr = getTrueArr(val.seq.split(""), booleanArr);
       ret.push(">" + val.name);
       ret.push(seqArr.join(""));
@@ -394,7 +347,7 @@ var bio = (function (exports) {
 
         var capture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
-        each(this.elements, function (el) {
+        each$1(this.elements, function (el) {
           el.addEventListener(eventType, function () {
             var rect = el.getBoundingClientRect();
             _this.mouse = [event.clientX - rect.left - el.clientLeft, event.clientY - rect.top - el.clientTop];
@@ -410,7 +363,7 @@ var bio = (function (exports) {
       value: function create(elementName) {
         var elements = [];
 
-        each(this.elements, function (el) {
+        each$1(this.elements, function (el) {
           var newEle = document.createElement(elementName);
           el.appendChild(newEle);
           elements.push(newEle);
@@ -421,7 +374,7 @@ var bio = (function (exports) {
     }, {
       key: "style",
       value: function style(stylName, styleValue) {
-        each(this.elements, function (el) {
+        each$1(this.elements, function (el) {
           el.style.setProperty(stylName, styleValue);
         });
 
@@ -430,7 +383,7 @@ var bio = (function (exports) {
     }, {
       key: "attr",
       value: function attr(attrName, attrValue) {
-        each(this.elements, function (el) {
+        each$1(this.elements, function (el) {
           el.setAttribute(attrName, attrValue);
         });
 
@@ -451,11 +404,11 @@ var bio = (function (exports) {
       value: function html(text) {
         if (arguments.length == 1) {
           if (text) {
-            each(this.elements, function (el) {
+            each$1(this.elements, function (el) {
               el.textContent = text;
             });
           } else {
-            each(this.elements, function (el) {
+            each$1(this.elements, function (el) {
               el.textContent = text;
             });
 
@@ -464,7 +417,7 @@ var bio = (function (exports) {
         } else {
           var res = [];
 
-          each(this.elements, function (el) {
+          each$1(this.elements, function (el) {
             res.push(el.textContent);
           });
 
@@ -740,15 +693,6 @@ var bio = (function (exports) {
     generateLink(fileName, url).click();
   };
 
-  var Viewer = function Viewer() {
-    _classCallCheck(this, Viewer);
-
-    this.height = 500;
-    this.width = 500;
-    this.mainCanvas = null;
-    this.isDragging = false;
-  };
-
   var size = {
     width: 0,
     height: 0,
@@ -807,6 +751,7 @@ var bio = (function (exports) {
     })
   };
 
+  var deg90 = Math.PI / 2;
   var setLineWidth = function setLineWidth(ctx, lineWidth) {
     ctx.lineWidth = lineWidth;
   };
@@ -831,6 +776,13 @@ var bio = (function (exports) {
     ctx.strokeStyle = strokeStyle;
     ctx.lineWidth = lineWidth;
     ctx.strokeRect(x, y, width, height);
+  };
+  var drawArc = function drawArc(ctx, x, y, r, startRad, endRad, angle) {
+    var val = angle < 0 ? "rgba(200,200,200)" : COLER_ARR[angle];
+    ctx.beginPath();
+    ctx.arc(x, y, r, startRad - deg90, endRad - deg90);
+    ctx.strokeStyle = val;
+    ctx.stroke();
   };
   var drawTxt = function drawTxt(ctx, text, x, y, font) {
     ctx.font = font;
@@ -870,7 +822,7 @@ var bio = (function (exports) {
   var getGroup = function getGroup(dicArr) {
     var _group = {};
     var counter = 0;
-    each(dicArr, function (val, i, arr) {
+    each$1(dicArr, function (val, i, arr) {
       if (val["group"] in _group) {
         _group[val["group"]].count++;
 
@@ -888,45 +840,43 @@ var bio = (function (exports) {
 
   var Alignment =
   /*#__PURE__*/
-  function (_Viewer) {
-    _inherits(Alignment, _Viewer);
-
+  function () {
     function Alignment(id, opt) {
-      var _this;
-
       _classCallCheck(this, Alignment);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Alignment).call(this));
-      _this.id = id;
-      _this.container = null;
-      _this.inputJson = null;
-      _this.options = _objectSpread2({}, options, {}, opt);
-      _this.numSeq = 0;
-      _this.group = null;
-      _this.canvasHeight = 0;
-      _this.headerContainer = null;
-      _this.bodyContainer = null;
-      _this.labelContainer = null;
-      _this.labelDiv = null;
-      _this.canvasContainer = null;
-      _this.ctx = null;
-      _this.alignmentPosition = null;
-      _this.baseWidth = 0;
-      _this.seqLength = 0; // sortable and highlight
+      this.height = 500;
+      this.width = 500;
+      this.mainCanvas = null;
+      this.isDragging = false;
+      this.id = id;
+      this.container = null;
+      this.inputJson = null;
+      this.options = _objectSpread2({}, options, {}, opt);
+      this.numSeq = 0;
+      this.group = null;
+      this.canvasHeight = 0;
+      this.headerContainer = null;
+      this.bodyContainer = null;
+      this.labelContainer = null;
+      this.labelDiv = null;
+      this.canvasContainer = null;
+      this.ctx = null;
+      this.alignmentPosition = null;
+      this.baseWidth = 0;
+      this.seqLength = 0; // sortable and highlight
 
-      _this.orderedAlignments = null;
-      _this.highlightedIndicies = null; // conserved region mode
+      this.orderedAlignments = null;
+      this.highlightedIndicies = null; // conserved region mode
 
-      _this.isConservedRegionMode = false;
-      _this.conservedRegionBooleanArr = null;
-      _this.conservedRegionLength = 0; // seqLog & 1 - gapRate
+      this.isConservedRegionMode = false;
+      this.conservedRegionBooleanArr = null;
+      this.conservedRegionLength = 0; // seqLog & 1 - gapRate
 
-      _this.headerCanvas = null;
-      _this.headerCtx = null;
-      _this.seqStat = null;
-      _this.gapRate = null;
-      _this.shannonEntropyArr = null;
-      return _this;
+      this.headerCanvas = null;
+      this.headerCtx = null;
+      this.seqStat = null;
+      this.gapRate = null;
+      this.shannonEntropyArr = null;
     }
     /**
      * 
@@ -956,7 +906,7 @@ var bio = (function (exports) {
     }, {
       key: "setJson",
       value: function setJson(json) {
-        var _this2 = this;
+        var _this = this;
 
         this.inputJson = json;
         this.numSeq = json["sequences"].length;
@@ -971,26 +921,26 @@ var bio = (function (exports) {
 
         if (this.options.isGrouping) {
           (function () {
-            _this2.group = getGroup(_this2.inputJson["sequences"]);
+            _this.group = getGroup(_this.inputJson["sequences"]);
             var counter = 0;
 
             var _loop = function _loop(key) {
-              each(_this2.inputJson["sequences"], function (val) {
+              each$1(_this.inputJson["sequences"], function (val) {
                 if (val.group === key) {
                   val.order = counter++;
                 }
               });
             };
 
-            for (var key in _this2.group) {
+            for (var key in _this.group) {
               _loop(key);
             }
           })();
         }
 
         this.orderedAlignments = new Array(this.inputJson["sequences"].length);
-        each(this.inputJson["sequences"], function (alignment) {
-          _this2.orderedAlignments[alignment.order] = alignment;
+        each$1(this.inputJson["sequences"], function (alignment) {
+          _this.orderedAlignments[alignment.order] = alignment;
         });
       }
     }, {
@@ -1048,13 +998,13 @@ var bio = (function (exports) {
     }, {
       key: "saveVisualizedRegion",
       value: function saveVisualizedRegion() {
-        var _this3 = this;
+        var _this2 = this;
 
         if (this.isConservedRegionMode) {
           var seqs = [];
-          each(this.inputJson["sequences"], function (val) {
-            var conservedSeq = getTrueArr(val.seq.split(""), _this3.conservedRegionBooleanArr);
-            var targetSeq = conservedSeq.slice(parseInt(_this3.alignmentPosition.start + 0.5), parseInt(_this3.alignmentPosition.end + 0.5)).join("");
+          each$1(this.inputJson["sequences"], function (val) {
+            var conservedSeq = getTrueArr(val.seq.split(""), _this2.conservedRegionBooleanArr);
+            var targetSeq = conservedSeq.slice(parseInt(_this2.alignmentPosition.start + 0.5), parseInt(_this2.alignmentPosition.end + 0.5)).join("");
             seqs.push({
               name: val.name,
               seq: targetSeq
@@ -1063,8 +1013,8 @@ var bio = (function (exports) {
           exportText(getAllSequenceAsFasta(seqs), "visualizedRegion_conserved_".concat(this.id, ".fas"));
         } else {
           var _seqs = [];
-          each(this.inputJson["sequences"], function (val) {
-            var targetSeq = val.seq.substr(parseInt(_this3.alignmentPosition.start + 0.5), parseInt(_this3.alignmentPosition.end + 0.5) - parseInt(_this3.alignmentPosition.start + 0.5));
+          each$1(this.inputJson["sequences"], function (val) {
+            var targetSeq = val.seq.substr(parseInt(_this2.alignmentPosition.start + 0.5), parseInt(_this2.alignmentPosition.end + 0.5) - parseInt(_this2.alignmentPosition.start + 0.5));
 
             _seqs.push({
               name: val.name,
@@ -1077,7 +1027,7 @@ var bio = (function (exports) {
     }, {
       key: "_DOMcreate",
       value: function _DOMcreate() {
-        var _this4 = this;
+        var _this3 = this;
 
         this.options.sequence.width = this.width - this.options.label.width - this.options.label.left - this.options.sequence.left - this.options.sequence.right;
         this.headerContainer = this.container.create("div").setID("".concat(this.options.id, "_header")); //    .html("Alignment Viewer Header");
@@ -1092,33 +1042,33 @@ var bio = (function (exports) {
         this.mainCanvas.on("mousemove", function () {
           event.preventDefault();
 
-          if (_this4.isDragging) {
-            _this4._move(event.movementX / window.devicePixelRatio);
+          if (_this3.isDragging) {
+            _this3._move(event.movementX / window.devicePixelRatio);
           }
         }).on("mousewheel", function () {
           event.preventDefault();
 
           if (event.deltaY > 0) {
-            _this4._zoomOut();
+            _this3._zoomOut();
           } else if (event.deltaY < 0) {
-            _this4._zoomIn();
+            _this3._zoomIn();
           }
         }).on("mousedown", function () {
           event.preventDefault(); // 0: left button, 1: wheel, 2: right
 
           if (event.button == 0) {
-            _this4.isDragging = true;
+            _this3.isDragging = true;
           }
         }).on("mouseup", function () {
           event.preventDefault(); // 0: left button, 1: wheel, 2: right
 
           if (event.button == 0) {
-            _this4.isDragging = false;
+            _this3.isDragging = false;
           }
         }).on("mouseout", function () {
-          _this4.isDragging = false;
+          _this3.isDragging = false;
         }).on("dblclick", function () {
-          _this4._resetZoom();
+          _this3._resetZoom();
         });
       }
       /*    _sortAlignments(newIndex, oldIndex) {
@@ -1142,7 +1092,7 @@ var bio = (function (exports) {
       key: "_updateSortInfo",
       value: function _updateSortInfo(sortable) {
         var sortArr = sortable.toArray();
-        each(this.inputJson["sequences"], function (val) {
+        each$1(this.inputJson["sequences"], function (val) {
           val.order = sortArr.indexOf(val.name);
         });
         this.drawSequences();
@@ -1150,14 +1100,14 @@ var bio = (function (exports) {
     }, {
       key: "drawSequences",
       value: function drawSequences() {
-        var _this5 = this;
+        var _this4 = this;
 
         clear(this.ctx, this.width, this.canvasHeight);
         var seqWidth = this.options.seqHeight - this.options.sequence.topMargin - this.options.sequence.bottomMargin;
         setLineWidth(this.ctx, seqWidth);
         setTextAlign(this.ctx, "center");
-        each(this.inputJson["sequences"], function (val) {
-          _this5._drawSequence(val);
+        each$1(this.inputJson["sequences"], function (val) {
+          _this4._drawSequence(val);
         });
 
         this._drawHighlightRect();
@@ -1169,7 +1119,7 @@ var bio = (function (exports) {
     }, {
       key: "_drawSequence",
       value: function _drawSequence(alignment) {
-        var _this6 = this;
+        var _this5 = this;
 
         var seqWidth = this.options.seqHeight - this.options.sequence.topMargin - this.options.sequence.bottomMargin;
         var y = this.options.scaleBar.height + this.options.seqHeight * (alignment.order + 1) + this.options.sequence.topMargin - seqWidth / 2;
@@ -1190,29 +1140,29 @@ var bio = (function (exports) {
         this.ctx.font = this.options.sequence.fontSize + "px Arial serif";
 
         if (this.baseWidth < 10) {
-          each(seq, function (val, i) {
-            drawLine(_this6.ctx, _this6.options.sequence.left + i * _this6.baseWidth, _this6.options.sequence.left + (i + 1) * _this6.baseWidth, y, y, _this6.options.colorScheme[val]);
+          each$1(seq, function (val, i) {
+            drawLine(_this5.ctx, _this5.options.sequence.left + i * _this5.baseWidth, _this5.options.sequence.left + (i + 1) * _this5.baseWidth, y, y, _this5.options.colorScheme[val]);
           });
         } else {
-          each(seq, function (val, i) {
-            drawLine(_this6.ctx, _this6.options.sequence.left + i * _this6.baseWidth, _this6.options.sequence.left + (i + 1) * _this6.baseWidth, y, y, _this6.options.colorScheme[val]);
+          each$1(seq, function (val, i) {
+            drawLine(_this5.ctx, _this5.options.sequence.left + i * _this5.baseWidth, _this5.options.sequence.left + (i + 1) * _this5.baseWidth, y, y, _this5.options.colorScheme[val]);
 
-            _this6.ctx.fillText(val, _this6.options.sequence.left + i * _this6.baseWidth + _this6.baseWidth / 2, y + _this6.options.sequence.fontSize * 0.33);
+            _this5.ctx.fillText(val, _this5.options.sequence.left + i * _this5.baseWidth + _this5.baseWidth / 2, y + _this5.options.sequence.fontSize * 0.33);
           });
         }
       }
     }, {
       key: "_drawSequenceLabel",
       value: function _drawSequenceLabel() {
-        var _this7 = this;
+        var _this6 = this;
 
-        each(this.orderedAlignments, function (alignment, i) {
-          var y = _this7.options.seqHeight * (i + 1);
-          _this7.labelDiv = _this7.labelContainer.create("div") //.style("position", "absolute")
+        each$1(this.orderedAlignments, function (alignment, i) {
+          var y = _this6.options.seqHeight * (i + 1);
+          _this6.labelDiv = _this6.labelContainer.create("div") //.style("position", "absolute")
           //.style("top", y + "px")
-          .attr("data-id", alignment.name).style("font-size", _this7.options.label.fontSize + "px").style("color", _this7.group[alignment["group"]].col).style("height", _this7.options.seqHeight + "px");
+          .attr("data-id", alignment.name).style("font-size", _this6.options.label.fontSize + "px").style("color", _this6.group[alignment["group"]].col).style("height", _this6.options.seqHeight + "px");
 
-          var label_p = _this7.labelDiv.create("p").style("margin", "0").style("height", _this7.options.seqHeight + "px");
+          var label_p = _this6.labelDiv.create("p").style("margin", "0").style("height", _this6.options.seqHeight + "px");
 
           label_p.create("span").setClass("handle fas fa-expand-arrows-alt").html(" ");
           label_p.elements[0].innerHTML += alignment.name + "_" + alignment["group"];
@@ -1221,12 +1171,12 @@ var bio = (function (exports) {
     }, {
       key: "_drawHighlightRect",
       value: function _drawHighlightRect() {
-        var _this8 = this;
+        var _this7 = this;
 
-        each(this.highlightedIndicies, function (val) {
+        each$1(this.highlightedIndicies, function (val) {
           var i = val.index;
-          var y = _this8.options.scaleBar.height + _this8.options.seqHeight * i + _this8.options.sequence.topMargin;
-          drawRect(_this8.ctx, _this8.options.sequence.left, y, _this8.options.sequence.width, _this8.options.seqHeight, "red", 3);
+          var y = _this7.options.scaleBar.height + _this7.options.seqHeight * i + _this7.options.sequence.topMargin;
+          drawRect(_this7.ctx, _this7.options.sequence.left, y, _this7.options.sequence.width, _this7.options.seqHeight, "red", 3);
         });
       }
     }, {
@@ -1286,7 +1236,7 @@ var bio = (function (exports) {
     }, {
       key: "_drawSeqLogo",
       value: function _drawSeqLogo() {
-        var _this9 = this;
+        var _this8 = this;
 
         if (this.options.seqLogo.enable && this.baseWidth > 10) {
           // draw Y axis
@@ -1315,22 +1265,22 @@ var bio = (function (exports) {
             entropies = this.shannonEntropyArr;
           }
 
-          each(entropies, function (site, i) {
-            if (i >= parseInt(_this9.alignmentPosition.start + 0.5) && i <= parseInt(_this9.alignmentPosition.end + 0.5 - 1)) {
+          each$1(entropies, function (site, i) {
+            if (i >= parseInt(_this8.alignmentPosition.start + 0.5) && i <= parseInt(_this8.alignmentPosition.end + 0.5 - 1)) {
               var buf = filterAndSortEntroy(site);
               var preHeight = logoHeight * (1 - buf["sum"] / maxVal);
-              each(buf["res"], function (val) {
+              each$1(buf["res"], function (val) {
                 var text = val.name.replace("-", "\\");
                 var height = logoHeight * val.value / maxVal;
                 var hRate = height / baseHeight;
 
-                _this9.headerCtx.transform(1, 0, 0, hRate, startX + wSize / 2 + wSize * (i - parseInt(_this9.alignmentPosition.start + 0.5)), startY + height + preHeight);
+                _this8.headerCtx.transform(1, 0, 0, hRate, startX + wSize / 2 + wSize * (i - parseInt(_this8.alignmentPosition.start + 0.5)), startY + height + preHeight);
 
-                _this9.headerCtx.fillStyle = TAYLOR_COLOR[text];
+                _this8.headerCtx.fillStyle = TAYLOR_COLOR[text];
 
-                _this9.headerCtx.fillText(text, 0, 0, wSize);
+                _this8.headerCtx.fillText(text, 0, 0, wSize);
 
-                _this9.headerCtx.setTransform(1, 0, 0, 1, 0, 0);
+                _this8.headerCtx.setTransform(1, 0, 0, 1, 0, 0);
 
                 preHeight = height + preHeight;
               });
@@ -1345,7 +1295,7 @@ var bio = (function (exports) {
     }, {
       key: "_drawNonGrapRate",
       value: function _drawNonGrapRate() {
-        var _this10 = this;
+        var _this9 = this;
 
         if (this.options.nonGapRate.enable && this.baseWidth <= 10 && !this.isConservedRegionMode) {
           setTextAlign(this.headerCtx, "center");
@@ -1361,10 +1311,10 @@ var bio = (function (exports) {
           setLineWidth(this.headerCtx, this.baseWidth);
           var bottomLineY = this.options.header.height;
           var maxVal = this.options.header.height - this.options.header.top - 1;
-          each(this.gapRate, function (val, i) {
-            if (i >= parseInt(_this10.alignmentPosition.start + 0.5) && i <= parseInt(_this10.alignmentPosition.end + 0.5 - 1)) {
-              var x = _this10.options.header.left + (i - parseInt(_this10.alignmentPosition.start + 0.5)) * _this10.baseWidth + _this10.baseWidth * 0.5;
-              drawLine(_this10.headerCtx, x, x, bottomLineY, bottomLineY - maxVal * (1 - val), 1 - val >= _this10.options.nonGapRate.th ? _this10.options.nonGapRate.highColor : _this10.options.nonGapRate.baseColor);
+          each$1(this.gapRate, function (val, i) {
+            if (i >= parseInt(_this9.alignmentPosition.start + 0.5) && i <= parseInt(_this9.alignmentPosition.end + 0.5 - 1)) {
+              var x = _this9.options.header.left + (i - parseInt(_this9.alignmentPosition.start + 0.5)) * _this9.baseWidth + _this9.baseWidth * 0.5;
+              drawLine(_this9.headerCtx, x, x, bottomLineY, bottomLineY - maxVal * (1 - val), 1 - val >= _this9.options.nonGapRate.th ? _this9.options.nonGapRate.highColor : _this9.options.nonGapRate.baseColor);
             }
           });
         }
@@ -1448,11 +1398,351 @@ var bio = (function (exports) {
     }]);
 
     return Alignment;
-  }(Viewer);
+  }();
+
+  var options$1 = {
+    elementId: "def",
+    setSize: true,
+    height: 600,
+    width: 600,
+    outerRadius: 400,
+    innnerRadius: 20,
+    ringMargin: 2,
+    highlighterEnable: true
+  };
+
+  var CircularGenomeBrowser =
+  /*#__PURE__*/
+  function () {
+    function CircularGenomeBrowser(opt) {
+      _classCallCheck(this, CircularGenomeBrowser);
+
+      this.options = _objectSpread2({}, options$1, {}, opt);
+      this.container = null;
+      this.width = 0;
+      this.height = 0;
+      this.halfX = 0;
+      this.halfY = 0;
+      this.inputJson = null;
+      this.numGenomes = null;
+      this.maxRadius = 0;
+      this.ringSize = 0;
+      this.highlightCanvas = null;
+      this.highlighter = null;
+    }
+
+    _createClass(CircularGenomeBrowser, [{
+      key: "setContainer",
+      value: function setContainer(elementID) {
+        console.log("load element: " + elementID);
+        this.container = selectID(elementID);
+        this.container.html("");
+        this.options.elementId = elementID;
+
+        if (!this.options.setSize) {
+          this.width = this.container.elements[0].clientWidth;
+          this.height = this.container.elements[0].clientHeight;
+        } else {
+          this.height = this.options.height;
+          this.width = this.options.width;
+        }
+
+        this.canvasHeight = this.width;
+        this.halfX = this.width / 2;
+        this.halfY = this.canvasHeight / 2;
+      }
+      /**
+       * @param {json} json 
+       */
+
+    }, {
+      key: "setJson",
+      value: function setJson(json) {
+        this.inputJson = json;
+        this.numGenomes = json["genomes"].length;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        this._DOMcreate();
+
+        this.ctx = this.mainCanvas.elements[0].getContext("2d");
+
+        if (this.options.highlighterEnable) {
+          this.highlighter = new Highlighter$1(this.highlightCanvas, this.width, this.canvasHeight, this.inputJson);
+        }
+
+        this.drawCircularGenomes();
+      }
+    }, {
+      key: "_DOMcreate",
+      value: function _DOMcreate() {
+        this.bodyContainer = this.container.create("div").setID("".concat(this.options.elementId, "_body")).style("position", "relative").setClass("d-flex flex-row");
+        this.canvasContainer = this.bodyContainer.create("div").setID("".concat(this.options.elementId, "_canvasContainer")).style("height", "".concat(this.canvasHeight, "px"));
+        this.mainCanvas = this.canvasContainer.create("canvas").style("position", "absolute").style("top", "0").setID("".concat(this.options.elementId, "_canvas")).attr("height", this.canvasHeight).attr("width", this.width).style("left", "0");
+        this.highlightCanvas = this.canvasContainer.create("canvas").setID("".concat(this.options.elementId, "_highlight_canvas")).attr("height", this.canvasHeight).attr("width", this.width).style("position", "absolute").style("top", "0").style("left", "0");
+      }
+    }, {
+      key: "redrawCircularGenomes",
+      value: function redrawCircularGenomes() {
+        this._drawKaryotype();
+
+        clear(this.ctx, this.width, this.canvasHeight);
+
+        this._drawCircularGenomes();
+      }
+    }, {
+      key: "drawCircularGenomes",
+      value: function drawCircularGenomes() {
+        this._init_radius();
+
+        clear(this.ctx, this.width, this.canvasHeight);
+
+        this._drawKaryotype();
+
+        this._drawCircularGenomes();
+      }
+    }, {
+      key: "_init_radius",
+      value: function _init_radius() {
+        this.ringSize = (this.options.outerRadius - (this.numGenomes - 1) * this.options.ringMargin - this.options.innnerRadius) / this.numGenomes;
+
+        if (this.ringSize < 0) {
+          this.options.ringMargin = 1;
+          this.ringSize = (this.options.outerRadius - (this.numGenomes - 1) * this.options.ringMargin - this.options.innnerRadius) / this.numGenomes;
+        }
+
+        if (this.ringSize < 0) {
+          this.options.ringMargin = 0;
+          this.ringSize = (this.options.outerRadius - this.options.innnerRadius) / this.numGenomes;
+        }
+
+        console.log("Ring size: " + this.ringSize);
+        this.maxRadius = this.options.outerRadius + this.ringSize / 2;
+        if (this.highlighter) this.highlighter.maxRadius = this.maxRadius + 10;
+
+        for (var i = 0; i < this.numGenomes; i++) {
+          this.inputJson.genomes[i]["r"] = this.options.outerRadius - this.inputJson.genomes[i].order * (this.ringSize + this.options.ringMargin);
+        }
+      }
+    }, {
+      key: "_drawCircularGenomes",
+      value: function _drawCircularGenomes() {
+        setLineWidth(this.ctx, this.ringSize);
+
+        for (var i = 0; i < this.numGenomes; i++) {
+          for (var l = 0; l < this.inputJson.genomes[i].genes.length; l++) {
+            drawArc(this.ctx, this.halfX, this.halfY, this.inputJson.genomes[i]["r"], this.inputJson.genomes[i].genes[l]["start_rotated_rad"], this.inputJson.genomes[i].genes[l]["end_rotated_rad"], this.inputJson.genomes[i].genes[l].angle);
+          }
+        }
+      }
+    }, {
+      key: "_drawKaryotype",
+      value: function _drawKaryotype() {
+        setLineWidth(this.ctx, 5);
+
+        for (var i = 0; i < 360; i++) {
+          drawArc(this.ctx, this.halfX, this.halfY, this.maxRadius, this.convertDeg2Rad(i), this.convertDeg2Rad(i + 1), i);
+        }
+      }
+    }, {
+      key: "convertDeg2Rad",
+      value: function convertDeg2Rad(deg) {
+        return 2 * Math.PI * deg / 360;
+      }
+    }]);
+
+    return CircularGenomeBrowser;
+  }();
+
+  var Highlighter$1 =
+  /*#__PURE__*/
+  function () {
+    function Highlighter(canvas, width, height, json) {
+      _classCallCheck(this, Highlighter);
+
+      this.canvas = canvas;
+      this.width = width;
+      this.height = height;
+      this.halfX = this.width / 2;
+      this.halfY = this.height / 2;
+      this.maxRadius = 0;
+      this.ctx = this.canvas.elements[0].getContext("2d");
+      this.inputJson = json;
+      this.isHighlightLock = false;
+      this.zoomSize = 0.5;
+      this.updateFunction = null;
+      this.zoomStart = 0;
+      this.zoomEnd = 0;
+
+      this._init();
+    }
+
+    _createClass(Highlighter, [{
+      key: "clear",
+      value: function clear$1() {
+        clear(this.ctx, this.width, this.height);
+      }
+    }, {
+      key: "showArc",
+      value: function showArc(start, end) {
+        this.clear();
+        this.setLineWidth(5);
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.halfX, this.halfY);
+        this.ctx.arc(this.halfX, this.halfY, this.maxRadius, start, end);
+        this.ctx.fillStyle = "rgba(50,50,50,0.5)";
+        this.ctx.strokeStyle = "rgba(50,50,50, 0.7)";
+        this.ctx.closePath();
+        this.ctx.fill();
+        this.ctx.stroke();
+        this.ctx.restore();
+      }
+    }, {
+      key: "showArcRegions",
+      value: function showArcRegions(r, ringSize, start, end) {
+        this.ctx.beginPath();
+        this.ctx.arc(this.halfX, this.halfY, r + ringSize / 2, start, end);
+        this.ctx.lineTo(this.halfX + (r - ringSize / 2) * Math.cos(end), this.halfY + (r - ringSize / 2) * Math.sin(end));
+        this.ctx.arc(this.halfX, this.halfY, r - ringSize / 2, end, start, true);
+        this.ctx.lineTo(this.halfX + (r + ringSize / 2) * Math.cos(start), this.halfY + (r + ringSize / 2) * Math.sin(start));
+        this.ctx.stroke();
+        this.ctx.fill();
+      }
+    }, {
+      key: "setLineWidth",
+      value: function setLineWidth$1(x) {
+        setLineWidth(this.ctx, x);
+      }
+    }, {
+      key: "setUpdateFunction",
+      value: function setUpdateFunction(func) {
+        this.updateFunction = func;
+      }
+    }, {
+      key: "_init",
+      value: function _init() {
+        var _this = this;
+
+        this.canvas.on("mousemove", function () {
+          if (!_this.isHighlightLock) {
+            var xy = _this.canvas.mouse;
+
+            var angle = _this._getAngleFromMousePosition(xy);
+
+            _this.zoomStart = angle - _this.zoomSize;
+            _this.zoomEnd = angle + _this.zoomSize;
+
+            _this.showArc(_this.zoomStart, _this.zoomEnd);
+          }
+        }).on("mouseleave", function () {
+          if (!_this.isHighlightLock) {
+            _this.clear();
+          }
+        }).on("click", function () {
+          if (!_this.isHighlightLock) {
+            _this.isHighlightLock = true;
+
+            if (_this.updateFunction) {
+              _this.updateFunction(_this.zoomStart, _this.zoomEnd);
+            }
+          } else {
+            _this.isHighlightLock = false;
+          }
+        });
+      }
+    }, {
+      key: "_getAngleFromMousePosition",
+      value: function _getAngleFromMousePosition(xy) {
+        var x = xy[0] - this.halfX;
+        var y = xy[1] - this.halfX;
+        var tan = y / x;
+        var angle = Math.atan(tan);
+
+        if (x < 0) {
+          return angle + Math.PI;
+        } else {
+          return angle;
+        }
+      }
+    }]);
+
+    return Highlighter;
+  }();
+
+  var options$2 = {
+    elementId: "def",
+    setSize: false,
+    height: 600,
+    width: 600,
+    each: each
+  };
+
+  var LinearGenomeBrowser =
+  /*#__PURE__*/
+  function () {
+    function LinearGenomeBrowser(opt) {
+      _classCallCheck(this, LinearGenomeBrowser);
+
+      this.options = _objectSpread2({}, options$2, {}, opt);
+    }
+
+    _createClass(LinearGenomeBrowser, [{
+      key: "setContainer",
+      value: function setContainer(elementID) {
+        console.log("load element: " + elementID);
+        this.container = selectID(elementID);
+        this.container.html("");
+        this.options.elementId = elementID;
+
+        if (!this.options.setSize) {
+          this.width = this.container.elements[0].clientWidth;
+          this.height = this.container.elements[0].clientHeight;
+        } else {
+          this.height = this.options.height;
+          this.width = this.options.width;
+        }
+
+        this.canvasHeight = this.width;
+        this.halfX = this.width / 2;
+        this.halfY = this.canvasHeight / 2;
+      }
+    }, {
+      key: "setJson",
+      value: function setJson(json) {
+        this.inputJson = json;
+        this.numGenomes = json["genomes"].length;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        this._DOMcreate();
+
+        this.ctx = this.mainCanvas.elements[0].getContext("2d");
+
+        if (this.options.highlighterEnable) {
+          this.highlighter = new Highlighter(this.highlightCanvas, this.width, this.canvasHeight, this.inputJson);
+        } //        this.drawCircularGenomes();
+
+      }
+    }, {
+      key: "_DOMcreate",
+      value: function _DOMcreate() {
+        this.bodyContainer = this.container.create("div").setID("".concat(this.options.elementId, "_body")).style("position", "relative").setClass("d-flex flex-row");
+        this.canvasContainer = this.bodyContainer.create("div").setID("".concat(this.options.elementId, "_canvasContainer")).style("height", "".concat(this.canvasHeight, "px"));
+        this.mainCanvas = this.canvasContainer.create("canvas").style("position", "absolute").style("top", "0").setID("".concat(this.options.elementId, "_canvas")).attr("height", this.canvasHeight).attr("width", this.width).style("left", "0");
+        this.highlightCanvas = this.canvasContainer.create("canvas").setID("".concat(this.options.elementId, "_highlight_canvas")).attr("height", this.canvasHeight).attr("width", this.width).style("position", "absolute").style("top", "0").style("left", "0");
+      }
+    }]);
+
+    return LinearGenomeBrowser;
+  }();
 
   exports.Alignment = Alignment;
   exports.CLUSTAL2_COLOR = CLUSTAL2_COLOR;
   exports.COLER_ARR = COLER_ARR;
+  exports.CircularGenomeBrowser = CircularGenomeBrowser;
+  exports.LinearGenomeBrowser = LinearGenomeBrowser;
   exports.PROTEIN_COL_V1 = PROTEIN_COL_V1;
   exports.STRAND_COLOR = STRAND_COLOR;
   exports.TAYLOR_COLOR = TAYLOR_COLOR;
@@ -1460,7 +1750,7 @@ var bio = (function (exports) {
   exports.calcShannonEntropy = calcShannonEntropy;
   exports.conservedRegionLength = conservedRegionLength;
   exports.countBy = countBy;
-  exports.each = each;
+  exports.each = each$1;
   exports.exportJson = exportJson;
   exports.exportSVG = exportSVG;
   exports.exportText = exportText;

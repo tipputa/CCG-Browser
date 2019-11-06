@@ -191,6 +191,7 @@ function refresh() {
         drawLinearGenomeBrowser();
     }
 }
+
 /*
 d3.select('canvas').on('mousemove', function () {
     let mouseX = d3.event.layerX || d3.event.offsetX;
@@ -238,6 +239,11 @@ function drawData() {
     for (let loop = 0; loop < numGenomes; loop++) {
         console.log("r: " + importedJs.each_genome_info[loop]["r"]);
         for (let i = 0; i < importedJs.each_genome_info[loop].genes.length; i++) {
+            /*            if (importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"] > importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"]) {
+                            console.log(importedJs.each_genome_info[loop].strain);
+                            console.log(importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"], importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"])
+                        }
+              */
             drawCCG(importedJs.each_genome_info[loop]["r"], importedJs.each_genome_info[loop].genes[i]["start_rotated_rad"], importedJs.each_genome_info[loop].genes[i]["end_rotated_rad"], ringSize, importedJs.each_genome_info[loop].genes[i].angle, importedJs.each_genome_info[loop].genes[i].feature);
         }
     }
