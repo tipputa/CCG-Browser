@@ -155,7 +155,7 @@ var bio = (function (exports) {
     return keys;
   };
 
-  var each$1 = function each(obj, iteratee, context) {
+  var each = function each(obj, iteratee, context) {
     iteratee = optimizeCb(iteratee, context);
     var i, length;
 
@@ -178,7 +178,7 @@ var bio = (function (exports) {
     return function (obj, iteratee, context) {
       var result = partition ? [[], []] : {};
       iteratee = optimizeCb(iteratee, context);
-      each$1(obj, function (value, index) {
+      each(obj, function (value, index) {
         var key = iteratee(value, index, obj);
         behavior(result, value, key);
       });
@@ -207,20 +207,20 @@ var bio = (function (exports) {
 
     var others = function others(seq) {
       var seqArr = seq.split("");
-      each$1(seqArr, function (val, i) {
+      each(seqArr, function (val, i) {
         if (val in results[i]) results[i][val]++;else results[i][val] = 1;
       });
     };
 
     init(seqs[0].seq.length);
-    each$1(seqs, function (val) {
+    each(seqs, function (val) {
       others(val.seq);
     });
     return results;
   };
   var isConservedRegoin = function isConservedRegoin(seqArr) {
     var conserved = [];
-    each$1(seqArr, function (val) {
+    each(seqArr, function (val) {
       if (val.hasOwnProperty("-")) {
         conserved.push(false);
       } else {
@@ -231,7 +231,7 @@ var bio = (function (exports) {
   };
   var conservedRegionLength = function conservedRegionLength(seqArr) {
     var counter = 0;
-    each$1(seqArr, function (val) {
+    each(seqArr, function (val) {
       if (!val.hasOwnProperty("-")) {
         counter++;
       }
@@ -240,7 +240,7 @@ var bio = (function (exports) {
   };
   var calcGapRate = function calcGapRate(seqArr, numSeq) {
     var res = [];
-    each$1(seqArr, function (val) {
+    each(seqArr, function (val) {
       if (val.hasOwnProperty("-")) {
         res.push(val["-"] / numSeq);
       } else res.push(0);
@@ -249,16 +249,16 @@ var bio = (function (exports) {
   };
   var calcShannonEntropy = function calcShannonEntropy(seqArr, numSeq) {
     var results = [];
-    each$1(seqArr, function (seqs) {
+    each(seqArr, function (seqs) {
       var res = {};
       var s = 0;
-      each$1(seqs, function (val, key) {
+      each(seqs, function (val, key) {
         var v = -1 * val / numSeq * Math.log2(val / numSeq);
         res[key] = v;
         s += v;
       });
       res["Entropy"] = Math.log2(22) - s;
-      each$1(res, function (val, key) {
+      each(res, function (val, key) {
         if (key !== "Entropy") {
           res[key] = res["Entropy"] * seqs[key] / numSeq;
         }
@@ -276,7 +276,7 @@ var bio = (function (exports) {
     var res = [];
     var buf = {};
     var s = 0;
-    each$1(entropyArr, function (val, key) {
+    each(entropyArr, function (val, key) {
       if (val > 0.1 && key !== "Entropy") {
         res.push({
           name: key,
@@ -300,14 +300,14 @@ var bio = (function (exports) {
       return res;
     }
 
-    each$1(resourceArr, function (val, i) {
+    each(resourceArr, function (val, i) {
       if (booleanArr[i]) res.push(val);
     });
     return res;
   };
   var getAllSequenceAsFasta = function getAllSequenceAsFasta(sequenceObj) {
     var ret = [];
-    each$1(sequenceObj, function (val) {
+    each(sequenceObj, function (val) {
       ret.push(">" + val.name);
       ret.push(val.seq);
     });
@@ -316,7 +316,7 @@ var bio = (function (exports) {
   };
   var getConservedRegionAsFasta = function getConservedRegionAsFasta(sequenceObj, booleanArr) {
     var ret = [];
-    each$1(sequenceObj, function (val) {
+    each(sequenceObj, function (val) {
       var seqArr = getTrueArr(val.seq.split(""), booleanArr);
       ret.push(">" + val.name);
       ret.push(seqArr.join(""));
@@ -347,7 +347,7 @@ var bio = (function (exports) {
 
         var capture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
-        each$1(this.elements, function (el) {
+        each(this.elements, function (el) {
           el.addEventListener(eventType, function () {
             var rect = el.getBoundingClientRect();
             _this.mouse = [event.clientX - rect.left - el.clientLeft, event.clientY - rect.top - el.clientTop];
@@ -363,7 +363,7 @@ var bio = (function (exports) {
       value: function create(elementName) {
         var elements = [];
 
-        each$1(this.elements, function (el) {
+        each(this.elements, function (el) {
           var newEle = document.createElement(elementName);
           el.appendChild(newEle);
           elements.push(newEle);
@@ -374,7 +374,7 @@ var bio = (function (exports) {
     }, {
       key: "style",
       value: function style(stylName, styleValue) {
-        each$1(this.elements, function (el) {
+        each(this.elements, function (el) {
           el.style.setProperty(stylName, styleValue);
         });
 
@@ -383,7 +383,7 @@ var bio = (function (exports) {
     }, {
       key: "attr",
       value: function attr(attrName, attrValue) {
-        each$1(this.elements, function (el) {
+        each(this.elements, function (el) {
           el.setAttribute(attrName, attrValue);
         });
 
@@ -404,11 +404,11 @@ var bio = (function (exports) {
       value: function html(text) {
         if (arguments.length == 1) {
           if (text) {
-            each$1(this.elements, function (el) {
+            each(this.elements, function (el) {
               el.textContent = text;
             });
           } else {
-            each$1(this.elements, function (el) {
+            each(this.elements, function (el) {
               el.textContent = text;
             });
 
@@ -417,7 +417,7 @@ var bio = (function (exports) {
         } else {
           var res = [];
 
-          each$1(this.elements, function (el) {
+          each(this.elements, function (el) {
             res.push(el.textContent);
           });
 
@@ -822,7 +822,7 @@ var bio = (function (exports) {
   var getGroup = function getGroup(dicArr) {
     var _group = {};
     var counter = 0;
-    each$1(dicArr, function (val, i, arr) {
+    each(dicArr, function (val, i, arr) {
       if (val["group"] in _group) {
         _group[val["group"]].count++;
 
@@ -925,7 +925,7 @@ var bio = (function (exports) {
             var counter = 0;
 
             var _loop = function _loop(key) {
-              each$1(_this.inputJson["sequences"], function (val) {
+              each(_this.inputJson["sequences"], function (val) {
                 if (val.group === key) {
                   val.order = counter++;
                 }
@@ -939,7 +939,7 @@ var bio = (function (exports) {
         }
 
         this.orderedAlignments = new Array(this.inputJson["sequences"].length);
-        each$1(this.inputJson["sequences"], function (alignment) {
+        each(this.inputJson["sequences"], function (alignment) {
           _this.orderedAlignments[alignment.order] = alignment;
         });
       }
@@ -1002,7 +1002,7 @@ var bio = (function (exports) {
 
         if (this.isConservedRegionMode) {
           var seqs = [];
-          each$1(this.inputJson["sequences"], function (val) {
+          each(this.inputJson["sequences"], function (val) {
             var conservedSeq = getTrueArr(val.seq.split(""), _this2.conservedRegionBooleanArr);
             var targetSeq = conservedSeq.slice(parseInt(_this2.alignmentPosition.start + 0.5), parseInt(_this2.alignmentPosition.end + 0.5)).join("");
             seqs.push({
@@ -1013,7 +1013,7 @@ var bio = (function (exports) {
           exportText(getAllSequenceAsFasta(seqs), "visualizedRegion_conserved_".concat(this.id, ".fas"));
         } else {
           var _seqs = [];
-          each$1(this.inputJson["sequences"], function (val) {
+          each(this.inputJson["sequences"], function (val) {
             var targetSeq = val.seq.substr(parseInt(_this2.alignmentPosition.start + 0.5), parseInt(_this2.alignmentPosition.end + 0.5) - parseInt(_this2.alignmentPosition.start + 0.5));
 
             _seqs.push({
@@ -1092,7 +1092,7 @@ var bio = (function (exports) {
       key: "_updateSortInfo",
       value: function _updateSortInfo(sortable) {
         var sortArr = sortable.toArray();
-        each$1(this.inputJson["sequences"], function (val) {
+        each(this.inputJson["sequences"], function (val) {
           val.order = sortArr.indexOf(val.name);
         });
         this.drawSequences();
@@ -1106,7 +1106,7 @@ var bio = (function (exports) {
         var seqWidth = this.options.seqHeight - this.options.sequence.topMargin - this.options.sequence.bottomMargin;
         setLineWidth(this.ctx, seqWidth);
         setTextAlign(this.ctx, "center");
-        each$1(this.inputJson["sequences"], function (val) {
+        each(this.inputJson["sequences"], function (val) {
           _this4._drawSequence(val);
         });
 
@@ -1140,11 +1140,11 @@ var bio = (function (exports) {
         this.ctx.font = this.options.sequence.fontSize + "px Arial serif";
 
         if (this.baseWidth < 10) {
-          each$1(seq, function (val, i) {
+          each(seq, function (val, i) {
             drawLine(_this5.ctx, _this5.options.sequence.left + i * _this5.baseWidth, _this5.options.sequence.left + (i + 1) * _this5.baseWidth, y, y, _this5.options.colorScheme[val]);
           });
         } else {
-          each$1(seq, function (val, i) {
+          each(seq, function (val, i) {
             drawLine(_this5.ctx, _this5.options.sequence.left + i * _this5.baseWidth, _this5.options.sequence.left + (i + 1) * _this5.baseWidth, y, y, _this5.options.colorScheme[val]);
 
             _this5.ctx.fillText(val, _this5.options.sequence.left + i * _this5.baseWidth + _this5.baseWidth / 2, y + _this5.options.sequence.fontSize * 0.33);
@@ -1156,7 +1156,7 @@ var bio = (function (exports) {
       value: function _drawSequenceLabel() {
         var _this6 = this;
 
-        each$1(this.orderedAlignments, function (alignment, i) {
+        each(this.orderedAlignments, function (alignment, i) {
           var y = _this6.options.seqHeight * (i + 1);
           _this6.labelDiv = _this6.labelContainer.create("div") //.style("position", "absolute")
           //.style("top", y + "px")
@@ -1173,7 +1173,7 @@ var bio = (function (exports) {
       value: function _drawHighlightRect() {
         var _this7 = this;
 
-        each$1(this.highlightedIndicies, function (val) {
+        each(this.highlightedIndicies, function (val) {
           var i = val.index;
           var y = _this7.options.scaleBar.height + _this7.options.seqHeight * i + _this7.options.sequence.topMargin;
           drawRect(_this7.ctx, _this7.options.sequence.left, y, _this7.options.sequence.width, _this7.options.seqHeight, "red", 3);
@@ -1265,11 +1265,11 @@ var bio = (function (exports) {
             entropies = this.shannonEntropyArr;
           }
 
-          each$1(entropies, function (site, i) {
+          each(entropies, function (site, i) {
             if (i >= parseInt(_this8.alignmentPosition.start + 0.5) && i <= parseInt(_this8.alignmentPosition.end + 0.5 - 1)) {
               var buf = filterAndSortEntroy(site);
               var preHeight = logoHeight * (1 - buf["sum"] / maxVal);
-              each$1(buf["res"], function (val) {
+              each(buf["res"], function (val) {
                 var text = val.name.replace("-", "\\");
                 var height = logoHeight * val.value / maxVal;
                 var hRate = height / baseHeight;
@@ -1311,7 +1311,7 @@ var bio = (function (exports) {
           setLineWidth(this.headerCtx, this.baseWidth);
           var bottomLineY = this.options.header.height;
           var maxVal = this.options.header.height - this.options.header.top - 1;
-          each$1(this.gapRate, function (val, i) {
+          each(this.gapRate, function (val, i) {
             if (i >= parseInt(_this9.alignmentPosition.start + 0.5) && i <= parseInt(_this9.alignmentPosition.end + 0.5 - 1)) {
               var x = _this9.options.header.left + (i - parseInt(_this9.alignmentPosition.start + 0.5)) * _this9.baseWidth + _this9.baseWidth * 0.5;
               drawLine(_this9.headerCtx, x, x, bottomLineY, bottomLineY - maxVal * (1 - val), 1 - val >= _this9.options.nonGapRate.th ? _this9.options.nonGapRate.highColor : _this9.options.nonGapRate.baseColor);
@@ -1674,8 +1674,7 @@ var bio = (function (exports) {
     elementId: "def",
     setSize: false,
     height: 600,
-    width: 600,
-    each: each
+    width: 600
   };
 
   var LinearGenomeBrowser =
@@ -1750,7 +1749,7 @@ var bio = (function (exports) {
   exports.calcShannonEntropy = calcShannonEntropy;
   exports.conservedRegionLength = conservedRegionLength;
   exports.countBy = countBy;
-  exports.each = each$1;
+  exports.each = each;
   exports.exportJson = exportJson;
   exports.exportSVG = exportSVG;
   exports.exportText = exportText;

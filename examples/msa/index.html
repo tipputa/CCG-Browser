@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
     <style>
         .main-container {
             width: 98%;
@@ -51,6 +53,26 @@
         .canvas-container .pos_absolute {
             position: absolute;
         }
+
+        .background-class {
+            background-color: rgba(0, 0, 10, 0.1);
+        }
+
+        .selected-class {
+            background-color: rgba(0, 0, 255, 0.1);
+        }
+
+        .handle {
+            cursor: grab;
+        }
+
+        .dropdown-menu {
+            cursor: default;
+        }
+
+        .seqLogo {
+            font-family: 'Arial Black', Gadget, sans-serif;
+        }
     </style>
 
 </head>
@@ -69,12 +91,12 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Links
+                        Demos
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                    <div id="dp-links" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <button class="dropdown-item" onclick='newDemos(1002)'>1002</button>
+                        <button class="dropdown-item" onclick='newDemos(1009)'>1009</button>
+                        <button class="dropdown-item" onclick='newDemos(1093)'>1093</button>
                     </div>
                 </li>
             </ul>
@@ -83,18 +105,24 @@
 
     <main>
         <div class="main-container">
-            <h1 class="mt-5">ID:1009; Arginine Receptor</h1>
+            <h1 id="main-headline" class="mt-5">ID:1009; Arginine Receptor</h1>
             <div class="bg-light mt-3 py-2 px-5 border-bottom border-dark">
                 <h2>Alignment Viewer</h2>
-                <button class="btn btn-primary">Function 1</button>
-                <button class="btn btn-primary">Function 2</button>
-                <button class="btn btn-primary">Function 3</button>
+                <button id="btn-zoomIn-func" class="btn btn-primary" onclick="alignmentZoomIn()">Zoom In</button>
+                <button id="btn-zoomOut-func" class="btn btn-primary" onclick="alignmentZoomOut()">Zoom Out</button>
+                <button id="btn-conserve-func" class="btn btn-primary" onclick="showConservedRegion()">Show conserved region</button>
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Downloads
+                </button>
+                <div id="dd-download-links" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                </div>
             </div>
+            <div id="div-alignment-explanation"></div>
             <div id="app" class="mt-1"></div>
             <div id="tree-container" class="my-5">
                 <div class="bg-light mt-5 py-2 px-5 border-bottom border-dark">
                     <h2> Phylogenetic tree</h2>
-                    <button class="btn btn-primary">Function 1</button>
+                    <button id="downloadBtn" class=" btn btn-primary">Download</button>
                     <button class="btn btn-primary">Function 2</button>
                     <button class="btn btn-primary">Function 3</button>
                 </div>
@@ -106,16 +134,18 @@
             <div class="my-5" style="height: 10px; width:100%">footer</div>
         </div>
     </main>
+    <!-- Latest Sortable -->
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+    <script src="https://kit.fontawesome.com/15565d966c.js" crossorigin="anonymous"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" charset="utf-8"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
     <script src="//d3js.org/d3.v3.min.js"></script>
 
-    <script src="../../dist/bundle.js"></script>
+    <script src="../../dist/bundle.min.js"></script>
     <script src="../../dist/phylotree.js"></script>
     <script src="test.js"></script>
 

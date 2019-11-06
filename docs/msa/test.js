@@ -1,13 +1,175 @@
-const alignmentBrowser = new bio.Alignment();
-alignmentBrowser.setContainer("app");
+let alignmentBrowser = null;
+let globalId = 1009;
+
+d3.select("#dp-links")
+    .selectAll("button")
+    .data([1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6, 2, 3, 4, 5, 6])
+    .enter()
+    .append("button")
+    .attr("class", "dropdown-item")
+    .attr("onclick", (d) => {
+        return `newDemos(${d})`
+    })
+    .html((d) => {
+        return d
+    });
+
+const ddDLSelector = bio.select("#dd-download-links");
+ddDLSelector.create("button")
+    .setClass("dropdown-item")
+    .attr("onclick", )
+    .attr("class", "dropdown-item")
+    .attr("onclick", "saveAllSeq()")
+    .html("Alignment sequences with gap as fasta");
+
+ddDLSelector.create("button")
+    .setClass("dropdown-item")
+    .attr("onclick", )
+    .attr("class", "dropdown-item")
+    .attr("onclick", "saveConservedRegion()")
+    .html("Conserved alignment sequences as fasta");
+
+ddDLSelector.create("button")
+    .setClass("dropdown-item")
+    .attr("onclick", )
+    .attr("class", "dropdown-item")
+    .attr("onclick", "saveVisualizedRegion()")
+    .html("Visualized region as fasta");
+
+
+ddDLSelector.create("button")
+    .setClass("dropdown-item")
+    .attr("onclick", )
+    .attr("class", "dropdown-item")
+    .attr("onclick", "saveRawJson()")
+    .html("Raw input file as json");
+
+const saveAllSeq = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.saveAllSequence();
+    }
+}
+
+const saveConservedRegion = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.saveConservedRegion();
+    }
+}
+
+
+const saveRawJson = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.saveRawJson();
+    }
+}
+
+const saveVisualizedRegion = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.saveVisualizedRegion();
+    }
+}
+
+
+const newDemos = (id) => {
+    setFileName(`${id}.align.json`, `${id}.fas.nwk`);
+    globalId = id;
+    bio.selectID("main-headline").html(`ID:${id}`);
+}
+
+const alignmentZoom = () => {
+    if (alignmentBrowser) {
+        const btn = bio.selectID("btn-zoom-func");
+        if (btn.html() === "Zoom In") {
+            alignmentBrowser.zoomInShowSequence();
+            btn.html("Zoom Out");
+        } else {
+            alignmentBrowser._resetZoom();
+            btn.html("Zoom In");
+        }
+    }
+}
+
+const alignmentZoomIn = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser.zoomInShowSequence();
+    }
+}
+
+const alignmentZoomOut = () => {
+    if (alignmentBrowser) {
+        alignmentBrowser._resetZoom();
+    }
+}
+
+
+const showConservedRegion = () => {
+    if (alignmentBrowser) {
+        if (alignmentBrowser) {
+            const btn = bio.selectID("btn-conserve-func");
+            if (btn.html() === "Show conserved region") {
+                alignmentBrowser.change2conservedRegion();
+                btn.html("Show all region");
+            } else {
+                alignmentBrowser.change2allRegion();
+                btn.html("Show conserved region");
+            }
+        }
+    }
+}
+
+const addAlignmentExplanations = () => {
+    const expSelector = bio.selectID("div-alignment-explanation")
+        .setClass("mt-1 mb-5").html("");
+    expSelector.create("p").html(`Number of alignment sequences: ${alignmentBrowser.inputJson["sequences"].length}, total length:  ${alignmentBrowser.seqLength}, conserved length:  ${alignmentBrowser.conservedRegionLength}`);
+}
 
 const treeSelect = d3.select("#tree_display")
 const treeHeight = 1000;
 const setFileName = (json_path, nwk_path) => {
+    alignmentBrowser = new bio.Alignment(globalId, {
+        header: {
+            top: 10,
+            enable: true,
+            height: 100
+        }
+    });
+    alignmentBrowser.setContainer("app");
+
     bio.json(json_path).then(function (root) {
+        console.log("reading");
         alignmentBrowser.setJson(root);
         alignmentBrowser.render();
+        const sortable = Sortable.create(alignmentBrowser.labelContainer.elements[0], {
+            animation: 150,
+            group: "label_group",
+            multiDrag: true,
+            ghostClass: "background-class",
+            handle: ".handle",
+            selectedClass: 'selected-class',
+            onChoose: function (evt) {
+                alignmentBrowser.highlightedIndicies = [{
+                    index: evt.oldIndex
+                }];
+                alignmentBrowser._drawHighlightRect();
+            },
+            onSelect: function (evt) {
+                alignmentBrowser.highlightedIndicies = evt.newIndicies;
+                alignmentBrowser._drawHighlightRect();
+            },
+            onDeselect: function (evt) {
+                alignmentBrowser.highlightedIndicies = evt.newIndicies
+                alignmentBrowser.drawSequences();
+            },
+            onEnd: function ( /**Event*/ evt) {
+                alignmentBrowser.highlightedIndicies = evt.newIndicies
+                alignmentBrowser._updateSortInfo(sortable);
+
+                //  refresh();
+            },
+        });
+        addAlignmentExplanations();
         loadTreeFromURL(nwk_path);
+
     })
 }
 
@@ -26,27 +188,29 @@ function drawATree(newick) {
         .options({
             'selectable': false,
             'left-offset': 10,
+            brush: false,
+            hide: false,
             // 'top-bottom-spacing': 'fit-to-size',
             // 'left-right-spacing': 'fit-to-size',
         })
         // .size([treeHeight, treeWidth])
         .svg(treeSelect)
+        .node_circle_size(4);
     //.align_tips(true);
-    console.log(treeHeight);
     tree(d3.layout.newick_parser(newick));
 
 
-
-    treeAlignment_canvas = tree_alignment.append("canvas")
-        .attr("class", "pos_absolute")
-        .attr("id", "tree-alignment-canvas")
-        .style("left", treeWidth + 6 + "px")
-        .style("top", "0 px")
-        .style("color", "black")
-        .attr("width", alignmentWidth)
-        .attr("height", treeHeight)
-    treeAlignment_ctx = treeAlignment_canvas.node().getContext("2d");
-
+    /*
+        treeAlignment_canvas = tree_alignment.append("canvas")
+            .attr("class", "pos_absolute")
+            .attr("id", "tree-alignment-canvas")
+            .style("left", treeWidth + 6 + "px")
+            .style("top", "0 px")
+            .style("color", "black")
+            .attr("width", alignmentWidth)
+            .attr("height", treeHeight)
+        treeAlignment_ctx = treeAlignment_canvas.node().getContext("2d");
+    */
     /*
     to get space for alignemnt spot
           tree.branch_name(function (node) {
@@ -94,7 +258,10 @@ function drawATree(newick) {
     var bootstrap_scale = d3.scale.linear().domain([0, 0.5, 0.7, 0.9, 0.95, 1]).range([0.5, 1, 1.5, 2, 2.5, 3]).interpolate(d3.interpolateRound);
 
     tree.style_edges(function (dom_element, edge_object) {
-        dom_element.style("stroke", "cluster" in edge_object.target ? edge_object.target.cluster.col : null);
+        dom_element.style("stroke", "#999");
+        dom_element.style("stroke-width", "2px");
+        dom_element.style("stroke", edge_object.target.cluster ? edge_object.target.cluster : "#999");
+        dom_element.attr("fill", "none");
     });
 
     // coloring
@@ -105,25 +272,24 @@ function drawATree(newick) {
     });
 
     tree.traverse_and_compute(function (node) {
-            if (node.name in tag) {
-                node.cluster = clustering[tag[node.name]];
-                node.name = node.name + "_" + tag[node.name];
+        if (node.name in tag) {
+            node.cluster = clustering[tag[node.name]].col;
+            node.name = node.name + "_" + tag[node.name];
 
-            } else {
-                delete node.cluster;
-                var children_clusters = _.keys(_.countBy(node.children, function (d) {
-                    return d.cluster;
-                }));
-                if (children_clusters.length == 1 && children_clusters[0]) {
-                    node.cluster = children_clusters[0];
-                }
+        } else {
+            delete node.cluster;
+            var children_clusters = _.keys(_.countBy(node.children, function (d) {
+                return d.cluster;
+            }));
+            if (children_clusters.length == 1 && children_clusters[0]) {
+                node.cluster = children_clusters[0];
             }
-        },
-        "post-order");
+        }
+    }, "post-order");
 
     tree.style_nodes(function (element, node_data) {
         if (!node_data.children) {
-            element.style("fill", node_data.cluster.col);
+            element.style("fill", node_data.cluster);
         }
 
         if ("bootstrap" in node_data && node_data.bootstrap) {
@@ -174,6 +340,8 @@ function drawATree(newick) {
             }
         }
     });
+    //tree.spacing_y(60);
+    //tree.spacing_x(9);
     resize(tree);
     tree.placenodes().layout();
     d3.select(".canvas-container").style("height", treeSelect.node().clientHeight + "px");
@@ -216,4 +384,9 @@ function loadTreeFromURL(url) {
     d3.text(url, function (error, newick) {
         drawATree(newick);
     });
+}
+
+document.getElementById('downloadBtn').onclick = function () {
+    var element = document.getElementById('tree_display');
+    bio.exportSVG(element, `Tree-${globalId}`);
 }

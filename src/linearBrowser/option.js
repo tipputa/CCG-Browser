@@ -17,7 +17,7 @@ export const options = {
     setSize: false,
     height: 600,
     width: 600,
-    each
+
 }
 
 const color = {
