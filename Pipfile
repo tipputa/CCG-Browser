@@ -9,6 +9,9 @@ djangorestframework = "*"
 django-filters = "*"
 
 [packages]
+psycopg2 = "*"
+django-cors-headers = "*"
+djangorestframework-msgpack = "*"
 
 [requires]
 python_version = "3.7"
