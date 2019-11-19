@@ -19,7 +19,7 @@ export const options = {
     width: 600,
     outerRadius: 400,
     innnerRadius: 20,
-    ringMargin: 2,
+    ringMargin: 0,
     highlighterEnable: true,
 }
 

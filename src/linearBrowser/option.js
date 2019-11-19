@@ -17,7 +17,23 @@ export const options = {
     setSize: false,
     height: 600,
     width: 600,
-
+    seqHeight: 32, // cdsHeight * 2 + genomeHeight + marginY
+    margin: 4,
+    label: {
+        top: 10,
+        left: 20,
+        width: 200,
+    },
+    sequence: {
+        top: 10,
+        left: 20,
+        marginY: 2,
+        cdsHeight: 10,
+        genomeHeight: 10
+    },
+    tooltip: {
+        height: 75,
+    }
 }
 
 const color = {

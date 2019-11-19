@@ -37,6 +37,7 @@ export class CircularGenomeBrowser {
         if (!this.options.setSize) {
             this.width = this.container.elements[0].clientWidth;
             this.height = this.container.elements[0].clientHeight;
+            this.options.outerRadius = this.width / 2 - 50;
         } else {
             this.height = this.options.height;
             this.width = this.options.width;
@@ -115,6 +116,7 @@ export class CircularGenomeBrowser {
         }
 
         console.log("Ring size: " + this.ringSize);
+        console.log('this.options.ringMargin:', this.options.ringMargin);
         this.maxRadius = this.options.outerRadius + this.ringSize / 2;
         if (this.highlighter) this.highlighter.maxRadius = this.maxRadius + 10;
         for (let i = 0; i < this.numGenomes; i++) {
@@ -210,8 +212,12 @@ class Highlighter {
                     this.clear();
                 }
             })
+            .on("dblclick", () => {
+                event.preventDefault();
+            })
 
             .on("click", () => {
+                event.preventDefault();
                 if (!this.isHighlightLock) {
                     this.isHighlightLock = true;
                     if (this.updateFunction) {

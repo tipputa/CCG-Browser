@@ -5,9 +5,10 @@ import * as _ from "./myUnderscore.js";
  * @param {string} elements id
  */
 class Selector {
-    constructor(elements) {
+    constructor(elements, isSvgChild = false) {
         this.elements = elements;
         this.mouse = null;
+        this.isSvgChild = isSvgChild
     }
 
     on(eventType, callback, context, capture = false) {
@@ -25,11 +26,26 @@ class Selector {
     create(elementName) {
         const elements = [];
         _.each(this.elements, (el) => {
-            const newEle = document.createElement(elementName);
-            el.appendChild(newEle);
-            elements.push(newEle);
+            if (elementName == "svg" || this.isSvgChild) {
+                const newEle = document.createElementNS("http://www.w3.org/2000/svg", elementName);
+                el.appendChild(newEle);
+                elements.push(newEle);
+                this.isSvgChild = true;
+            } else {
+                const newEle = document.createElement(elementName);
+                el.appendChild(newEle);
+                elements.push(newEle);
+            }
         });
-        return new Selector(elements);
+        return new Selector(elements, this.isSvgChild);
+    }
+
+
+
+    remove() {
+        _.each(this.elements, (el) => {
+            el.parentNode.removeChild(el);
+        })
     }
 
     style(stylName, styleValue) {
@@ -75,6 +91,29 @@ class Selector {
             return res;
         }
     }
+
+    innerHTML(text) {
+        if (arguments.length == 1) {
+            if (text) {
+                _.each(this.elements, (el) => {
+                    el.innerHTML = text;
+                });
+            } else {
+                _.each(this.elements, (el) => {
+                    el.innerHTML = text;
+                });
+                return this;
+            }
+        } else {
+            const res = []
+            _.each(this.elements, (el) => {
+                res.push(el.innerHTML);
+            });
+            if (res.length === 1) return res[0];
+            return res;
+        }
+    }
+
 }
 
 /**

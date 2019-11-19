@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import GenbankSummary
+from .models import GenbankSummary, Genome
 
 class RetrieveAllFromGBSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,3 +21,19 @@ class RetrieveCodingSeqFromGBSerializer(serializers.ModelSerializer):
         model = GenbankSummary
         fields = ('nucl',)
 
+class RetrieveAllFromGenomeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genome
+        fields = ('start','end', 'seq')
+
+class CommentSerializer(serializers.Serializer):
+    genome_ID = serializers.CharField(max_length=200)
+    start = serializers.IntegerField()
+    end = serializers.IntegerField()
+    seq = serializers.CharField()
+    def update(self, instance, validated_data):
+        instance.genome_ID = validated_data.get('genome_ID', instance.genome_ID)
+        instance.start = validated_data.get('start', instance.start)
+        instance.end = validated_data.get('end', instance.end)
+        instance.seq = validated_data.get('seq', instance.seq)
+        return instance

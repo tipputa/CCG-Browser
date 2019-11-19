@@ -1407,7 +1407,7 @@ var bio = (function (exports) {
     width: 600,
     outerRadius: 400,
     innnerRadius: 20,
-    ringMargin: 2,
+    ringMargin: 0,
     highlighterEnable: true
   };
 
@@ -1442,6 +1442,7 @@ var bio = (function (exports) {
         if (!this.options.setSize) {
           this.width = this.container.elements[0].clientWidth;
           this.height = this.container.elements[0].clientHeight;
+          this.options.outerRadius = this.width / 2 - 50;
         } else {
           this.height = this.options.height;
           this.width = this.options.width;
@@ -1469,7 +1470,7 @@ var bio = (function (exports) {
         this.ctx = this.mainCanvas.elements[0].getContext("2d");
 
         if (this.options.highlighterEnable) {
-          this.highlighter = new Highlighter$1(this.highlightCanvas, this.width, this.canvasHeight, this.inputJson);
+          this.highlighter = new Highlighter(this.highlightCanvas, this.width, this.canvasHeight, this.inputJson);
         }
 
         this.drawCircularGenomes();
@@ -1518,6 +1519,7 @@ var bio = (function (exports) {
         }
 
         console.log("Ring size: " + this.ringSize);
+        console.log('this.options.ringMargin:', this.options.ringMargin);
         this.maxRadius = this.options.outerRadius + this.ringSize / 2;
         if (this.highlighter) this.highlighter.maxRadius = this.maxRadius + 10;
 
@@ -1555,7 +1557,7 @@ var bio = (function (exports) {
     return CircularGenomeBrowser;
   }();
 
-  var Highlighter$1 =
+  var Highlighter =
   /*#__PURE__*/
   function () {
     function Highlighter(canvas, width, height, json) {
@@ -1639,7 +1641,11 @@ var bio = (function (exports) {
           if (!_this.isHighlightLock) {
             _this.clear();
           }
+        }).on("dblclick", function () {
+          event.preventDefault();
         }).on("click", function () {
+          event.preventDefault();
+
           if (!_this.isHighlightLock) {
             _this.isHighlightLock = true;
 
@@ -1674,7 +1680,17 @@ var bio = (function (exports) {
     elementId: "def",
     setSize: false,
     height: 600,
-    width: 600
+    width: 600,
+    seqHeight: 20,
+    label: {
+      top: 10,
+      left: 20,
+      width: 200
+    },
+    sequence: {
+      top: 10,
+      left: 20
+    }
   };
 
   var LinearGenomeBrowser =
@@ -1718,19 +1734,43 @@ var bio = (function (exports) {
         this._DOMcreate();
 
         this.ctx = this.mainCanvas.elements[0].getContext("2d");
-
-        if (this.options.highlighterEnable) {
-          this.highlighter = new Highlighter(this.highlightCanvas, this.width, this.canvasHeight, this.inputJson);
-        } //        this.drawCircularGenomes();
-
+        drawLinearGenomes();
+      }
+    }, {
+      key: "drawLinearGenomes",
+      value: function drawLinearGenomes() {
+        _drawLabels();
       }
     }, {
       key: "_DOMcreate",
       value: function _DOMcreate() {
+        this.headerContainer = this.container.create("div").setID("".concat(this.options.elementId, "_header")); //    .html("Alignment Viewer Header");
+
         this.bodyContainer = this.container.create("div").setID("".concat(this.options.elementId, "_body")).style("position", "relative").setClass("d-flex flex-row");
-        this.canvasContainer = this.bodyContainer.create("div").setID("".concat(this.options.elementId, "_canvasContainer")).style("height", "".concat(this.canvasHeight, "px"));
-        this.mainCanvas = this.canvasContainer.create("canvas").style("position", "absolute").style("top", "0").setID("".concat(this.options.elementId, "_canvas")).attr("height", this.canvasHeight).attr("width", this.width).style("left", "0");
-        this.highlightCanvas = this.canvasContainer.create("canvas").setID("".concat(this.options.elementId, "_highlight_canvas")).attr("height", this.canvasHeight).attr("width", this.width).style("position", "absolute").style("top", "0").style("left", "0");
+        this.canvasContainer = this.bodyContainer.create("div").setID("".concat(this.options.elementId, "_canvasContainer")).style("position", "relative").style("height", "".concat(this.canvasHeight, "px"));
+        this.labelContainer = this.bodyContainer.create("div").setID("".concat(this.options.elementId, "_label")) //.style("position", "absolute")
+        //.style("height", `${this.canvasHeight}px`)
+        //.style("width", `${this.options.label.width}px`)
+        .style("margin-left", "".concat(this.options.label.left, "px")).style("margin-top", "".concat(this.options.label.top, "px"));
+        this.mainCanvas = this.canvasContainer.create("canvas").setID("".concat(this.options.id, "_canvas")).style("position", "absolute").style("left", this.options.label.width + this.options.label.left + "px").style("top", this.options.sequence.top + "px").attr("height", this.canvasHeight).attr("width", this.width - this.options.label.width - this.options.label.left);
+      }
+    }, {
+      key: "_drawLabels",
+      value: function _drawLabels() {
+        var _this = this;
+
+        each(this.inputJson["genomes"], function (genome, i) {
+          var y = _this.options.seqHeight * (genome.order + 1);
+          _this.labelDiv = _this.labelContainer.create("div") //.style("position", "absolute")
+          //.style("top", y + "px")
+          .attr("data-id", genome.name).style("font-size", _this.options.label.fontSize + "px") //.style("color", this.group[genome["group"]].col)
+          .style("height", _this.options.seqHeight + "px");
+
+          var label_p = _this.labelDiv.create("p").style("margin", "0").style("height", _this.options.seqHeight + "px");
+
+          label_p.create("span").setClass("handle fas fa-expand-arrows-alt").html(" ");
+          label_p.elements[0].innerHTML += genome.name;
+        });
       }
     }]);
 

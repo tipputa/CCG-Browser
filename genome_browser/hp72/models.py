@@ -23,3 +23,17 @@ class GenbankSummary(models.Model):
 
     def __str__(self):
         return self.locus_tag
+
+class Genome(models.Model):
+    genome_ID = models.CharField(max_length=50, verbose_name='genome id', blank=False, db_index=True)
+    start = models.IntegerField("start", blank=False, db_index=True)
+    end = models.IntegerField("end", blank=False, db_index=True)
+    seq = models.CharField(max_length=5000, verbose_name='sequence', blank=False)
+
+    class Meta:
+        verbose_name = 'genome'
+        verbose_name_plural = 'genomes'
+
+    def __str__(self):
+        return self.genome_ID + ":" + self.start + "_" + self.end
+        

@@ -18,6 +18,29 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        .linear-genome-tooltip {
+            position: absolute;
+            text-align: center;
+            width: auto;
+            height: auto;
+            padding: 5px;
+            font: 15px;
+            background-color: black;
+            color: white;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+            visibility: hidden;
+            z-index: 100;
+        }
+
+        .def-modal-class {
+            cursor: move;
+            cursor: grab;
+        }
+
+        .def-modal-class:active {
+            cursor: grabbing;
+        }
     </style>
 
 </head>
@@ -48,6 +71,17 @@
 
     <main>
         <div class="main-container">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+            <div id="myModal" class="modal draggable fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">aaaaaaaaaaaaa</div>
+                        <div class="modal-body">aaaaaaaaaaa</div>
+                        <div class="modal-footer">bbbbbbbbbbbbbbb</div>
+                    </div>
+                </div>
+            </div>
+
             <h1 id="main-headline" class="mt-5">Helicobactor Pylori 72 strains</h1>
             <div class="bg-light mt-3 py-2 px-5 border-bottom border-dark">
                 <h2>Consensus Circular Genome Viewer</h2>
@@ -58,6 +92,13 @@
             <div class="row">
                 <div id="app" class="mt-1 col-3"></div>
             </div>
+            <div class="bg-light mt-3 py-2 px-5 border-bottom border-dark">
+                <h2> Linear Genome Viewer</h2>
+                <button id="btn-zoomIn-func" class="btn btn-primary">F1</button>
+                <button id="btn-zoomOut-func" class="btn btn-primary">F2</button>
+                <button id="btn-conserve-func" class="btn btn-primary">F3</button>
+            </div>
+
             <div class="row">
                 <div id="linearBrowser" class="mt-1 col-12">
                 </div>
@@ -73,13 +114,17 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" charset="utf-8"></script>
 
-    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <script src="../../dist/bundle.min.js"></script>
     <script src="test.js"></script>
 
     <script>
-        setFileName("");
+        //setFileName("");
     </script>
 </body>
 
