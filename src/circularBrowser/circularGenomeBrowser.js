@@ -128,7 +128,9 @@ export class CircularGenomeBrowser {
         drawer.setLineWidth(this.ctx, this.ringSize);
         for (let i = 0; i < this.numGenomes; i++) {
             for (let l = 0; l < this.inputJson.genomes[i].genes.length; l++) {
-                drawer.drawArc(this.ctx, this.halfX, this.halfY, this.inputJson.genomes[i]["r"], this.inputJson.genomes[i].genes[l]["start_rotated_rad"], this.inputJson.genomes[i].genes[l]["end_rotated_rad"], this.inputJson.genomes[i].genes[l].angle);
+                if (Math.abs(this.inputJson.genomes[i].genes[l]["start_rotated_rad"] - this.inputJson.genomes[i].genes[l]["end_rotated_rad"]) < 1) {
+                    drawer.drawArc(this.ctx, this.halfX, this.halfY, this.inputJson.genomes[i]["r"], this.inputJson.genomes[i].genes[l]["start_rotated_rad"], this.inputJson.genomes[i].genes[l]["end_rotated_rad"], this.inputJson.genomes[i].genes[l].angle);
+                }
             }
         }
     }
@@ -156,7 +158,7 @@ class Highlighter {
         this.ctx = this.canvas.elements[0].getContext("2d");
         this.inputJson = json;
         this.isHighlightLock = false;
-        this.zoomSize = 0.5;
+        this.zoomSize = 0.1;
         this.updateFunction = null;
 
         this.zoomStart = 0;

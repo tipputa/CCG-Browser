@@ -1,9 +1,9 @@
-const circularBrowser = new bio.CircularGenomeBrowser({
-    setSize: false
-});
+const circularBrowser = new bio.CircularGenomeBrowser();
+//const circularBrowserMod = new bio.CircularGenomeBrowser();
 
 const linearGenomeBrowser = new bio.LinearGenomeBrowser();
 circularBrowser.setContainer("app");
+//circularBrowserMod.setContainer("app2");
 linearGenomeBrowser.setContainer("linearBrowser");
 
 
@@ -11,7 +11,7 @@ const update = (start, end) => {
     linearGenomeBrowser.setRange(start, end)
 }
 
-json_path = "result_min_Hp72.json";
+let json_path = "result_min_Hp72.json";
 bio.json(json_path).then(function (root) {
     console.log("reading " + json_path);
     circularBrowser.setJson(root);
@@ -21,6 +21,15 @@ bio.json(json_path).then(function (root) {
     linearGenomeBrowser.render();
 
     circularBrowser.highlighter.setUpdateFunction(update);
+});
+
+json_path = "result_min_Hp72_mod.json";
+bio.json(json_path).then(function (root) {
+    console.log("reading " + json_path);
+    circularBrowserMod.setJson(root);
+    circularBrowserMod.render();
+    circularBrowserMod.highlighter.setUpdateFunction(update);
+
 });
 
 /* create modal

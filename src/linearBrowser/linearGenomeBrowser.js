@@ -20,6 +20,16 @@ const param = (data) => {
     }
 }
 
+const locusTagPositionAPI = "http://127.0.0.1:8000/hp72/api/genbank/position/locusTag/"
+
+const getPositionFromLocusTag = (input, init) => {
+    return fetch(input, init).then((response) => {
+        if (!response.ok) throw new Error(response.status + " " + response.statusText);
+        return response.json();
+    });
+}
+
+
 const test = (input, init) => {
     return fetch(input, init).then((response) => {
         if (!response.ok) throw new Error(response.status + " " + response.statusText);
@@ -53,19 +63,19 @@ export class LinearGenomeBrowser {
         if (!this.options.setSize) {
             this.width = this.container.elements[0].clientWidth;
             this.height = this.container.elements[0].clientHeight;
-            this.svgWidth = this.width - this.options.label.width - this.options.label.left - this.options.sequence.left;
+            this.svgWidth = this.width - this.options.label.width - this.options.label.left - this.options.sequence.left - this.options.sequence.right;
+            console.log(this.width + " " + this.svgWidth);
         } else {
             this.height = this.options.height;
             this.width = this.options.width;
+            this.svgWidth = this.width - this.options.label.width - this.options.label.left - this.options.sequence.left - this.options.sequence.right;
         }
-        this.halfX = this.width / 2;
     }
 
     setJson(json) {
         this.inputJson = json;
         this.numGenomes = json["genomes"].length;
         this.svgHeight = (this.options.seqHeight + this.options.margin) * this.numGenomes;
-        this.halfY = this.svgHeight / 2;
     }
 
     render() {
@@ -170,21 +180,25 @@ export class LinearGenomeBrowser {
         const geneEnd = gene["end_rotated"] + alignedSize;
         let startPoint = 0
         let endPoint = 0
+        if (geneStart > geneEnd || geneEnd - geneStart > 100000) {
+            console.log('large');
+            return;
+        }
         if (geneStart > rangeStart && geneEnd < rangeEnd) {
             startPoint = this._convertGpositionToPixel(geneStart - rangeStart);
             endPoint = this._convertGpositionToPixel(geneEnd - rangeStart);
-            const w = endPoint - startPoint;
-            if (w < 0) {
-                console.log('geneEnd:', geneEnd);
-                console.log('geneStart:', geneStart);
-                console.log('endPoint:', endPoint);
-                console.log('startPoint:', startPoint);
-            }
-            if (gene.strand === -1) y += this.options.sequence.cdsHeight;
-            this._drawSvg(startPoint, y, w, this.options.sequence.cdsHeight, gene);
+        } else if (geneStart < rangeStart && geneEnd > rangeStart) {
+            startPoint = 0;
+            endPoint = this._convertGpositionToPixel(geneEnd - rangeStart);
+        } else if (geneStart < rangeEnd && geneEnd > rangeEnd) {
+            startPoint = this._convertGpositionToPixel(geneStart - rangeStart);
+            endPoint = this.width - this.options.sequence.right
         } else {
             return;
         }
+        const w = endPoint - startPoint;
+        if (gene.strand === -1) y += this.options.sequence.cdsHeight;
+        this._drawSvg(startPoint, y, w, this.options.sequence.cdsHeight, gene);
     }
     _convertGpositionToPixel(gposition) {
         return gposition / this.seqWidthRatio;
@@ -199,6 +213,7 @@ export class LinearGenomeBrowser {
             .attr("height", h)
             .attr("fill", col)
             .on("mouseover", () => {
+                console.log('over');
                 this.tooltip
                     .style("visibility", "visible")
                     .style("top", (y - this.options.tooltip.height) + "px")
@@ -216,7 +231,11 @@ export class LinearGenomeBrowser {
                 this.tooltip
                     .style("visibility", "hidden")
             })
-            .on("click", function () {
+            .on("mousedown", function () {
+                console.log('click');
+                getPositionFromLocusTag(locusTagPositionAPI + gene.locusTag).then((x) => {
+                    console.log(x);
+                })
                 /*              if (gene.consensusId != "-1") {
                                   align_genome(gene["start_rotated"] + alignedSize, gene.sameGroup, genome.genome_size)
                               }

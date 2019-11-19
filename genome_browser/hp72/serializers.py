@@ -37,3 +37,13 @@ class CommentSerializer(serializers.Serializer):
         instance.end = validated_data.get('end', instance.end)
         instance.seq = validated_data.get('seq', instance.seq)
         return instance
+
+class RetriveSameConsensusGroup(serializers.Serializer):
+    locus_tag = serializers.CharField()
+    start = serializers.IntegerField()
+
+    def update(self, instance, validated_data):
+        instance.locus_tag = validated_data.get('locus_tag', instance.locus_tag)
+        instance.start = validated_data.get('start', instance.start)
+
+        return instance

@@ -14,6 +14,9 @@ import json
 from Bio import SeqIO 
 import collections as cl
 import math
+from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
+
+
 
 def getMap(df, key, value):
     return df.set_index(key)[value].to_dict()
@@ -179,7 +182,7 @@ def setJson(genome_df, sample_df, gb_df, locusTag_consensus, consensus_locusTag)
         res["each_genome_info"].append(tmp)                
     return res
 
-def set_min_json(genome_df, sample_df, gb_df, locusTag_consensus, consensus_locusTag):
+def set_min_json(genome_df, sample_df, gb_df, locusTag_consensus, consensus_locusTag, orders=None):
     res = cl.OrderedDict()
     res["consensus_genome_size"] = int(calcConsensusGsize(genome_df))
     res["clusters"] = []
@@ -195,7 +198,11 @@ def set_min_json(genome_df, sample_df, gb_df, locusTag_consensus, consensus_locu
         tmp["id"] = acc
         tmp["name"] = target_sample.iloc[0,1]
         tmp["genome_size"] = int(genome_df.iloc[i, 2])
-        tmp["order"] = int(i)
+        if orders:
+            tmp["order"] = orders[i]
+        else:
+            tmp["order"] = int(i)
+            
         for j in range(len(target_genes)):
             gene = cl.OrderedDict()
             ltag = target_genes.iloc[j, 2]
@@ -326,13 +333,13 @@ def rotateGenes(genome_rotation_summary, genome_df, gb_df_rotate):
     newDf.columns = newCol
     return newDf
 
-def addGeneAngle(genome_rotation_summary, genome_df, gb_df_rotate):    
+def addGeneAngle(genome_df, gb_df_rotate):    
     new_start = pd.Series()
     new_end = pd.Series()
     for i in range(len(genome_df)):
         acc = genome_df[genome_df["Species"] == i].iloc[0,1]
         gsize = genome_df[genome_df["Species"] == i].iloc[0,2]
-        step = gsize / 360
+        step = gsize / 359
         gb_target_s = gb_df_rotate[gb_df_rotate["acc"] == acc]["start_rotated"]
         gb_target_e = gb_df_rotate[gb_df_rotate["acc"] == acc]["end_rotated"]
         newStart = (gb_target_s / step).astype(int)
@@ -397,117 +404,42 @@ def calcConsensus(self, df_num):
     
 def main(dir, tag, gap):    
     os.chdir(dir)
-    single_locusTag_fName = "SingleCopy_AlmostConserved_LocusTag_minus" + str(gap) + ".tsv"
-    remain_locusTag_fName = "Remaining_LocusTag_minus" + str(gap) + ".tsv"
-    cons_order_fName = "consensusGeneOrder_" + tag +".txt"
-    reorders_fName = "reorder_info_"+tag+".tsv"
     gbSummary_fName = dir + "/gb_summary.tsv" 
     accID_genomeSize_fName = "AccID_GenomeSize.tsv"    
-    outputFasta = dir + "/genome/"
-    gbDir = dir + "/gb/"    
     sample_info_fName = "sample_info.tsv"
     sample_df = pd.read_csv(sample_info_fName, sep="\t")
 
-    all_locusTag_fName = "all_ortholog_locusTag.tsv"
-    
-    cons_order_df = pd.read_csv(cons_order_fName, sep="\t", header=None)
-    original_orders = pd.read_csv(reorders_fName, sep="\t", header=None)
-    single_lTag = pd.read_csv(single_locusTag_fName, sep="\t")    
-    remain_lTag = pd.read_csv(remain_locusTag_fName, sep="\t")
-    gb_df = pd.read_csv(gbSummary_fName, sep="\t", engine="python")
+    all_locusTag_fName = "all_ortholog_locusTag.tsv"    
 
-    m1 = getMap(cons_order_df, 1, 0)    
-    target = original_orders.iloc[:,1].sort_values()
-    tmp2 = target.index.to_series()
-    tmp3 = tmp2.map(m1)
-    tmp3.index = range(len(tmp3))
-    single_lTag.iloc[:,0]
-    single_lTag.iloc[:,0] = tmp3
-    single_locusTag = pd.concat([tmp3, single_lTag], axis=1)
-    
-    
-    all_locusTags = pd.concat([single_locusTag, remain_lTag]).fillna("-1")
-    c = all_locusTags.columns.to_series()
-    c[0] = "GeneOrder"
-    c[1] = "ConsensusID"
-    all_locusTags.columns = c
-    
-    all_locusTags_df = all_locusTags.sort_values(by="ConsensusID")    
-    all_locusTags_df.index = range(len(all_locusTags_df))
-    all_locusTags_df["ConsensusID"] = "ID" + all_locusTags_df["ConsensusID"].astype(str).str.zfill(4)
-    all_locusTags_df.iloc[:,0] = all_locusTags_df.iloc[:,0].astype(int)    
-
-    all_locusTags_df.to_csv(all_locusTag_fName, sep="\t", index=None)
-    
+    gb_df = pd.read_csv(gbSummary_fName, sep="\t", engine="python")     
+    genome_df = pd.read_csv(accID_genomeSize_fName, sep="\t")    
     all_locusTags_df = pd.read_csv(all_locusTag_fName, sep="\t")
-    
-    # genome rotation    
-    geneome_rotation_fName = "genome_rotation_" + tag + ".txt"
-    geneome_rotation_mod_fName = "genome_rotation_" + tag + ".mod.txt"
-    genomeRotation_df = pd.read_csv(geneome_rotation_fName, sep="\t")
-    
-    buf = []
-    for i in range(np.max(genomeRotation_df["Species"])+1):
-        target = genomeRotation_df[genomeRotation_df.iloc[:,0] == i]
-        l = len(target)    
-        if(l == 1):
-            print(str(i) + ": ok")
-        elif(l == 2):
-            locusTag = all_locusTags_df[all_locusTags_df["GeneOrder"]==target["Start"].iloc[0]].iloc[0, i + 2]
-            minGene_Pos = gb_df[gb_df["locusTag"]==locusTag].iloc[0, 7]
-            buf.append((i, minGene_Pos, 1))
-        elif(l == 3):
-            locusTag = all_locusTags_df[all_locusTags_df["GeneOrder"]==target["Start"].iloc[1]].iloc[0, i + 2]
-            minGene_Pos = gb_df[gb_df["locusTag"]==locusTag].iloc[0, 6]
-            buf.append((i, minGene_Pos, 0))
-        else:
-            print("problem" + str(l))
-
-    genome_rotation_summary = pd.DataFrame(buf)
-    genome_rotation_summary.columns = ["Species", "Start", "Flip"]
-    genome_rotation_summary.to_csv(geneome_rotation_mod_fName, sep="\t", index=None)
     if(tag=="Hp72"):
         removeAcc = "NC_019563.1"
         all_locusTags_df=all_locusTags_df.drop(columns=removeAcc)
-
     
-    columns = all_locusTags_df.columns.to_series()[2:]   
-    sp_acc_dic = {}
-    acc_sp_dic = {}
-    i = 0
-    for c in columns:
-        acc_sp_dic[c] = i
-        sp_acc_dic[i] = c
-        i += 1
-    
-    # rotate fasta files
-    genome_df = createGenomeFiles(gbDir, outputFasta, acc_sp_dic, genome_rotation_summary)
-            
-    genome_df.columns = ["Species", "Acc", "GenomeSize"]
-    genome_df.to_csv(accID_genomeSize_fName, sep="\t", index=None)
-
-    genome_df = pd.read_csv(accID_genomeSize_fName, sep="\t")
-
-    gb_df_rotate = rotateGenes(genome_rotation_summary, genome_df, gb_df)
-    gb_df_rotate = addGeneAngle(genome_rotation_summary, genome_df, gb_df_rotate)
-    gb_df_rotate.to_csv("tmp_dataset.tsv", sep="\t", index=None)
-    gb_df_rotate = gb_df_rotate.fillna("None")
     locusTag_consensus = {}
     consensus_locusTag = {}
 
     all_locusTags_df.apply(applyLocusTagDic_wrap, axis=1, dic=locusTag_consensus)
     all_locusTags_df.apply(applyConsensusIdDic, axis=1, dic=consensus_locusTag)    
 
+    gb_df_rotate = gb_df.fillna("None")
+    gb_df_rotate["start_rotated"] = gb_df_rotate["start"]
+    gb_df_rotate["end_rotated"] = gb_df_rotate["end"]
+    gb_df_rotate["strand_rotated"] = gb_df_rotate["strand"]
+    gb_df_rotate = addGeneAngle(genome_df, gb_df_rotate)
+
     deviations = []
     locusTag_rotatedAngle = getMap(gb_df_rotate, "locusTag", "start_rotated_angle")
     calc_consensus_angle(consensus_locusTag, locusTag_rotatedAngle)
     deviations.append(confirm_strand_direction(genome_df, gb_df_rotate, locusTag_consensus, consensus_locusTag, 10))
+    
     locusTag_rotatedAngle = getMap(gb_df_rotate, "locusTag", "start_rotated_angle")
     calc_consensus_angle(consensus_locusTag, locusTag_rotatedAngle)
     deviations.append(confirm_strand_direction(genome_df, gb_df_rotate, locusTag_consensus, consensus_locusTag, 10))
     
     tmp_deviations = pd.DataFrame(deviations)
-    tmp_deviations.columns = ["deviation", "strand", "angle"]
     tmp_deviations.to_csv("genome_rotation_deviations.tsv", sep="\t", index=None)
     
     locusTag_rotatedAngle = getMap(gb_df_rotate, "locusTag", "start_rotated_angle")
@@ -517,25 +449,49 @@ def main(dir, tag, gap):
     # check
     gb_df_rotate[gb_df_rotate["end_rotated"] - gb_df_rotate["start_rotated"] < 0]
 
-    json_fName = dir + "/result_" + tag + ".json"
-    res_json = setJson(genome_df, sample_df, gb_df_rotate, locusTag_consensus, consensus_locusTag)
-    writeJson(json_fName, res_json)
 
-    json_fName = dir + "/consensusId_" + tag + ".json"    
-    writeJson(json_fName, consensus_locusTag)
-    
-    json_fName = dir + "/locusTag_" + tag + ".json"    
-    lTag_json = setLocusTagJson(genome_df, gb_df_rotate, locusTag_consensus, consensus_locusTag)
-    writeJson(json_fName, lTag_json)
-    
+    tmp = gb_df_rotate[gb_df_rotate["acc"]=="NC_017360.1"]
+    tmp.to_csv("tmp_dataset.tsv", sep="\t", index=None)
 
-    res_json =set_min_json(genome_df, sample_df, gb_df_rotate, locusTag_consensus, consensus_locusTag)
+    
+    almostCoreGenes = all_locusTags_df[all_locusTags_df["GeneOrder"] > 0]
+    locusTag_rotatedAngle = getMap(gb_df_rotate, "locusTag", "start_rotated_angle")
+    locusTag_rotatedAngle["-"] = 0
+    ClaculatablePositions = almostCoreGenes.iloc[:,2:].apply(convertByMap, dic=locusTag_rotatedAngle)    
+    Z = linkage(ClaculatablePositions.T,method="ward",metric="euclidean")
+    dend = dendrogram(Z)
+    c = fcluster(Z, 4000, criterion="distance")
+    orders=dend["leaves"]
+    tmp_orders = pd.Series(orders).sort_values()
+    order_idx = list(tmp_orders.index)
+    
+    res_json =set_min_json(genome_df, sample_df, gb_df_rotate, locusTag_consensus, consensus_locusTag, order_idx)
     json_fName = dir + "/result_min_" + tag + ".json"
     writeJson(json_fName, res_json)
 
 
-    tmp = gb_df_rotate[gb_df_rotate["acc"]=="NC_017360.1"]
-    tmp.to_csv("tmp_dataset.tsv", sep="\t", index=None)
+    # for DB
+    """
+    json_fName = dir + "/result_" + tag + ".json"
+    res_json = setJson(genome_df, sample_df, gb_df_rotate, locusTag_consensus, consensus_locusTag)
+    writeJson(json_fName, res_json)
+    """
+    
+    buf = []
+    for key, val in consensus_locusTag.items():
+        for i in val["locusTag"]:
+            buf.append((key, i))
+
+    consensusID_locusTag_df = pd.DataFrame(buf)
+    consensusID_locusTag_df.to_csv("consensus_df_forDB.tsv", sep="\t", header=None)
+    
+    
+    fliped = gb_df_rotate[gb_df_rotate["strand_rotated"] + gb_df_rotate["strand"]==0]
+    not_fliped = gb_df_rotate[gb_df_rotate["strand_rotated"] + gb_df_rotate["strand"]!=0]
+    
+    res_json =set_min_json(genome_df, sample_df, gb_df_rotate, locusTag_consensus, consensus_locusTag)
+    json_fName = dir + "/result_min_" + tag + ".json"
+    writeJson(json_fName, res_json)
 
     
     # save protein fasta
@@ -547,12 +503,17 @@ def main(dir, tag, gap):
     #locusTag_protein_dic = getMap(gb_df, "locusTag", "prot")
     #all_locusTags_df.apply(apply_consensusID_proteinFasta, axis=1, locusTag_protein_dic = locusTag_protein_dic, proteinDir = proteinDir)
 
+
+def convertByMap(series, dic):
+    return series.map(dic)
+
 def confirm_strand_direction(genome_df, gb_df_rotate, locusTag_consensus, consensus_locusTag, stepSize = 10):
     deviations = []
     locusTag_start_rotated_angle = getMap(gb_df_rotate, "locusTag", "start_rotated_angle")
     for rows in genome_df.iterrows():
         acc = rows[1]["Acc"]
         target = gb_df_rotate[gb_df_rotate["acc"]==acc]
+        idx = target.index
         target_fliped_angles = []
         target_angles = []
         consensus_angles = []
@@ -563,7 +524,7 @@ def confirm_strand_direction(genome_df, gb_df_rotate, locusTag_consensus, consen
                 consensus_angles.append(consensus_locusTag[locusTag_consensus[i][1]]["angle"])
         min_dev, min_strand, min_angle = search_best_rotation(target_angles, consensus_angles, stepSize)
         if (min_strand != 0 or min_angle != 0):
-            gb_df_rotate[gb_df_rotate["acc"]==acc] = flip_particular_genome(acc, target, genome_df, min_strand, min_angle)
+            gb_df_rotate.loc[idx,:] = flip_particular_genome(acc, target, genome_df, min_strand, min_angle)
         deviations.append([min_dev, min_strand, min_angle])                    
     return deviations
 
@@ -600,18 +561,18 @@ def get_rotated_angles(angles, diff_angle, flip):
     if flip == 0:
         new_angles = angles + diff_angle
     else:
-        new_angles = 360 - angles + diff_angle
+        new_angles = 359 - angles - diff_angle
         
-    new_angles[new_angles >= 360] -= 360
+    new_angles[new_angles > 359] -= 360
     new_angles[new_angles < 0] += 360
     return new_angles
 
 
 def flip_particular_genome(acc, target, genome_df, min_strand, min_angle):
-    print(acc)
     gsize = int(genome_df[genome_df["Acc"] == acc]["GenomeSize"])
-    tmp_s1 = rotateGenomicPosition(target["start_rotated"], gsize, int(min_angle / 360 * gsize), min_strand)
-    tmp_e1 = rotateGenomicPosition(target["end_rotated"], gsize, int(min_angle / 360 * gsize), min_strand)
+    print(acc + " " + str(gsize))
+    tmp_s1 = rotateGenomicPosition(target["start_rotated"], gsize, int(min_angle / 359 * gsize), min_strand)
+    tmp_e1 = rotateGenomicPosition(target["end_rotated"], gsize, int(min_angle / 359 * gsize), min_strand)
     if min_strand == 1:
         target.loc[:, "start_rotated"] = tmp_e1
         target.loc[:,"end_rotated"] = tmp_s1
@@ -620,8 +581,18 @@ def flip_particular_genome(acc, target, genome_df, min_strand, min_angle):
         target.loc[:,"start_rotated"] = tmp_s1
         target.loc[:,"end_rotated"] = tmp_e1
 
-    step = gsize / 360
     
+    missRotate = target[target["end_rotated"] - target["start_rotated"] < 0]
+    if len(missRotate) > 0:
+        gap = missRotate["end_rotated"].max()
+        print(gap)
+        tmp_s1 = rotateGenomicPosition(target["start_rotated"], gsize, gsize-gap, 0)
+        tmp_e1 = rotateGenomicPosition(target["end_rotated"], gsize, gsize-gap, 0)
+        target.loc[:,"start_rotated"] = tmp_s1
+        target.loc[:,"end_rotated"] = tmp_e1
+
+    step = gsize / 359
+        
     target.loc[:,"start_rotated_angle"] = (target["start_rotated"] / step).astype(int)
     target.loc[:,"end_rotated_angle"] = (target["end_rotated"] / step).astype(int)    
 

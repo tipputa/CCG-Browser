@@ -14,7 +14,7 @@ const font = {
 
 export const options = {
     elementId: "def",
-    setSize: true,
+    setSize: false,
     height: 600,
     width: 600,
     outerRadius: 400,

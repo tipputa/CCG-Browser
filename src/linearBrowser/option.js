@@ -27,6 +27,7 @@ export const options = {
     sequence: {
         top: 10,
         left: 20,
+        right: 20,
         marginY: 2,
         cdsHeight: 10,
         genomeHeight: 10

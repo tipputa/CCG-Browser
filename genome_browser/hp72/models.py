@@ -36,4 +36,11 @@ class Genome(models.Model):
 
     def __str__(self):
         return self.genome_ID + ":" + self.start + "_" + self.end
-        
+
+class ConsensusGroup(models.Model):
+    consensus_id = models.CharField(max_length=50, verbose_name="consensus id", blank=False, db_index=True)
+    locus_tag = models.CharField(max_length=50, verbose_name='locus Tag', blank=False, db_index=True)
+
+    class Meta:
+        verbose_name = 'consensus group'
+        verbose_name_plural = 'consensus groups'

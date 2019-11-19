@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
-from .models import GenbankSummary
+from .models import GenbankSummary, ConsensusGroup, Genome
 from .serializers import *
 from django.shortcuts import get_object_or_404, get_list_or_404
 
@@ -78,3 +78,12 @@ class RetriveTest(APIView):
         all_res = CommentSerializer(get_list_or_404(p2), many=True).data
         """
         return Response({"res": all_res})
+
+class RetriveConsensusGroup(generics.ListAPIView):
+    serializer_class = RetriveSameConsensusGroup
+    def get_queryset(self):
+        #return ConsensusGroup.objects.filter(consensus_id=self.kwargs["consensus_id"])
+        return ConsensusGroup.objects.filter(consensus_id=self.kwargs["consensus_id"]).extra(
+            tables=['hp72_genbanksummary'],
+            where=['hp72_genbanksummary.locus_tag=hp72_consensusgroup.locus_tag']
+        )
