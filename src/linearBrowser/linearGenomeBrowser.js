@@ -21,13 +21,8 @@ const param = (data) => {
 }
 
 const locusTagPositionAPI = "http://127.0.0.1:8000/hp72/api/genbank/position/locusTag/"
+const consensusIDPositionAPI = "http://127.0.0.1:8000/hp72/api/consensus/id/"
 
-const getPositionFromLocusTag = (input, init) => {
-    return fetch(input, init).then((response) => {
-        if (!response.ok) throw new Error(response.status + " " + response.statusText);
-        return response.json();
-    });
-}
 
 
 const test = (input, init) => {
@@ -46,6 +41,7 @@ export class LinearGenomeBrowser {
         this.start = 120000;
         this.end = 130000;
         this.seqWidthRatio = 1;
+        this.alignedSizeList = [];
     }
 
     setRange(start, end) {
@@ -76,6 +72,8 @@ export class LinearGenomeBrowser {
         this.inputJson = json;
         this.numGenomes = json["genomes"].length;
         this.svgHeight = (this.options.seqHeight + this.options.margin) * this.numGenomes;
+        this.alignedSizeList = new Array(this.numGenomes);
+        this.alignedSizeList.fill(0)
     }
 
     render() {
@@ -160,17 +158,33 @@ export class LinearGenomeBrowser {
         });
     }
 
+    _confirmRotations(gene, fliped, genome_size, rotated_length) {
+        if (fliped === 0) {
+            let rotated = gene["start"] + rotated_length
+            if (rotated >= genome_size) {
+                rotated -= genome_size
+            }
+            if (rotated !== gene["start_rotated"]) {
+                console.log('gene["start"]:', gene["start"]);
+                console.log('rotated_length:', rotated_length);
+                console.log(rotated_length + " " + (rotated) + " " + (gene["start_rotated"] + " " + (rotated - gene["start_rotated"])));
+            }
+        }
+    }
 
     _drawCDSBlocks() {
         this.seqWidthRatio = (this.end - this.start) / (this.svgWidth)
         console.log('this.seqWidthRatio:', this.seqWidthRatio);
         utils.each(this.inputJson["genomes"], (genome, i) => {
+            console.log('genome["genome_ID"]:', genome["id"]);
             const rangeStart = this.start * genome["genome_size"] / this.inputJson["consensus_genome_size"]
             const rangeEnd = rangeStart + (this.end - this.start);
             if (rangeStart < 0) console.log('genome["genome_size"]:', genome["genome_size"]);
             const y = (this.options.seqHeight + this.options.margin) * (genome.order) + this.options.sequence.genomeHeight + this.options.sequence.marginY;
-            utils.each(genome["genes"], (gene) => {
-                this._drawCDSBlock(gene, rangeStart, rangeEnd, y, 0)
+            utils.each(genome["genes"], (gene, counter) => {
+                if (counter < 10)
+                    this._confirmRotations(gene, genome["fliped"], genome["genome_size"], genome["rotated_length"]);
+                this._drawCDSBlock(gene, rangeStart, rangeEnd, y, this.alignedSizeList[i])
             })
         });
     }
@@ -233,9 +247,15 @@ export class LinearGenomeBrowser {
             })
             .on("mousedown", function () {
                 console.log('click');
-                getPositionFromLocusTag(locusTagPositionAPI + gene.locusTag).then((x) => {
+                if (gene.consensusId != "-1") {
+                    utils.json(consensusIDPositionAPI + gene.consensusId).then((x) => {
+                        console.log(x);
+                    });
+                }
+                /*utils.json(locusTagPositionAPI + gene.locusTag).then((x) => {
                     console.log(x);
                 })
+                */
                 /*              if (gene.consensusId != "-1") {
                                   align_genome(gene["start_rotated"] + alignedSize, gene.sameGroup, genome.genome_size)
                               }

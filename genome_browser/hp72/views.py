@@ -83,7 +83,14 @@ class RetriveConsensusGroup(generics.ListAPIView):
     serializer_class = RetriveSameConsensusGroup
     def get_queryset(self):
         #return ConsensusGroup.objects.filter(consensus_id=self.kwargs["consensus_id"])
-        return ConsensusGroup.objects.filter(consensus_id=self.kwargs["consensus_id"]).extra(
-            tables=['hp72_genbanksummary'],
-            where=['hp72_genbanksummary.locus_tag=hp72_consensusgroup.locus_tag']
-        )
+        return ConsensusGroup.objects.filter(consensus_id=self.kwargs["consensus_id"])
+
+    def get(self, request, *args, **kwargs):
+        lists = get_list_or_404(self.get_queryset())
+        l2 = [GenbankSummary.objects.get(locus_tag=i.locus_tag) for i in lists]
+        serializer = RetriveSameConsensusGroup(l2, many=True)
+        res = {}
+        for values in serializer.data:
+            key = values.pop("genome_ID")
+            res[key] = values
+        return Response(res)

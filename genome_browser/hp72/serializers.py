@@ -39,11 +39,14 @@ class CommentSerializer(serializers.Serializer):
         return instance
 
 class RetriveSameConsensusGroup(serializers.Serializer):
-    locus_tag = serializers.CharField()
+    genome_ID = serializers.CharField(max_length=200)
     start = serializers.IntegerField()
+    end = serializers.IntegerField()
+    locus_tag = serializers.CharField()
 
     def update(self, instance, validated_data):
+        instance.genome_ID = validated_data.get('genome_ID', instance.genome_ID)
         instance.locus_tag = validated_data.get('locus_tag', instance.locus_tag)
         instance.start = validated_data.get('start', instance.start)
-
+        instance.end = validated_data.get('end', instance.end)
         return instance
