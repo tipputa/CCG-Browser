@@ -3,14 +3,14 @@ let genome_width = 1;
 let geneBoxHeight = 5;
 let lgWidth = genome_browser_container.node().getBoundingClientRect().width;
 let lg_yCdsSize = 60;
-let lg_yGenomeSize = 20;
-let lg_yMargin = 30;
-let lg_genome_name_fontSize = 20;
+let lg_yGenomeSize = 40;
+let lg_yMargin = 40;
+let lg_genome_name_fontSize = 30;
 //let lg_yCdsSize = 8;
 //let lg_yGenomeSize = 8;
 //let lg_yMargin = 8;
 //let lg_genome_name_fontSize = 12;
-let lg_genome_base_font = 8;
+let lg_genome_base_font = 12;
 let lg_zoom_changeYRad = 0.02;
 let lg_zoom_changeXRad = 0.02;
 let lg_aligned_diff = [];
@@ -316,7 +316,7 @@ function drawGenomeSequence(g, start, end, aligned_diff) {
                 genome_browser_ctx.fillStyle = "black";
                 genome_browser_ctx.textAlign = "center";
                 genome_browser_ctx.stroke();
-                genome_browser_ctx.fillText(genome[i], (i * baseWidth) + baseWidth / 2, yStart + 5);
+                genome_browser_ctx.fillText(genome[i], (i * baseWidth) + baseWidth / 2, yStart);
             }
         } else {
             for (let i = 0; i < genome.length; i++) {
@@ -346,7 +346,7 @@ function drawGenomeSequence(g, start, end, aligned_diff) {
         genome_browser_ctx.stroke();
         genome_browser_ctx.textAlign = "center";
 
-        genome_browser_ctx.fillText("Genome Sequence", lgWidth / 2, yStart + 5);
+        genome_browser_ctx.fillText("Genome Sequence", lgWidth / 2, yStart);
     }
     drawGenomeScale(genenome_canvas, g, s, e);
 
@@ -365,7 +365,7 @@ function drawGenomeScale(genenome_canvas, genome, start, end) {
     genome_browser_ctx.fillStyle = "black"
     genome_browser_ctx.lineWidth = 1;
     genome_browser_ctx.font = "12px Arial serif";
-    let yStart = (lg_yGenomeSize - 2) / 2 + 6;
+    let yStart = (lg_yGenomeSize - 2) / 2 - 3;
     let newstart = parseInt(start / (10 ** (num))) * 10 ** (num) + interval;
     let xmargin = (newstart - start) * step;
     if (start < 0) {

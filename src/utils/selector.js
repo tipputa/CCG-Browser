@@ -25,21 +25,21 @@ class Selector {
 
     create(elementName) {
         const elements = [];
+        let isSvgChild = false;
         _.each(this.elements, (el) => {
             if (elementName == "svg" || this.isSvgChild) {
                 const newEle = document.createElementNS("http://www.w3.org/2000/svg", elementName);
                 el.appendChild(newEle);
                 elements.push(newEle);
-                this.isSvgChild = true;
+                isSvgChild = true;
             } else {
                 const newEle = document.createElement(elementName);
                 el.appendChild(newEle);
                 elements.push(newEle);
             }
         });
-        return new Selector(elements, this.isSvgChild);
+        return new Selector(elements, isSvgChild);
     }
-
 
 
     remove() {
@@ -47,6 +47,13 @@ class Selector {
             el.parentNode.removeChild(el);
         })
     }
+
+    removeChild(el) {
+        _.each(this.elements, (element) => {
+            element.removeChild(el);
+        })
+    }
+
 
     style(stylName, styleValue) {
         _.each(this.elements, (el) => {

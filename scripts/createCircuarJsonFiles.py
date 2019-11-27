@@ -202,7 +202,7 @@ def set_min_json(genome_df, sample_df, gb_df, locusTag_consensus, consensus_locu
             tmp["order"] = int(i)
         
         if rotated_info:
-            tmp["fliped"] = rotated_info[i][0]
+            tmp["flipped"] = rotated_info[i][0]
             tmp["rotated_angle"] = rotated_info[i][1]
             tmp["rotated_length"] = int(rotated_info[i][1] / 359 * int(genome_df.iloc[i, 2]))
             
@@ -284,8 +284,9 @@ def changeGenomicPosition(pos, gsize, minGene_pos, flip):
 
 def rotateGenomicPosition(pos, gsize, diff, flip):
     if flip == 1:
-        tmp = gsize - pos - diff
+        tmp = gsize - pos + diff
         tmp[tmp < 0] += gsize
+        tmp[tmp >= gsize] -= gsize
         return tmp 
                 
     else:
@@ -460,10 +461,14 @@ def main(dir, tag, gap):
         buf.append((strand, dev))
     
     genome_rotated_info = buf    
-    
-    tmp_deviations = pd.DataFrame(deviations)
-    tmp_deviations.to_csv("genome_rotation_deviations.tsv", sep="\t", index=None)
-        
+
+    gb_df_rotate = gb_df.fillna("None")
+    gb_df_rotate["start_rotated"] = gb_df_rotate["start"]
+    gb_df_rotate["end_rotated"] = gb_df_rotate["end"]
+    gb_df_rotate["strand_rotated"] = gb_df_rotate["strand"]
+    gb_df_rotate = addGeneAngle(genome_df, gb_df_rotate)
+
+    final_rotate(genome_df, gb_df_rotate, genome_rotated_info)    
 
     # check
     gb_df_rotate[gb_df_rotate["end_rotated"] - gb_df_rotate["start_rotated"] < 0]
@@ -530,6 +535,17 @@ def main(dir, tag, gap):
 def convertByMap(series, dic):
     return series.map(dic)
 
+def final_rotate(genome_df, gb_df_rotate, genome_rotation_info):
+    for i in range(len(genome_df)):
+        acc = genome_df.iloc[i, :]["Acc"]
+        target = gb_df_rotate[gb_df_rotate["acc"]==acc]
+        idx = target.index
+        min_strand = genome_rotation_info[i][0]
+        min_angle = genome_rotation_info[i][1]
+        if (min_strand != 0 or min_angle != 0):
+            gb_df_rotate.loc[idx,:] = flip_particular_genome(acc, target, genome_df, min_strand, min_angle)
+
+
 def confirm_strand_direction(genome_df, gb_df_rotate, locusTag_consensus, consensus_locusTag, stepSize = 10):
     deviations = []
     locusTag_start_rotated_angle = getMap(gb_df_rotate, "locusTag", "start_rotated_angle")
@@ -584,7 +600,7 @@ def get_rotated_angles(angles, diff_angle, flip):
     if flip == 0:
         new_angles = angles + diff_angle
     else:
-        new_angles = 359 - angles - diff_angle
+        new_angles = 359 - angles + diff_angle
         
     new_angles[new_angles > 359] -= 360
     new_angles[new_angles < 0] += 360

@@ -42,29 +42,14 @@ const data = {
     message: "!!ok!!",
     seqs: [{
         start: 10,
-        end: 100,
+        end: 2000,
         genome_ID: "NC_000915.1"
     }, {
         start: 10,
-        end: 100,
-        genome_ID: "NC_000915.1"
-    }, {
-        start: 10,
-        end: 100,
-        genome_ID: "NC_000915.1"
-    }, {
-        start: 10,
-        end: 100,
-        genome_ID: "NC_000915.1"
-    }, {
-        start: 10,
-        end: 100,
-        genome_ID: "NC_000915.1"
-    }, {
-        start: 10,
-        end: 100,
-        genome_ID: "NC_000915.1"
-    }, ]
+        end: 3000,
+        genome_ID: "NC_021882.2"
+    }]
+
 }
 
 
@@ -83,7 +68,7 @@ const param = {
 }
 
 
-test("http://127.0.0.1:8000/hp72/api/genome/test", param).then((res) => {
+bio.json("http://127.0.0.1:8000/hp72/api/genome/multiple", param).then((res) => {
     console.log(res)
 });
 */

@@ -159,7 +159,16 @@ PROTEIN_COL_V1["Y"] = getColorPallet(24);
 PROTEIN_COL_V1["Z"] = getColorPallet(25);
 PROTEIN_COL_V1["-"] = "rgb(200,200,200)";
 
+const NUCLEOTIDE_COLOR = {
+    A: " #64F73F",
+    C: " #FFB340",
+    G: " #EB413C",
+    T: " #3C88EE",
+    U: " #3C88EE"
+}
+
 export {
     PROTEIN_COL_V1,
-    COLER_ARR
+    COLER_ARR,
+    NUCLEOTIDE_COLOR
 }
